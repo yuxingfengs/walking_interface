@@ -1,0 +1,11 @@
+global_step,episode,type,timestamp,event_name,event_value,seed,path,reason,x_value,num_episodes,train_every_episodes,min_buffer_for_train,resume_logs,bc_reset_on_eval,window_return_sum,window_size,actor_loss,critic_loss,reward,avg_recent_reward,fell,seq_len,buffer_len,total_falls,episodes_in_span,actor_action_var,actor_action_diff,td_error_mean,td_error_std,td_mse,q_current_mean,q_target_mean,bellman_gap,actor_grad_norm,critic_grad_norm_mean,actor_lr,critic_lr,q_values,eval_return_mean,eval_return_sem,eval_return_std,eval_return_p25,eval_return_median,eval_return_p75,eval_success_rate,eval_ep_len_mean,eval_episodes,note
+0,0,session_event,1774497651,session_start,True,1,,,,200,10,640,False,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,train_model call started
+0,0,session_event,1774497651,bc_reset_on_eval,True,1,,,,,,,,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BC reset was applied before this train_model call
+0,0,episode,1774497652,,,,,,,,,,,True,,,,,1.1038329338441422,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,1,episode,1774497652,,,,,,,,,,,False,,,,,1.082759282439394,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,2,episode,1774497652,,,,,,,,,,,False,,,,,1.0018561741165488,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,3,episode,1774497652,,,,,,,,,,,False,,,,,0.9733148850642959,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,4,episode,1774497652,,,,,,,,,,,False,,,,,0.9355645821962444,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,5,episode,1774497652,,,,,,,,,,,False,,,,,0.8409555616675757,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,6,episode,1774497652,,,,,,,,,,,False,,,,,0.6393836692794164,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,7,episode,1774497652,,,,,,,,,,,False,,,,,0.2008104972415392,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,

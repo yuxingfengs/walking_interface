@@ -1,0 +1,15 @@
+global_step,episode,type,timestamp,event_name,event_value,seed,path,reason,x_value,num_episodes,train_every_episodes,min_buffer_for_train,resume_logs,bc_reset_on_eval,window_return_sum,window_size,actor_loss,critic_loss,reward,avg_recent_reward,fell,seq_len,buffer_len,total_falls,episodes_in_span,actor_action_var,actor_action_diff,td_error_mean,td_error_std,td_mse,q_current_mean,q_target_mean,bellman_gap,actor_grad_norm,critic_grad_norm_mean,actor_lr,critic_lr,q_values,eval_return_mean,eval_return_sem,eval_return_std,eval_return_p25,eval_return_median,eval_return_p75,eval_success_rate,eval_ep_len_mean,eval_episodes,note
+0,0,session_event,1778075920,session_start,True,1,,,,200,10,640,False,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,train_model call started
+0,0,session_event,1778075920,bc_reset_on_eval,True,1,,,,,,,,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,BC reset was applied before this train_model call
+0,0,episode,1778075920,,,,,,,,,,,True,,,,,1.0951724125692763,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,1,episode,1778075921,,,,,,,,,,,False,,,,,1.0629608031314675,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,2,episode,1778075921,,,,,,,,,,,False,,,,,1.1042688776544107,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,3,episode,1778075921,,,,,,,,,,,False,,,,,1.074076665583199,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,4,episode,1778075921,,,,,,,,,,,False,,,,,1.0203093947481712,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,5,episode,1778075921,,,,,,,,,,,False,,,,,1.047466308248719,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,6,episode,1778075921,,,,,,,,,,,False,,,,,0.9312182786149137,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,7,episode,1778075921,,,,,,,,,,,False,,,,,0.8411533682400574,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,8,episode,1778075922,,,,,,,,,,,False,,,,,0.7481104127720251,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,9,episode,1778075922,,,,,,,,,,,False,,,,,0.6118068198031867,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,10,episode,1778075922,,,,,,,,,,,False,,,,,0.7787105479059164,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,11,episode,1778075922,,,,,,,,,,,False,,,,,0.2916049950643407,,False,35,,,,,,,,,,,,,,,,,,,,,,,,,,
