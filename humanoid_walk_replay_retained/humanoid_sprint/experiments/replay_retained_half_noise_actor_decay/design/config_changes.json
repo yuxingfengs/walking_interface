@@ -1,0 +1,42 @@
+[
+  {
+    "field": "experiment.name",
+    "previous": "improve_head_reward_1_noise2_critic1e6_no_norm",
+    "current": "replay_retained_half_noise_actor_decay"
+  },
+  {
+    "field": "experiment.previous_experiment",
+    "previous": "improve_head_reward_1_noise2_critic1e5",
+    "current": "improve_head_reward_1_noise2_critic1e6_no_norm"
+  },
+  {
+    "field": "initialization.clear_replay_on_bc_reset",
+    "previous": null,
+    "current": false
+  },
+  {
+    "field": "training.action_noise_std_after_switch",
+    "previous": 0.002,
+    "current": 0.0
+  },
+  {
+    "field": "training.actor_lr",
+    "previous": 1e-06,
+    "current": 1e-05
+  },
+  {
+    "field": "training.lr_switch_env_steps",
+    "previous": 35000,
+    "current": 100000
+  },
+  {
+    "field": "training.noise_switch_env_steps",
+    "previous": 0,
+    "current": 100000
+  },
+  {
+    "field": "webots.world_template",
+    "previous": "F:\\project\\walking2_interface\\humanoid_walk_heading_rate\\humanoid_sprint\\experiments\\improve_head_reward_1_noise2_critic1e6_no_norm\\seed_001\\runs\\train_20260915T184942_563909Z_617402\\world_template.wbt",
+    "current": "worlds/humanoid_sprint.wbt"
+  }
+]

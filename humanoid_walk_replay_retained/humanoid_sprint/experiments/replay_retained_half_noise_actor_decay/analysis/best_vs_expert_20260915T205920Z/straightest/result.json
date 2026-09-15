@@ -1,0 +1,24 @@
+{
+  "time_s": 115.0,
+  "elapsed_s": 115.0,
+  "lateral_m": 0.29553191538435386,
+  "abs_lateral_m": 0.29553191538435386,
+  "forward_m": 10.026153014338432,
+  "success": true,
+  "fell": false,
+  "end_reason": "goal",
+  "steps": 2875,
+  "initial_position": [
+    -5.0213999031130365,
+    0.999965533052299,
+    0.7230633723929663
+  ],
+  "final_position": [
+    5.004753111225395,
+    1.2954974484366528,
+    0.7069943996749803
+  ],
+  "final_heading_error_deg": -1.3006752017519085,
+  "checkpoint": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\replay_retained_half_noise_actor_decay\\seed_001\\checkpoints\\eval_candidates\\ckpt_gs000250.pth",
+  "checkpoint_sha256": "12637e0d83e36f4c85afb21381fda85ffebb67c3b1227752747401bd51fc940b"
+}

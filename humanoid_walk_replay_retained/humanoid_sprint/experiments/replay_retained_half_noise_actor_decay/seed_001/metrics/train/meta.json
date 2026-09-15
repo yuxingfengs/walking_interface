@@ -1,0 +1,9 @@
+{
+  "env_steps": 200000,
+  "global_step": 606,
+  "ep_offset": 0,
+  "best_reward": -Infinity,
+  "resume_checkpoint_path": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\replay_retained_half_noise_actor_decay\\seed_001\\checkpoints\\resume.pth",
+  "task_id": "forward_walk_v1",
+  "algorithm_id": "ddpg_no_norm_v1"
+}

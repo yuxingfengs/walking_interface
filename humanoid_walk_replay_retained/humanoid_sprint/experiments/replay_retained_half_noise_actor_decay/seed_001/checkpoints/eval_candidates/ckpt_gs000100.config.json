@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "mode": "train",
+  "run_id": "20260915T200019_298377Z_199f89",
+  "config": {
+    "experiment": {
+      "name": "replay_retained_half_noise_actor_decay",
+      "seed": 1,
+      "output_root": "experiments",
+      "previous_experiment": "improve_head_reward_1_noise2_critic1e6_no_norm",
+      "baseline_id": "bc_strong_heading_20260915_v1"
+    },
+    "webots": {
+      "executable": "C:/Program Files/Webots/msys64/mingw64/bin/webots.exe",
+      "python": "C:/Users/fengy/anaconda3/envs/webot/python.exe",
+      "world_template": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\replay_retained_half_noise_actor_decay\\seed_001\\runs\\train_20260915T200019_298377Z_199f89\\world_template.wbt",
+      "basic_time_step_ms": 20,
+      "control_time_step_ms": 40,
+      "initial_translation": [
+        -5.02099,
+        1.0,
+        0.696172
+      ],
+      "initial_rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0837
+      ]
+    },
+    "environment": {
+      "task_module": "tasks.heading_rate",
+      "task_class": "HeadingRateTask",
+      "heading_reward_weight": 1,
+      "target_heading_rad": 0.0,
+      "foot_contact_threshold_n": 1.0,
+      "settle_steps": 64,
+      "sensor_warmup_steps": 5,
+      "shoulder_position_rad": 1.1,
+      "motor_velocity_scale": 0.8,
+      "joint_limit_margin_rad": 0.001,
+      "fall_height_m": 0.6,
+      "phase_mode": "continuous_time",
+      "phase_coefficient": 4.0,
+      "phase_reset_value": 0.0
+    },
+    "training": {
+      "algorithm_module": "algorithms.ddpg_no_norm",
+      "algorithm_class": "DDPGNoNormAlgorithm",
+      "actor_lr": 1e-05,
+      "critic_lr": 1e-06,
+      "manage_critic_batchnorm": true,
+      "sync_bn_running_stats": false,
+      "lr_switch_env_steps": 100000,
+      "actor_lr_after_switch": 1e-06,
+      "critic_lr_after_switch": 1e-06,
+      "action_noise_std_rad": 0.002,
+      "noise_switch_env_steps": 100000,
+      "action_noise_std_after_switch": 0.0,
+      "gamma": 0.98,
+      "tau": 0.0001,
+      "batch_size": 64,
+      "buffer_size": 2000,
+      "min_buffer_for_train": 320,
+      "critic_warmup_updates": 50,
+      "critic_warmup_update_every_steps": 35,
+      "sampling_mode": "continuous",
+      "total_env_steps": 200000,
+      "update_every_steps": 350,
+      "log_every_steps": 35,
+      "stop_x_m": 6.0,
+      "checkpoint_every_updates": 10,
+      "residual_limit_rad": 0.03,
+      "rollouts": 2000,
+      "rollout_steps": 35,
+      "train_every_rollouts": 10
+    },
+    "initialization": {
+      "training_reset_mode": "world_reload",
+      "use_bc": true,
+      "bc_checkpoint": "experiments/walk_bc_strong_heading_70k/design/actor_bc_heading27.pth",
+      "resume": "never",
+      "resume_actor_lr": 1e-06,
+      "resume_critic_lr": 1e-06,
+      "bc_on_resume": true,
+      "reset_to_bc_on_failure": true,
+      "clear_replay_on_bc_reset": false,
+      "bc_reset_max_env_steps": 0,
+      "consecutive_falls": 5,
+      "stall_window_steps": 35,
+      "stall_timeout_steps": 700,
+      "stall_min_forward_progress_m": 0.02,
+      "stall_max_abs_x_progress_m": 0.02,
+      "bc_reset_max_rollouts": 0,
+      "consecutive_fall_rollouts": 15,
+      "stall_rollouts": 40
+    },
+    "evaluation": {
+      "episodes": 1,
+      "stop_x_m": 5,
+      "max_steps": 6000,
+      "first_episode_step_fraction": 0.5,
+      "stop_after_first_failure": true,
+      "stall_cycle_limit": 40,
+      "stall_window_steps": 35,
+      "stall_max_abs_x_progress_m": 0.02,
+      "start_global_step": 0,
+      "selected_global_step": null,
+      "only_latest": false,
+      "metrics_filename": "metrics_fixed_phase_one_episode.csv",
+      "inherit_training_config": true,
+      "allow_legacy_without_snapshot": true
+    }
+  },
+  "sources": [
+    {
+      "checkpoint": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\walk_bc_strong_heading_70k\\design\\actor_bc_heading27.pth",
+      "sha256": "77fb57146a5f877f8c83bb3ca7e05cb69f5a0998fd2ac300d1e11e25f0effb04",
+      "role": "bc"
+    }
+  ],
+  "warnings": [],
+  "source_world_sha256": "f21d03db2b8e7b3d25d8b7e9cd56cc00c49ffc92a23445f84a6a286c390886ee",
+  "comparison_status": "pending_evaluation",
+  "status": "prepared",
+  "reproducibility_protocol": "seed_before_network_init_v1",
+  "checkpoint_training_state": {
+    "actor_update_count": 50,
+    "critic_warmup_completed": 50
+  }
+}

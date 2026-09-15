@@ -1,0 +1,24 @@
+{
+  "time_s": 114.96000000000001,
+  "elapsed_s": 114.96000000000001,
+  "lateral_m": 0.5072753009112363,
+  "abs_lateral_m": 0.5072753009112363,
+  "forward_m": 10.021676484049577,
+  "success": true,
+  "fell": false,
+  "end_reason": "goal",
+  "steps": 2874,
+  "initial_position": [
+    -5.0213999031130365,
+    0.999965533052299,
+    0.7230633723929663
+  ],
+  "final_position": [
+    5.00027658093654,
+    1.5072408339635353,
+    0.7079170491044483
+  ],
+  "final_heading_error_deg": -1.7065301874972865,
+  "checkpoint": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\walk_bc_strong_heading_70k\\design\\actor_bc_heading27.pth",
+  "checkpoint_sha256": "77fb57146a5f877f8c83bb3ca7e05cb69f5a0998fd2ac300d1e11e25f0effb04"
+}

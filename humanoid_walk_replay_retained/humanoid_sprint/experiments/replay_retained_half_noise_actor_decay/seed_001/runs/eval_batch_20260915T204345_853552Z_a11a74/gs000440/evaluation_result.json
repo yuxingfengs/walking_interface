@@ -1,0 +1,91 @@
+{
+  "type": "eval",
+  "global_step": 440,
+  "episode": 0,
+  "seed": 1,
+  "eval_episodes": 1,
+  "eval_success_rate": 1.0,
+  "eval_ep_len_mean": 2865.0,
+  "forward_mean": 10.024093622149643,
+  "forward_std": 0.0,
+  "lateral_mean": 0.5541851429231024,
+  "lateral_std": 0.0,
+  "reach_time_mean": 114.60000000000001,
+  "reach_time_std": 0.0,
+  "fell_rate": 0.0,
+  "phase_mode": "continuous_time",
+  "phase_frequency_hz": 4.0,
+  "phase_reset_value": 0.0,
+  "task_id": "forward_walk_v1",
+  "checkpoint_path": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\replay_retained_half_noise_actor_decay\\seed_001\\checkpoints\\eval_candidates\\ckpt_gs000440.pth",
+  "note": "independent_eval_from_saved_checkpoint",
+  "eval_protocol": "shared_webots_world_reload_v3",
+  "eval_run_id": "20260915T204346_413760Z_d2d67c",
+  "controller_pid": 10172,
+  "episodes": [
+    {
+      "episode": 1,
+      "forward": 10.024093622149643,
+      "lateral": 0.5541851429231024,
+      "fell": false,
+      "time": 114.60000000000001,
+      "steps": 2865,
+      "reach_time": 114.60000000000001,
+      "reached": true,
+      "end_reason": "goal",
+      "stall_cycles": 0,
+      "start_state": {
+        "observation": [
+          0.025464790894703278,
+          1.5726038713164432,
+          0.04130989647047664,
+          -7.4081458294568e-11,
+          -4.4254668326836184e-07,
+          0.0,
+          -6.462953018146266e-07,
+          -6.449379729480868e-07,
+          -7.116779425455772e-07,
+          -2.3051966567428686e-07,
+          -6.582208577451087e-07,
+          -6.5667912182904e-07,
+          -6.519553239314401e-07,
+          -6.510120250494827e-07,
+          -6.665381223532747e-07,
+          -6.662618053358652e-07,
+          -6.54116564582602e-07,
+          6.538805733657548e-07,
+          1.0,
+          1.0,
+          0.02170175166823237,
+          -0.0005026781336108553,
+          0.278059369766183,
+          1.0,
+          -0.0836018571300209,
+          0.9964992370716655,
+          0.0
+        ],
+        "position": [
+          -5.0213999031130365,
+          0.999965533052299,
+          0.7230633723929663
+        ],
+        "rotation": [
+          0.0006169370824433583,
+          -0.014670699572891925,
+          0.9998921891697515,
+          0.08370856499525242
+        ],
+        "velocity": [
+          -3.9143783084758196e-08,
+          -3.1689960038397162e-09,
+          -2.225595209394616e-08,
+          3.661900022973416e-08,
+          -4.3734754826156466e-07,
+          -2.4310320274267265e-09
+        ],
+        "simulation_time": 2.8000000000000003
+      }
+    }
+  ],
+  "checkpoint_sha256": "ec3e74f5d39d857a78e6e0200f3ef28693a7e5aaae40a763eec04a9ee4e7d27b"
+}

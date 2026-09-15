@@ -1,0 +1,13 @@
+{
+  "tests_passed": 40,
+  "relocated_gs330_evaluation_matches_original": true,
+  "retained_experiment": "replay_retained_half_noise_actor_decay",
+  "model_sha256": "e467a02b77a2554761e2aa6222f67140b4cc8b1ca41a9a292da3400447f6e4d4",
+  "omitted": [
+    "other experiment projects",
+    "runtime caches",
+    "Webots temporary worlds",
+    "world reload memory dumps"
+  ],
+  "historical_source_whitespace": "Pre-existing whitespace retained to avoid unrelated source changes."
+}

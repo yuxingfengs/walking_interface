@@ -1,0 +1,143 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/robots/softbank/nao/protos/Nao.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/Grass.proto"
+EXTERNPROTO "../protos/RaceStopwatch.proto"
+
+WorldInfo {
+  info [
+    "The humanoid sprint benchmark aims at programing a NAO robot in Python to run a 10 meter race. "
+    "The goal is to run the 10 meter as fast as possible. "
+    "All the sensors and actuators of the robot can be used to achieve the best performance. "
+    "Records are stored on the challenge web site. "
+  ]
+  title "Humanoid Sprint"
+  window "humanoid_sprint"
+  basicTimeStep 20
+  FPS 20
+  contactProperties [
+    ContactProperties {
+      material1 "NAO foot material"
+      coulombFriction [
+        7
+      ]
+      bounce 0.3
+      bounceVelocity 0.003
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.5289752074188327 -0.34519712246361245 -0.7752574905017331 4.658684954052928
+  position -7.402499687522015 -4.341366495625458 6.7210484611718355
+  follow "NAO"
+}
+TexturedBackground {
+  texture "noon_cloudy_countryside"
+}
+TexturedBackgroundLight {
+  texture "noon_cloudy_countryside"
+  luminosity 0.4
+  castShadows FALSE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 0.2
+  cutOffAngle 0.7
+  direction 0 -1 0
+  intensity 10
+  location -5 4 0.5
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 0.2
+  cutOffAngle 0.7
+  direction 0 -1 0
+  intensity 10
+  location 0 4 0.5
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 0.2
+  cutOffAngle 0.7
+  direction 0 -1 0
+  intensity 10
+  location 5 4 0.5
+  castShadows TRUE
+}
+DEF TRACK Floor {
+  translation 0 0 0.39
+  size 11 3
+  tileSize 11 3
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "textures/nao_10m_track_base_color.jpg"
+      ]
+    }
+    roughness 1
+    roughnessMap ImageTexture {
+      url [
+        "textures/nao_10m_track_roughness.jpg"
+      ]
+    }
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/nao_10m_track_normal.jpg"
+      ]
+    }
+  }
+}
+DEF GRASS Solid {
+  translation 0 -0.005 0
+  children [
+    Shape {
+      appearance Grass {
+        colorOverride 0.905486 0.988983 0.47155
+        textureTransform TextureTransform {
+          scale 20 20
+        }
+      }
+      geometry Cylinder {
+        bottom FALSE
+        height 0.001
+        radius 10
+        side FALSE
+      }
+    }
+  ]
+  name "grass"
+  model "floor"
+  locked TRUE
+}
+DEF NAO Nao {
+  hidden rotation_22 1.6529076451309094e-16 1 1.5026433137553722e-17 0.9599999997476739
+  hidden rotation_23 7.513216569686468e-18 0.9999999999999999 -1.502643313937294e-16 0.9599999996216159
+  hidden rotation_24 -9.673266331041443e-17 1 -7.513216567799179e-17 0.9599999998831666
+  hidden rotation_25 2.2539649703389206e-17 0.9999999999999999 7.513216567796401e-18 0.9599999998835509
+  hidden rotation_26 2.1037006391115323e-16 1 -1.6529076450162041e-16 0.9599999998199306
+  hidden rotation_27 -1.8595211005530345e-16 1 -2.1037006390094934e-16 0.9599999998704348
+  hidden rotation_29 -3.005286626960202e-17 -0.9999999999999999 2.817456212804894e-18 0.9599999999383211
+  hidden rotation_34 1.2021146497953455e-16 1 5.259251592854637e-17 0.9600000007948182
+  hidden rotation_35 -6.761894910922918e-17 1 -1.502643313538426e-17 0.9599999998980022
+  hidden rotation_36 1.5965585207415328e-17 1 2.2539649704586354e-16 0.9599999998282488
+  hidden rotation_37 1.7280398089842446e-16 1 -4.5079299364806377e-17 0.960000000853003
+  hidden rotation_38 -1.277246816491433e-16 1 4.507929940558e-17 0.9599999999112322
+  hidden rotation_39 4.695760355200301e-17 1 4.507929940992289e-17 0.9599999998109214
+  hidden rotation_41 5.353166804297884e-17 -1 -4.507929940456648e-17 0.9599999999340026
+  translation -5.02099 1 0.696172
+  rotation 0 0 1 0.0837
+  controller "eval_controller"
+  supervisor TRUE
+}
+RaceStopwatch {
+  translation 4.73 0 -1.19623
+  rotation 0 -1 0 -1.57
+  window "humanoid_sprint"
+}
+

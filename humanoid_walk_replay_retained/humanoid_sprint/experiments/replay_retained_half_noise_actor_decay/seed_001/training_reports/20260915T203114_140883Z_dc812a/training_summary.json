@@ -1,0 +1,279 @@
+{
+  "experiment": "replay_retained_half_noise_actor_decay",
+  "status": "completed",
+  "current": {
+    "source": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\replay_retained_half_noise_actor_decay\\seed_001\\metrics\\train\\metrics.csv",
+    "source_sha256": "f46fa2611dc8b80bedda3beb5ec69a83c9a3f88bdd6bf50e8b513dbbab0b0208",
+    "env_steps": 200000,
+    "session_end": true,
+    "falls": 91,
+    "goals": 40,
+    "stalls": 0,
+    "bc_resets": 18,
+    "last_fall_step": 179023,
+    "last_sample_abs_heading_deg": 1.255543436700972,
+    "recent_mean_abs_heading_deg": 2.8822527399189006,
+    "final_segment_estimated_forward_m": 6.557132327310421,
+    "final_stalled_steps": 2,
+    "bins": [
+      {
+        "start_step": 0,
+        "end_step": 10000,
+        "samples": 285,
+        "mean_abs_heading_deg": 3.071696623026957
+      },
+      {
+        "start_step": 10000,
+        "end_step": 20000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.642317088981841
+      },
+      {
+        "start_step": 20000,
+        "end_step": 30000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.5969220704284925
+      },
+      {
+        "start_step": 30000,
+        "end_step": 40000,
+        "samples": 285,
+        "mean_abs_heading_deg": 2.7801660508775243
+      },
+      {
+        "start_step": 40000,
+        "end_step": 50000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.495396673903969
+      },
+      {
+        "start_step": 50000,
+        "end_step": 60000,
+        "samples": 286,
+        "mean_abs_heading_deg": 3.0394609995028494
+      },
+      {
+        "start_step": 60000,
+        "end_step": 70000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.5654652864984713
+      },
+      {
+        "start_step": 70000,
+        "end_step": 80000,
+        "samples": 285,
+        "mean_abs_heading_deg": 2.966009748700576
+      },
+      {
+        "start_step": 80000,
+        "end_step": 90000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.5900219648256018
+      },
+      {
+        "start_step": 90000,
+        "end_step": 100000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.6778594195560745
+      },
+      {
+        "start_step": 100000,
+        "end_step": 110000,
+        "samples": 285,
+        "mean_abs_heading_deg": 2.9306999615367784
+      },
+      {
+        "start_step": 110000,
+        "end_step": 120000,
+        "samples": 286,
+        "mean_abs_heading_deg": 3.3879051640720754
+      },
+      {
+        "start_step": 120000,
+        "end_step": 130000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.1734589427454107
+      },
+      {
+        "start_step": 130000,
+        "end_step": 140000,
+        "samples": 286,
+        "mean_abs_heading_deg": 1.945835293334378
+      },
+      {
+        "start_step": 140000,
+        "end_step": 150000,
+        "samples": 285,
+        "mean_abs_heading_deg": 3.0359413413327294
+      },
+      {
+        "start_step": 150000,
+        "end_step": 160000,
+        "samples": 286,
+        "mean_abs_heading_deg": 3.2865732895678184
+      },
+      {
+        "start_step": 160000,
+        "end_step": 170000,
+        "samples": 286,
+        "mean_abs_heading_deg": 1.9238036216233732
+      },
+      {
+        "start_step": 170000,
+        "end_step": 180000,
+        "samples": 285,
+        "mean_abs_heading_deg": 2.3386398417402416
+      },
+      {
+        "start_step": 180000,
+        "end_step": 190000,
+        "samples": 286,
+        "mean_abs_heading_deg": 3.0464011432855904
+      },
+      {
+        "start_step": 190000,
+        "end_step": 200000,
+        "samples": 287,
+        "mean_abs_heading_deg": 2.8822527399189006
+      }
+    ]
+  },
+  "previous_experiment": "improve_head_reward_1_noise2_critic1e6_no_norm",
+  "previous": {
+    "source": "F:\\project\\walking2_interface\\humanoid_walk_replay_retained\\humanoid_sprint\\experiments\\replay_retained_half_noise_actor_decay\\analysis\\training_heading\\reference\\previous_metrics.csv",
+    "source_sha256": "f74324d3347f24aa4a258dd2c376798bd75cdcf5527f83e8cf3e95fe06bb61f2",
+    "env_steps": 200000,
+    "session_end": true,
+    "falls": 30,
+    "goals": 49,
+    "stalls": 0,
+    "bc_resets": 5,
+    "last_fall_step": 199560,
+    "last_sample_abs_heading_deg": 4.216474515851436,
+    "recent_mean_abs_heading_deg": 1.9048887037714555,
+    "final_segment_estimated_forward_m": 1.4599124136574215,
+    "final_stalled_steps": 3,
+    "bins": [
+      {
+        "start_step": 0,
+        "end_step": 10000,
+        "samples": 285,
+        "mean_abs_heading_deg": 3.3706861080992816
+      },
+      {
+        "start_step": 10000,
+        "end_step": 20000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.6061477895703438
+      },
+      {
+        "start_step": 20000,
+        "end_step": 30000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.1809961528368373
+      },
+      {
+        "start_step": 30000,
+        "end_step": 40000,
+        "samples": 285,
+        "mean_abs_heading_deg": 1.7014836564968328
+      },
+      {
+        "start_step": 40000,
+        "end_step": 50000,
+        "samples": 286,
+        "mean_abs_heading_deg": 1.7705342564184448
+      },
+      {
+        "start_step": 50000,
+        "end_step": 60000,
+        "samples": 286,
+        "mean_abs_heading_deg": 3.04596502258672
+      },
+      {
+        "start_step": 60000,
+        "end_step": 70000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.123166808569018
+      },
+      {
+        "start_step": 70000,
+        "end_step": 80000,
+        "samples": 285,
+        "mean_abs_heading_deg": 1.8002271572050368
+      },
+      {
+        "start_step": 80000,
+        "end_step": 90000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.7272808381623372
+      },
+      {
+        "start_step": 90000,
+        "end_step": 100000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.462952789787158
+      },
+      {
+        "start_step": 100000,
+        "end_step": 110000,
+        "samples": 285,
+        "mean_abs_heading_deg": 2.015450206631136
+      },
+      {
+        "start_step": 110000,
+        "end_step": 120000,
+        "samples": 286,
+        "mean_abs_heading_deg": 1.6805762467934784
+      },
+      {
+        "start_step": 120000,
+        "end_step": 130000,
+        "samples": 286,
+        "mean_abs_heading_deg": 3.045543167520655
+      },
+      {
+        "start_step": 130000,
+        "end_step": 140000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.9653914525727885
+      },
+      {
+        "start_step": 140000,
+        "end_step": 150000,
+        "samples": 285,
+        "mean_abs_heading_deg": 1.9999993183247733
+      },
+      {
+        "start_step": 150000,
+        "end_step": 160000,
+        "samples": 286,
+        "mean_abs_heading_deg": 1.7231188610796897
+      },
+      {
+        "start_step": 160000,
+        "end_step": 170000,
+        "samples": 286,
+        "mean_abs_heading_deg": 2.7719976113515483
+      },
+      {
+        "start_step": 170000,
+        "end_step": 180000,
+        "samples": 285,
+        "mean_abs_heading_deg": 2.3429835151875342
+      },
+      {
+        "start_step": 180000,
+        "end_step": 190000,
+        "samples": 286,
+        "mean_abs_heading_deg": 1.8451630429353183
+      },
+      {
+        "start_step": 190000,
+        "end_step": 200000,
+        "samples": 287,
+        "mean_abs_heading_deg": 1.9048887037714555
+      }
+    ]
+  }
+}

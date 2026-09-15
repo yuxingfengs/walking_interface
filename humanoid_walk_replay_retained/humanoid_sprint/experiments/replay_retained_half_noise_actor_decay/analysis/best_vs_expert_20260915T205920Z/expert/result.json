@@ -1,0 +1,24 @@
+{
+  "time_s": 115.2,
+  "elapsed_s": 115.2,
+  "lateral_m": 0.4966031785725129,
+  "abs_lateral_m": 0.4966031785725129,
+  "forward_m": 10.027274018632866,
+  "success": true,
+  "fell": false,
+  "end_reason": "goal",
+  "steps": 2880,
+  "initial_position": [
+    -5.0213999031130365,
+    0.999965533052299,
+    0.7230633723929663
+  ],
+  "final_position": [
+    5.00587411551983,
+    1.4965687116248119,
+    0.7081717083466272
+  ],
+  "final_heading_error_deg": -1.6705519233507038,
+  "checkpoint": null,
+  "checkpoint_sha256": null
+}

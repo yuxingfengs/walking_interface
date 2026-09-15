@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+**/.webots_runs/
+**/.local_evaluation/
+**/world_reload_state.pth
+**/world_reload_pending.json
+*.tmp

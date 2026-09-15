@@ -1,0 +1,6 @@
+{
+  "scripts/compare_best_expert.py": "c2b7f4ce1401555ce0b6af306a74808ac76e09621cfba63de6e18bd0bf8bcc02",
+  "controllers/experts/strong_heading.py": "ce08c7af69baa2d051e426962498de55b9847623186c545a204d962b42e49d08",
+  "controllers/envs/nao_locomotion_env.py": "66c92cbdddadde1ce29b0aa9c46c22b7e9d5603daa37dd7458f2e7e5abb946c8",
+  "controllers/tasks/heading_rate.py": "8de85315362bcaca1eb9cf6a2eacd9229c7588a152b226586659bb517c838937"
+}
