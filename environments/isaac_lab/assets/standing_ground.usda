@@ -1,0 +1,19 @@
+#usda 1.0
+(
+    defaultPrim = "Ground"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Ground"
+{
+    def Plane "Floor" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        uniform token axis = "Z"
+        double width = 100
+        double length = 100
+        color3f[] primvars:displayColor = [(0.25, 0.26, 0.28)]
+    }
+}

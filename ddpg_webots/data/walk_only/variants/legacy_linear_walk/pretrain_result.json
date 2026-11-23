@@ -1,0 +1,5 @@
+{
+  "critic": "F:\\project\\walking2_interface\\ddpg\\walk_only\\variants\\legacy_linear_walk\\runs\\critic_pretrain_20261122T054534_f49145\\critic.pth",
+  "critic_sha256": "74bce65c2d1819ad204a432d467e2c094f2a8812ad97a90e8a92d1e649e929d3",
+  "updates": 15000
+}

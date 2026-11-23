@@ -1,0 +1,31 @@
+{
+  "schedule_attempts_checked": 174,
+  "attempts_per_loop": 58,
+  "max_command_delta": 0.022,
+  "endpoint_rate": 0.11,
+  "zero_as_turn": true,
+  "state_restored_after_each_attempt": true,
+  "fall_counts_once": true,
+  "optimizer_updates": 0,
+  "physical_data_changed": false,
+  "old_reward_max_difference": 0.0,
+  "expert": {
+    "source": "F:\\project\\walking2_interface\\expert\\step_wide_gaussian\\expert.pth",
+    "source_sha256": "6974f12e457a7ab59679a0478121b68a2590cb28ac4880d7495eb86526660f34",
+    "derived": "F:\\project\\walking2_interface\\expert\\step_wide_gaussian\\gradual_reversal\\expert.pth",
+    "sha256": "82eede1d3d4b564eea3112ea0fd003e8279f108015fd6a3d610841fd5cac71a3",
+    "transitions": 20165,
+    "turn_positive": 1187,
+    "turn_negative": 1188
+  },
+  "rollout": {
+    "source": "F:\\project\\walking2_interface\\ddpg\\step_wide_gaussian\\assets\\wide_step_gaussian\\experiments\\024\\pretrain\\rollout.pth",
+    "source_sha256": "7f7384e30a1bff5219385a2e92e9525a4d2638fc7f2f8f92ae5e2cf97a220cf1",
+    "derived": "F:\\project\\walking2_interface\\ddpg\\step_wide_gaussian\\variants\\gradual_reversal\\pretrain\\rollout.pth",
+    "sha256": "7eb1b9a53e6b63a5bc3d88ee028b64989c4d4b333e0591dac743eb3ce0f59f2b",
+    "transitions": 20000
+  },
+  "coverage_note": "Old commands retained; exact intermediate/zero-target coverage not assumed. Online collects new staircase transitions.",
+  "decision": "Reuse physical data with scorer provenance derivation; pretrain a new Critic, no collection or BC refit.",
+  "zero_state_mode_matches_reward": true
+}

@@ -1,0 +1,24 @@
+{
+  "source": {
+    "path": "F:\\project\\walking2_interface\\ddpg\\step_wide_gaussian\\variants\\turn_and_walk\\pretrain\\rollout.pth",
+    "sha256": "c7c2af53bcda304746b4fca42f435d70cade585e37feb2e8251915153ff73507"
+  },
+  "source_actor_sha256": "e864af8a0067cfe01d4c43d6c376d77be858549dd14f0981e53bed9825a8056e",
+  "current_actor_sha256": "68a84a1bd025c51dea29f6687c044556d83a407d990bde71854f80e57e7be8eb",
+  "source_kind": "frozen_bc_rollout_v31",
+  "use": "off_policy_physical_transitions",
+  "commands_relabelled": false,
+  "rows": 5903,
+  "segments": 160,
+  "failed_segments": 21,
+  "source_rows": 20000,
+  "trailing_unfinalized_rows": 0,
+  "commands_vx": [
+    0.0873257964849472
+  ],
+  "reward_mean": -1.0326363182576397,
+  "signature": "48a34ca3827ae590687952e69fa1a0d3104dbbf16b8acd333419eb101499830b",
+  "optimizer_updates": 0,
+  "decision": "reuse_and_revalue_no_collection",
+  "dataset_sha256": "96a8b80c6311c8741fbb7b7fe25332231ff4719baf4ac3a7e79ee301a1a567c6"
+}

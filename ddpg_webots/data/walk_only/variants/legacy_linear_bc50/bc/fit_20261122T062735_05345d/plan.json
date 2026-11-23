@@ -1,0 +1,279 @@
+{
+  "source": {
+    "path": "F:\\project\\walking2_interface\\expert\\step_wide_gaussian\\turn_and_walk\\expert.pth",
+    "sha256": "586cd028f160e4d5d17297138053b65372f2274a88c973111db31770ab4c8205",
+    "generation_policy": "SineSupport",
+    "source_actor_sha256": "e864af8a0067cfe01d4c43d6c376d77be858549dd14f0981e53bed9825a8056e",
+    "episodes": [
+      {
+        "index": 0,
+        "split": "train",
+        "rows": 334,
+        "raw_sha256": "ad8261b7e1a33b3dd44afecadefd69c6fb9d0a16f09e1dbc67926a83f3981312",
+        "category": "turn",
+        "modes": [
+          0
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            0.10999999940395355
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "split": "validation",
+        "rows": 331,
+        "raw_sha256": "2b409a46f4d8e10fdc84ee2fa4aafbbf70638753eb41afbd28b37ede37227f54",
+        "category": "turn",
+        "modes": [
+          0
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            -0.10999999940395355
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "split": "train",
+        "rows": 3000,
+        "raw_sha256": "495394341650998219298d0a68f94ede5d8dda89540df232309b0b2981bceb72",
+        "category": "turn_stand_walk",
+        "modes": [
+          0,
+          1,
+          2
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            -0.10999999940395355
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.10999999940395355
+          ],
+          [
+            0.0873257964849472,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "split": "train",
+        "rows": 3000,
+        "raw_sha256": "744049a389657d743b5002c1309b073bdf2f06d406e07196dcea547f5f5a49ea",
+        "category": "turn_stand_walk",
+        "modes": [
+          0,
+          1,
+          2
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            -0.10999999940395355
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.10999999940395355
+          ],
+          [
+            0.0873257964849472,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "index": 4,
+        "split": "train",
+        "rows": 3000,
+        "raw_sha256": "5605dbe10c819639383c5c6d854d0d64444669832c2b550cc7f6fd36d0ebd24d",
+        "category": "turn_stand_walk",
+        "modes": [
+          0,
+          1,
+          2
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            -0.10999999940395355
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.10999999940395355
+          ],
+          [
+            0.0873257964849472,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "index": 5,
+        "split": "train",
+        "rows": 3000,
+        "raw_sha256": "57c58b320b7c5713000b3113870d77b12e61b22f4c091ae1fd439007b425df9a",
+        "category": "turn_stand_walk",
+        "modes": [
+          0,
+          1,
+          2
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            -0.10999999940395355
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.10999999940395355
+          ],
+          [
+            0.0873257964849472,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "index": 6,
+        "split": "train",
+        "rows": 3000,
+        "raw_sha256": "cd440fd4fc64003a4fa8f8eb1d3e765c096ec85f817151f1a51c72ab6350728c",
+        "category": "turn_stand_walk",
+        "modes": [
+          0,
+          1,
+          2
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            -0.10999999940395355
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.10999999940395355
+          ],
+          [
+            0.0873257964849472,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "index": 7,
+        "split": "validation",
+        "rows": 3000,
+        "raw_sha256": "a6b90615e5c85472278ec23ed84d8e0ec93a6ba8cdbbc4ae33f8d94c4de4f0c1",
+        "category": "turn_stand_walk",
+        "modes": [
+          0,
+          1,
+          2
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            -0.10999999940395355
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.10999999940395355
+          ],
+          [
+            0.0873257964849472,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "index": 8,
+        "split": "train",
+        "rows": 1500,
+        "raw_sha256": "cf76f527c36135b3daf29aeb3f920b5929572dd5065cf3a19c33ebc3cab9883f",
+        "category": "stand",
+        "modes": [
+          1
+        ],
+        "commands": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    ],
+    "commands_relabelled": false
+  },
+  "seed": 1,
+  "fresh_network": true,
+  "batch_size": 256,
+  "lr": 0.0001,
+  "max_epochs": 200,
+  "patience": 30,
+  "validation_episode_indices": [
+    1,
+    7
+  ],
+  "actor_input_dim": 50,
+  "loss": "MSE on 11 independent executed Actions",
+  "note": "Supervised BC learning rate is separate from online Actor lr5e-7; no nonzero vy coverage."
+}

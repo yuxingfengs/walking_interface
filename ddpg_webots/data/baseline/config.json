@@ -1,0 +1,9 @@
+{
+  "experiment": "auto",
+  "same_experiment": true,
+  "window_env_steps": 5000,
+  "reports": {
+    "current": "latest",
+    "previous": "previous"
+  }
+}

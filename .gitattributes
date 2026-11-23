@@ -1,0 +1,2 @@
+**/runs/**/checkpoints/*.pth filter=lfs diff=lfs merge=lfs -text
+**/multi_gpu_runs/**/checkpoints/*.pth filter=lfs diff=lfs merge=lfs -text

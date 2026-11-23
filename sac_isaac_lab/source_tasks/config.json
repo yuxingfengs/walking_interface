@@ -1,0 +1,18 @@
+{
+  "project_name": "sac_turn",
+  "current_experiment": "003",
+  "experiments_root": "experiments",
+  "training": {
+    "total_env_steps": 20000
+  },
+  "training_backend": "isaac_lab_physx",
+  "backend_overrides": {
+    "isaac_lab_physx": {
+      "current_experiment": "004"
+    },
+    "webots": {
+      "current_experiment": "004",
+      "total_env_steps": 50000
+    }
+  }
+}

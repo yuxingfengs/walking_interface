@@ -1,0 +1,16 @@
+{
+  "current_experiment": "walk_lateral_random_vx",
+  "continue_training": {
+    "run": "latest",
+    "checkpoint": "latest.pth"
+  },
+  "headless": true,
+  "kit_state_root": "runtime",
+  "runtime_root": "F:/issac/nao-runtime",
+  "num_envs": {
+    "walk_lateral": 4,
+    "walk_lateral_random_vx": 4
+  },
+  "sim_device": "cuda:0",
+  "learner_device": "cuda:0"
+}

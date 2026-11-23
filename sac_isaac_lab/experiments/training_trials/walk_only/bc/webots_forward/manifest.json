@@ -1,0 +1,9 @@
+{
+  "epochs": 80,
+  "demonstration_sha256": "a2c20ef18cf0b5f7778429f009bf99886e529924e8e892941ca6aa647f665278",
+  "network_inputs": "compact_planar_command_coupled_v1",
+  "checkpoint_sha256": "6993b316d5e86d8b511c6f05423580b5c2afa11c1f0a8ac29132ec22306f1ad2",
+  "source_samples": 500,
+  "parent_checkpoint_sha256": "3f7676edfd46251229339258584bf72dc084ea52158aba8c8d002712c63ccc4f",
+  "checkpoint": "actor_6993b316d5e86d8b.pth"
+}

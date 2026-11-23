@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yaw Rate Training Report</title>
+<style>
+  :root {color:#1d2d3e;background:#f2f5f7;font:15px/1.55 system-ui,sans-serif}
+  body {margin:0}
+  main {width:min(1080px,calc(100% - 32px));margin:36px auto 56px}
+  h1 {font-size:28px;margin-bottom:0}
+  h2 {font-size:19px;margin:0}
+  p {margin:8px 0 18px;color:#526577}
+  section {background:#fff;border:1px solid #dbe3ea;border-radius:12px;padding:20px;margin:18px 0}
+  header,.controls {display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  button {background:#fff;color:inherit;border:1px solid #b9c9d5;border-radius:6px;padding:6px 10px;cursor:pointer;font:inherit}
+  button:hover {background:#edf3f7}
+  button:disabled {opacity:.45;cursor:default}
+  svg {display:block;width:100%;touch-action:pan-y;user-select:none;cursor:crosshair}
+  svg text {font:12px system-ui,sans-serif;fill:#526577}
+  .legend {display:flex;flex-wrap:wrap;gap:16px;color:#526577}
+  .swatch {display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+  output {color:#526577;font-variant-numeric:tabular-nums}
+</style>
+<main>
+  <h1 id="title">Yaw Rate Training Report</h1>
+  <p id="overview"></p>
+  <p id="tail"></p>
+  <p id="method"></p>
+  <p>Each point averages four steps or four gait cycles. The final point includes the remaining samples. Drag to zoom and reset each chart independently.</p>
+  <noscript><p>Enable JavaScript to view the charts in a browser.</p></noscript>
+  <div id="charts"></div>
+</main>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+'use strict';
+const data = JSON.parse(document.getElementById('data').textContent);
+document.getElementById('tail').textContent = data.tail;
+document.getElementById('method').textContent = data.method;
+document.getElementById('title').textContent = data.experiment;
+document.getElementById('overview').textContent = `${data.samples.toLocaleString()} environment steps · ${data.cycle_count.toLocaleString()} complete fall-free gait cycles`;
+
+const blue = '#146a92', orange = '#b55a12', green = '#35715f';
+const line = (label, column, color) => ({label, column, color});
+const lane = (unit, ...series) => ({unit, series});
+const specifications = [
+  ['Reward and forward velocity', data.steps, 'environment steps', [
+    lane('Reward', line('X Reward', 1, orange)),
+    lane('m/s', line('Actual forward velocity', 2, blue)),
+  ]],
+  ['Reward and yaw rate', data.steps, 'environment steps', [
+    lane('Reward', line('yaw Reward', 3, orange),
+      ...(data.has_speed_delta ? [line('Speed difference reward', 8, green)] : [])),
+    lane('rad/s', line('Actual yaw rate', 4, blue)),
+  ]],
+  ['Total reward and measured walking velocity', data.steps, 'environment steps', [
+    lane('Reward', line('Total reward', 5, orange)),
+    lane('m/s', line('Actual forward velocity', 2, blue), line('Actual lateral velocity', 6, green)),
+  ]],
+  ['Raw gyroscope Z by environment step', data.steps, 'environment steps', [
+    lane('rad/s', line('Four-step mean gyroscope Z', 7, orange)),
+  ]],
+  ['Mean yaw rate per gait cycle', data.cycles, 'Gait cycles', [
+    lane('rad/s', line('Net yaw rate', 1, blue), line('Mean gyroscope Z per cycle', 2, orange)),
+  ]],
+];
+
+const ns = 'http://www.w3.org/2000/svg';
+function svgNode(parent, tag, attrs, text) {
+  const node = document.createElementNS(ns, tag);
+  for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value);
+  if (text !== undefined) node.textContent = text;
+  parent.append(node);
+  return node;
+}
+
+function createChart([title, points, xUnit, lanes]) {
+  const section = document.createElement('section');
+  section.innerHTML = '<header><h2></h2><div class="controls"><button type="button" data-zoom="in">Zoom in</button><button type="button" data-zoom="out">Zoom out</button><button type="button" data-zoom="reset">Reset</button><output></output></div></header><div class="legend"></div>';
+  section.querySelector('h2').textContent = title;
+  const legend = section.querySelector('.legend');
+  for (const {label, color} of lanes.flatMap(l => l.series)) {
+    const labelNode = document.createElement('span');
+    const swatch = document.createElement('i');
+    swatch.className = 'swatch';
+    swatch.style.background = color;
+    labelNode.append(swatch, label);
+    legend.append(labelNode);
+  }
+  const width = 980, height = lanes.length * 143 + 26, left = 67, right = 957;
+  const graph = svgNode(section, 'svg', {viewBox:`0 0 ${width} ${height}`, role:'img', 'aria-label':title});
+  document.getElementById('charts').append(section);
+  const output = section.querySelector('output');
+  const first = points[0]?.[0], last = points.at(-1)?.[0];
+  let start = first, end = last, dragStart = null, selection = null;
+
+  function draw() {
+    graph.replaceChildren();
+    const visible = points.filter(([x]) => x >= start && x <= end);
+    output.textContent = visible.length ? `${start}–${end} ${xUnit}` : 'No samples in this range';
+    section.querySelector('[data-zoom=in]').disabled = visible.length < 3;
+    for (const key of ['out','reset']) section.querySelector(`[data-zoom=${key}]`).disabled = start === first && end === last;
+    if (!visible.length) return;
+    const sx = x => left + (x - start) / Math.max(1, end - start) * (right - left);
+    lanes.forEach(({unit, series}, index) => {
+      const top = 19 + index * 143, bottom = top + 105;
+      const values = visible.flatMap(point => series.map(({column}) => point[column])).filter(Number.isFinite);
+      svgNode(graph, 'text', {x:6,y:top-5}, unit);
+      if (!values.length) {
+        svgNode(graph, 'text', {x:left,y:top+32}, 'No recorded values');
+        return;
+      }
+      const low = Math.min(...values), high = Math.max(...values);
+      const padding = Math.max(.001, (high - low) * .08);
+      const lowBound = low - padding, highBound = high + padding;
+      const sy = v => bottom - (v-lowBound)/(highBound-lowBound)*(bottom-top);
+      for (let i = 0; i <= 4; i++) {
+        const v = lowBound + i / 4 * (highBound-lowBound), y = sy(v);
+        svgNode(graph, 'line', {x1:left,x2:right,y1:y,y2:y,stroke:'#e3e9ef'});
+        svgNode(graph, 'text', {x:left-7,y:y+4,'text-anchor':'end'}, v.toFixed(3));
+      }
+      for (const {column,color} of series) {
+        let path = '', hasPrevious = false;
+        for (const point of visible) {
+          const value = point[column];
+          if (!Number.isFinite(value)) {hasPrevious = false;continue;}
+          const x = sx(point[0]), y = sy(value);
+          path += `${hasPrevious ? 'L' : 'M'}${x.toFixed(2)},${y.toFixed(2)}`;
+          hasPrevious = true;
+          if (visible.length <= 150) svgNode(graph, 'circle', {cx:x,cy:y,r:2,fill:color});
+        }
+        svgNode(graph, 'path', {d:path,fill:'none',stroke:color,'stroke-width':1.6});
+      }
+    });
+    for (let i=0; i<=4; i++) {
+      const x = Math.round(start + (end-start)*i/4);
+      svgNode(graph,'text',{x:sx(x),y:height-18,'text-anchor':'middle'},x);
+    }
+    svgNode(graph,'text',{x:right,y:height-2,'text-anchor':'end'},xUnit);
+  }
+
+  function setRange(a, b) {
+    if (first === undefined) return;
+    a = Math.max(first,Math.round(a));
+    b = Math.min(last,Math.round(b));
+    if (a >= b || !points.some(([x])=>x>=a&&x<=b)) return;
+    start = a;
+    end = b;
+    draw();
+  }
+
+  section.querySelectorAll('button').forEach(button => {
+    button.onclick = () => {
+      const center = (start+end)/2, span = end-start;
+      if (button.dataset.zoom === 'reset') setRange(first,last);
+      if (button.dataset.zoom === 'in') setRange(center-span/4,center+span/4);
+      if (button.dataset.zoom === 'out') {
+        if (span * 2 >= last - first - 1) setRange(first,last);
+        else setRange(center-span,center+span);
+      }
+    };
+  });
+  function graphX(event) {
+    const rect = graph.getBoundingClientRect();
+    return Math.min(right,Math.max(left,(event.clientX-rect.left)*width/rect.width));
+  }
+  graph.onpointerdown = event => {
+    if (event.button !== 0 || first === undefined || start === end) return;
+    dragStart = graphX(event);
+    selection = svgNode(graph,'rect',{x:dragStart,y:0,width:0,height:height-22,fill:'#146a92',opacity:.15});
+    graph.setPointerCapture(event.pointerId);
+  };
+  graph.onpointermove = event => {
+    if (dragStart === null) return;
+    const x = graphX(event);
+    selection.setAttribute('x',Math.min(x,dragStart));
+    selection.setAttribute('width',Math.abs(x-dragStart));
+  };
+  graph.onpointerup = event => {
+    if (dragStart === null) return;
+    const a = dragStart, b = graphX(event);
+    dragStart = null;
+    selection.remove();
+    if (Math.abs(a-b) < 7) return;
+    const inverse = x => start + (x-left)/(right-left)*(end-start);
+    setRange(inverse(Math.min(a,b)),inverse(Math.max(a,b)));
+  };
+  graph.onpointercancel = () => {dragStart = null;selection?.remove();};
+  draw();
+}
+specifications.forEach(createChart);
+</script>
+</html>

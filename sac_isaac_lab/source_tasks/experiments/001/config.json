@@ -1,0 +1,11 @@
+{
+  "experiment_id": "001",
+  "name": "SAC Pure Rotation Baseline",
+  "training_config": "training_config.json",
+  "reward_file": "reward.py",
+  "runs_root": "runs",
+  "reports_root": "reports",
+  "direct_predecessor": "wide_step_gaussian/experiments/025",
+  "fixed_baseline": "pre_s1_20260724_v1",
+  "comparison_status": "pending"
+}

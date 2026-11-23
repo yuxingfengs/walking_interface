@@ -1,0 +1,12 @@
+{
+  "experiment_id": "004",
+  "name": "SAC Continuous Yaw Reversal",
+  "training_config": "task_config.json",
+  "reward_file": "reward.py",
+  "runs_root": "runs",
+  "reports_root": "reports",
+  "direct_predecessor": "003",
+  "fixed_baseline": "pre_s1_20260724_v1",
+  "comparison_status": "pending",
+  "webots_total_env_steps": 100000
+}

@@ -1,0 +1,10 @@
+{
+  "source_url": "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/robots/softbank/nao/protos/Nao.proto",
+  "original_sha256": "e64483480d277dd87ff5b0a79d33943f232ab268607ce0e70301277a1d2c8081",
+  "modified_sha256": "95b6da3dc1da0784ffefa53b431e6d82170707ee97510c23e518893bedd701f9",
+  "changes": [
+    "INERTIAL_UNIT yAxis TRUE",
+    "absolute original asset URLs",
+    "Optional gyro Z via enableGyroZ; default FALSE"
+  ]
+}

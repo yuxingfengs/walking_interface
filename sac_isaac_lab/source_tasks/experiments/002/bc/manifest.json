@@ -1,0 +1,27 @@
+{
+  "checkpoint": "actor_f37fcb3588d9188b.pth",
+  "checkpoint_sha256": "f37fcb3588d9188b7878b78e70101e581b1c602e1d62006572cc568959fe002f",
+  "dataset": "../../../../../expert/sac_turn/expert.pth",
+  "dataset_sha256": "92280a3e11a385d3ddaa1813a9d8f14637622e77a8500e4645ba493d24a3867e",
+  "source_samples": 1187,
+  "episode_counts": {
+    "0": 334,
+    "2": 42,
+    "3": 40,
+    "4": 19,
+    "5": 159,
+    "6": 255,
+    "7": 338
+  },
+  "validation_episode": 7,
+  "training_samples": 849,
+  "validation_samples": 338,
+  "phase_bins_occupied": 10,
+  "mean_gyro_z": 0.08902093023061752,
+  "initial_validation_rmse": 0.46407416462898254,
+  "best_validation_rmse": 0.011948734521865845,
+  "selected_epoch": 116,
+  "pre_tanh_std": 0.05,
+  "seed": 1,
+  "dataset_origin": "F:\\project\\walking2_interface\\wide_step_gaussian\\experiments\\025\\pretrain\\expert.pth"
+}

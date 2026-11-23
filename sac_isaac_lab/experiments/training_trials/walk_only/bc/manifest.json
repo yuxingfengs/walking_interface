@@ -1,0 +1,35 @@
+{
+  "checkpoint": "actor_3f7676edfd462512.pth",
+  "checkpoint_sha256": "3f7676edfd46251229339258584bf72dc084ea52158aba8c8d002712c63ccc4f",
+  "dataset": "F:\\project\\walking2_interface\\expert\\sac_turn\\expert.pth",
+  "dataset_sha256": "92280a3e11a385d3ddaa1813a9d8f14637622e77a8500e4645ba493d24a3867e",
+  "source_samples": 15023,
+  "episode_counts": {
+    "2": 2263,
+    "3": 2495,
+    "4": 2609,
+    "5": 2627,
+    "6": 2534,
+    "7": 2495
+  },
+  "validation_episode": 5,
+  "training_samples": 12396,
+  "validation_samples": 2627,
+  "phase_bins_occupied": 10,
+  "mean_gyro_z": 0.00011502735287649557,
+  "initial_validation_rmse": 0.5030723810195923,
+  "best_validation_rmse": 0.012690620496869087,
+  "selected_epoch": 12,
+  "pre_tanh_std": 0.05,
+  "seed": 1,
+  "network_inputs": "compact_planar_command_coupled_v1",
+  "actor_input_dim": 50,
+  "commands": [
+    [
+      0.0873257964849472,
+      0.0,
+      0.0
+    ]
+  ],
+  "task": "forward_walk"
+}

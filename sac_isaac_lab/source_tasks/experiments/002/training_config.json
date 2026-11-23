@@ -1,0 +1,251 @@
+{
+  "initialization": {"use_bc": true, "source_network_inputs": "compact_zero_vy_coupled_v1"},
+  "environment": {
+    "reset_mode": "world_reload",
+    "yaw_source": "supervisor_truth",
+    "yaw_rate_scale": 1.0,
+    "heading_kp": 1.0,
+    "heading_max_rate": 0.11,
+    "floor_z": 0.4,
+    "base_height_target": 0.3,
+    "fall_height": 0.2,
+    "fall_tilt_rad": 1.0,
+    "episode_seconds": 240.0,
+    "settle_steps": 64,
+    "action_scale": 0.4,
+    "gait_frequency_hz": 0.6366197723675814,
+    "velocity_filter": 0.2,
+    "joint_velocity_scale": 0.1,
+    "motor_velocity_scale": 0.8,
+    "joint_margin": 0.001,
+    "command_ranges": [
+      [
+        -0.1,
+        0.15
+      ],
+      [
+        -0.1,
+        0.1
+      ],
+      [
+        -0.4,
+        0.4
+      ]
+    ],
+    "command_resampling_seconds": [
+      8.0,
+      12.0
+    ],
+    "stand_probability": 0.0,
+    "command_slew_per_second": [
+      0.15,
+      0.15,
+      0.5
+    ],
+    "command_timeout_seconds": 2.0,
+    "navigation_mode": "turn_then_forward",
+    "reward_mode": "staged_navigation",
+    "phase_runs_at_zero_command": true,
+    "disable_time_limit": false,
+    "heading_blend_center_deg": 15.0,
+    "heading_blend_width_deg": 5.0,
+    "expert_yaw_rate_scale": 0.6,
+    "turn_forward_tolerance_deg": 3.0,
+    "turn_to_walk_tolerance_deg": 3.0,
+    "walk_to_turn_tolerance_deg": 3.0,
+    "observation_command_vx": "velocity",
+    "latch_walk_until_reset": false,
+    "heading_command_mode": "fixed_turn_zero_walk"
+  },
+  "reward": {
+    "tracking_sigma_linear": 0.01,
+    "tracking_sigma_yaw": 0.09,
+    "tracking_x": 1.0,
+    "tracking_y": 1.0,
+    "tracking_yaw": 0.0,
+    "survival": 0.0,
+    "orientation": 0.0,
+    "height": 0.0,
+    "action_rate": 0.0,
+    "joint_velocity": 0.0,
+    "fall_penalty": 5.0,
+    "tracking_sigma_x": 0.0009,
+    "tracking_sigma_y": 0.000225,
+    "turn_translation_penalty": 0.0,
+    "turn_linear_velocity_penalty": 2.0,
+    "turn_heading_progress": 0.0,
+    "turn_heading_error": 0.1,
+    "turn_yaw_rate_error": 5.0,
+    "turn_disable_positive_base_terms": true,
+    "walk_forward_progress": 0.0,
+    "walk_heading_progress": 0.0,
+    "walk_heading_error": 0.0,
+    "walk_cross_track": 0.0,
+    "stand_linear_velocity_penalty": 3.0,
+    "task_reward_bound": 0.02,
+    "walk_speed_reference": 0.08732579768656645,
+    "turn_translation_error_scale": 0.2953225971507422,
+    "turn_yaw_error_scale": 0.11,
+    "stand_translation_error_scale": 0.2853323461721036,
+    "stand_yaw_error_scale": 0.313865580789314,
+    "turn_stand_unclipped": true,
+    "biped_tracking": {
+      "revision": "velocity_widths_variants_v1",
+      "yaw_weight": 0.5,
+      "velocity_weight": 0.5,
+      "stability_coefficient": 0.1,
+      "stability_weight": 1.0,
+      "orientation_coefficient": 2.5,
+      "velocity_source": "instantaneous",
+      "tracking_widths": [
+        0.03,
+        0.05,
+        0.05
+      ],
+      "walk_linear_peak": 1.25,
+      "walk_reward_revision": "command_aligned_linear_v1",
+      "turn_reward_revision": "symmetric_yaw_tilt_and_angular_stability_v1",
+      "turn_xy_penalty_scale": 0.2,
+      "turn_yaw_gaussian_weight": 2.0,
+      "turn_orientation_coefficient": 2.5,
+      "turn_stability_coefficient": 0.1,
+      "yaw_ema_use_body_gyro": true,
+      "turn_yaw_gaussian_width_rad_s": 0.08,
+      "turn_yaw_lowpass_tau_s": 0.3796488632411961,
+      "turn_yaw_use_raw_gyro": false,
+      "turn_heading_window_seconds": 0.0,
+      "turn_heading_scale_rad": 0.1,
+      "turn_heading_weight": 0.0,
+      "turn_yaw_underspeed_width_rad_s": 0.08
+    }
+  },
+  "turn_stand_walk": {
+    "angle_tolerance_deg": 1.0,
+    "stand_steps": 100,
+    "walk_projection_weight": 3.0,
+    "walk_latched": true,
+    "reward_revision": "velocity_turn_body_forward_v30",
+    "stand_yaw_stability": "signed_mean_one_gait_period",
+    "stand_speed_window_samples": 40,
+    "stand_angle_tolerance_deg": 3.0
+  },
+  "support_observation": {
+    "filter_alpha": 0.3,
+    "epsilon": 1e-06,
+    "version": "normal_load_difference_v1"
+  },
+  "contact_expert": {
+    "enabled": true,
+    "contact_force_n": 2.0,
+    "load_fraction": 0.6,
+    "confirmation_steps": 2,
+    "max_switch_delay_s": 0.16,
+    "pitch_gyro_gain": 0.04,
+    "roll_gyro_gain": 0.04,
+    "max_pitch_correction": 0.06,
+    "max_roll_correction": 0.04,
+    "filter_alpha": 0.3
+  },
+  "physical_gait": {
+    "imu_full_axes": true,
+    "frequency_hz": 0.6366197723675814,
+    "command_blend_seconds": 0.4,
+    "walk_speed_reference": 0.08732579768656645,
+    "yaw_rate_reference": 0.165,
+    "max_yaw_command": 0.11,
+    "turn_differential": 0.1,
+    "hip_yaw_amplitude": 0.12,
+    "walk_forward": 0.2,
+    "hold_knee_lift": 0.16,
+    "support_modulation_strength": 0.35,
+    "support_modulation_tau_s": 0.12,
+    "load_filter_alpha": 0.3,
+    "support_fraction": 0.6,
+    "support_confirmation_steps": 2,
+    "contact_force_n": 3.0,
+    "airborne_timeout_s": 0.12,
+    "gyro_filter_alpha": 0.2,
+    "pitch_gyro_gain": 0.02,
+    "roll_gyro_gain": 0.02,
+    "max_balance_rad": 0.02,
+    "max_joint_step_rad": 0.12,
+    "max_tilt_rad": 0.45,
+    "action_noise_std": 0.01
+  },
+  "network_inputs": "compact_planar_command_coupled_v1",
+  "actor_observation": "shared_state_with_yaw_ema_only_v1",
+  "stationary_reward": {
+    "window_samples": 2,
+    "angle_tolerance_deg": 3.0,
+    "speed_tolerance_m_s": 0.005,
+    "yaw_tolerance_rad_s": 0.02,
+    "hold_bonus": 0.02,
+    "progress_per_degree": 0.012,
+    "progress_limit": 0.006,
+    "translation_penalty_mode": "linear",
+    "gate_positive_progress_by_speed": false,
+    "speed_measure": "per_step_planar_displacement"
+  },
+  "fixed_cycle_commands": {
+    "enabled": true,
+    "walk_headings": "dyadic_circle",
+    "cycles_per_command": 10,
+    "order": [
+      "turn",
+      "walk"
+    ]
+  },
+  "velocity_tracking": {
+    "mode": "instantaneous",
+    "reset_on_task_change": true
+  },
+  "seed": 1,
+  "algorithm": "sac",
+  "sac": {
+    "hidden": [
+      256,
+      256
+    ],
+    "actor_lr": 0.000003,
+    "critic_lr": 0.0003,
+    "alpha_lr": 0.0003,
+    "initial_alpha": 0.2,
+    "target_entropy": -11.0,
+    "gamma": 0.995,
+    "tau": 0.005,
+    "learning_starts": 1000,
+    "log_std_min": -5.0,
+    "log_std_max": 2.0
+  },
+  "critic_observation": "actor",
+  "webots": {
+    "executable": "C:/Program Files/Webots/msys64/mingw64/bin/webots.exe",
+    "python": "C:/Users/fengy/anaconda3/envs/webot/python.exe",
+    "world_template": "worlds/direction_circle_10m.wbt",
+    "basic_time_step_ms": 20,
+    "control_time_step_ms": 40,
+    "initial_translation": [
+      0.0,
+      0.0,
+      0.696172
+    ],
+    "initial_rotation": [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "port": 1246
+  },
+  "training": {
+    "total_env_steps": 50000,
+    "online_turn_rate_rad_s": 0.11,
+    "online_fixed_turn_sign": null,
+    "online_turn_only": false,
+    "online_fixed_cycle_limit": 20,
+    "batch_size": 256,
+    "replay_size": 100000,
+    "checkpoint_every": 5000,
+    "phase_fall_backfill": true
+  }
+}

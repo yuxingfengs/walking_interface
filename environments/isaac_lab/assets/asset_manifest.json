@@ -1,0 +1,363 @@
+{
+  "source": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\assets\\source_nao.urdf",
+  "source_sha256": "8da3eb789d494413db17b9c5a357c2c64fb10aef4d400f541079ad3e6d9c0446",
+  "asset_sha256": "e641681248611c9c665e5d62c2fd0e6a244cf88cdc20719edd9d55c8ef48382d",
+  "meshes": {
+    "package://nao_meshes/meshes/V40/HeadYaw.dae": "f71e5a070ae151a15e6a1211f1e1c5571c654b80f521df5d7ffd498c9eaafe8c",
+    "package://nao_meshes/meshes/V40/HeadYaw_0.10.stl": "f74a9818ebd24383402f6846755033fa2b8158e21b3eab00a2a44d16af896bfa",
+    "package://nao_meshes/meshes/V40/HeadPitch.dae": "2a3094625b825014872b7994c372611bc70b984fc791b661d460ec184fc325e3",
+    "package://nao_meshes/meshes/V40/HeadPitch_0.10.stl": "974d6541ac8fef764c044b9b75d7fb3fc96c5daf0b9086eaafff16e5343e9d1a",
+    "package://nao_meshes/meshes/V40/LHipYawPitch.dae": "96860a923bc0c03f283156597f663e1c57bb75c02f0998de2346d42c90c20041",
+    "package://nao_meshes/meshes/V40/LHipYawPitch_0.10.stl": "346d86677c4bbf2ad606c0a2a484766e822a9159d7c2e4dd9f5e9924ffe47481",
+    "package://nao_meshes/meshes/V40/LHipRoll.dae": "430ca2ad4a9f97a4a681ec91abd17aca91416432a165ce5494ef215d4e5a2508",
+    "package://nao_meshes/meshes/V40/LHipRoll_0.10.stl": "22cdc0e39e704d6bd92db303e6792073f851e252ac1eb3e20e1e66d8df94f9ea",
+    "package://nao_meshes/meshes/V40/LHipPitch.dae": "52f2fe7df447b67dadf308f4fa294ec39f482f3919a1f3edfa9a77dac4b92fd5",
+    "package://nao_meshes/meshes/V40/LHipPitch_0.10.stl": "efc273475e77376f2bb6c594f20ed1f2347f033f766bd531f649f13a616f3401",
+    "package://nao_meshes/meshes/V40/LKneePitch.dae": "c4eaeeac6187460113f5c253c8bda61f4cc7e3835af99408c3e130e9073351bf",
+    "package://nao_meshes/meshes/V40/LKneePitch_0.10.stl": "4da9175399279a32051016a17789d8c724f324db808385fdfe1e1810e469bb98",
+    "package://nao_meshes/meshes/V40/LAnklePitch.dae": "b0edddc22b2e057210cbc7d535bc8e5046642e70f764ea8d086916e6154b757d",
+    "package://nao_meshes/meshes/V40/LAnklePitch_0.10.stl": "65d6af4663f3ef958a31f338b973d160dba1d44c8111da41805c087bbd2e02c2",
+    "package://nao_meshes/meshes/V40/LAnkleRoll.dae": "023b8de16d3a3527d744b75f7b561c5e2289bb2523f9da395ec8a510b6a02870",
+    "package://nao_meshes/meshes/V40/LAnkleRoll_0.10.stl": "a015933e9dacfbc7d423f60f4686321ce4d9482f2e557d9e51f5418a92ca7f04",
+    "package://nao_meshes/meshes/V40/RHipYawPitch.dae": "b4ad5b6e0f3bacc91ef7f42c4589ea60feb59a373e7c5903cb630cdb85daa071",
+    "package://nao_meshes/meshes/V40/RHipYawPitch_0.10.stl": "ed464beadba96f04745c8d70dcdf7116ba282d5f91f87880d980592ad9261361",
+    "package://nao_meshes/meshes/V40/RHipRoll.dae": "70d9d366654653b772f7e13c91be02bb74dedfadb1bfdf1f78f4ea94c7fd43a3",
+    "package://nao_meshes/meshes/V40/RHipRoll_0.10.stl": "19a476cdcde2bed20fb35c6f73289015c53a1326c48c5550b0f73f39ac9cacca",
+    "package://nao_meshes/meshes/V40/RHipPitch.dae": "ab887ab7b8e997fd5cd9e1ebedde5f1b12d64313f3c9a8b04643ea3f80b952f0",
+    "package://nao_meshes/meshes/V40/RHipPitch_0.10.stl": "d4fe3cef22e785b7b890dd823614dacb06cd6f314f48a117b1ce5dd4b562a5e0",
+    "package://nao_meshes/meshes/V40/RKneePitch.dae": "5e96805e6dff010c3476098a7a7eceb3deff636228cc22b27264e2f7af247eb4",
+    "package://nao_meshes/meshes/V40/RKneePitch_0.10.stl": "ac5126a52262f5d284873ab388d270316cfd8393e3278216a23d33988e44485f",
+    "package://nao_meshes/meshes/V40/RAnklePitch.dae": "7ee64fa5c47af91abd5847642df2855fdebebd1ccd242bf4cf867d0ef32f2f2d",
+    "package://nao_meshes/meshes/V40/RAnklePitch_0.10.stl": "5e8c075ff8119789f4c1cd68e8204a7ab7ab085a53f1781edf6527240c4bdf9e",
+    "package://nao_meshes/meshes/V40/RAnkleRoll.dae": "16da1bc088b5d64349c2f41d52d15d23c03c42e44b8d543fc4812fe533f31dfc",
+    "package://nao_meshes/meshes/V40/RAnkleRoll_0.10.stl": "0675d4e65e1c6ac1ace65aaf1aef774928148bb3c38ecd453b30a89656403e6c",
+    "package://nao_meshes/meshes/V40/Torso.dae": "2f13cc75900f7fa4c6fe14b76a89f051f21e08e738b8dad3d9d4732383e06f3f",
+    "package://nao_meshes/meshes/V40/Torso_0.10.stl": "80a65d1afb7996e7382d78932fbe41a25f4decc89b10d79aaf72801cd8de27e2",
+    "package://nao_meshes/meshes/V40/LShoulderPitch.dae": "448dcb76bc96417c6db475db031724ee5c3a0e2e34ca3c0f741e40aee8f33101",
+    "package://nao_meshes/meshes/V40/LShoulderPitch_0.10.stl": "e3f22cc1ffa626e9c2cdcebc6174f766363753d0f7e085e0f9c4ab8c41bbe62b",
+    "package://nao_meshes/meshes/V40/LShoulderRoll.dae": "e99b886ccb7897cc20f397f99195a4b9bc691c8ba914ce7623f3b26a7c0502c9",
+    "package://nao_meshes/meshes/V40/LShoulderRoll_0.10.stl": "9191d3c063d3b82d1527a4db64daee7eb0554b48933ecf3c8f7b637ce1227c9b",
+    "package://nao_meshes/meshes/V40/LElbowRoll.dae": "5ddc3c7dac20655aa6c14515ab2e345ef5bf56195afc5c2e7d92a52650356100",
+    "package://nao_meshes/meshes/V40/LElbowRoll_0.10.stl": "a4b6526d2ab4f586f1b680a782416403df434a62b47422977585eafeb9300262",
+    "package://nao_meshes/meshes/V40/LWristYaw.dae": "300b5a7be4cfa6a4901f7c02b37e9ffd3476b48695b36168a3ff68bbc80bc7a1",
+    "package://nao_meshes/meshes/V40/LWristYaw_0.10.stl": "bf1c8243296929de259f1b185f1c7d071595762ff1f4598a04890f15aaa48143",
+    "package://nao_meshes/meshes/V40/RShoulderPitch.dae": "1a5cf3f758ba131a5210c4feb0fef2157c58cfebd14965a5671d8ea628adbdaf",
+    "package://nao_meshes/meshes/V40/RShoulderPitch_0.10.stl": "e1bd4c971b14e877cfa5f1f0c9ebe336ddd06c534b4b1e1e6c18bd43f16da3fb",
+    "package://nao_meshes/meshes/V40/RShoulderRoll.dae": "1d8d5f82efafee887bea1626b56cdc1bc43ceeb76a90865e8dbfd4fc7c8b0eba",
+    "package://nao_meshes/meshes/V40/RShoulderRoll_0.10.stl": "e8accf7de4374c7172a3f85e06f30a1515de17eda7160511681f89ddf9f4994a",
+    "package://nao_meshes/meshes/V40/RElbowRoll.dae": "9f93e4c2fa59340caabba4250a2933381f025a290d38ab6367eb34112958c16a",
+    "package://nao_meshes/meshes/V40/RElbowRoll_0.10.stl": "8fa13a4cb3c1145eed21738d7b190547d353ec3d47bb93db44d77f4d22339157",
+    "package://nao_meshes/meshes/V40/RWristYaw.dae": "300b5a7be4cfa6a4901f7c02b37e9ffd3476b48695b36168a3ff68bbc80bc7a1",
+    "package://nao_meshes/meshes/V40/RWristYaw_0.10.stl": "441c9bf62b56d8cafdbc891f8ff5e543d880292348d30e00199ee66fe7668966",
+    "package://nao_meshes/meshes/V40/RFinger13.dae": "35841a8b727f47fc3079c5c2ca7b5776db001d7b0b28ad64f2a4ce7806666a8d",
+    "package://nao_meshes/meshes/V40/RFinger13_0.10.stl": "25a5e1e7d60cccc68ae57457b3a1fdc66e35177de0482bbc8ef18059f63460cc",
+    "package://nao_meshes/meshes/V40/RFinger12.dae": "267ae2ee0e7de1bba6110e34676cc29b9e5e471a7f8603a3b257444c4dd36a93",
+    "package://nao_meshes/meshes/V40/RFinger12_0.10.stl": "8bde651d29db7c2ddd468ad0d472288f57aff1fb92a9dc1fd62bd2862d0c0fce",
+    "package://nao_meshes/meshes/V40/LFinger21.dae": "feb44028adf2205f7126124efd9deb5c3717d4da07186d26aba64d7b8a92a6cc",
+    "package://nao_meshes/meshes/V40/LFinger21_0.10.stl": "8dfa1b09db9c7afbadc7dfc6050a24c5accab9c535c8269e3a84167614df34fb",
+    "package://nao_meshes/meshes/V40/LFinger13.dae": "6b9c6ca2357ae3fb5b7b4aa368e2b9c7464141773d1f366a13adf6496d16bae6",
+    "package://nao_meshes/meshes/V40/LFinger13_0.10.stl": "e9cf5a0d1c78cd9f41ae617aa9e12db48984d30a829027d226becb5c31348eb0",
+    "package://nao_meshes/meshes/V40/LFinger11.dae": "e3c08ff71fb4e234bd793c0ffb6e65adafb709f64e7e268cd48635f47089254a",
+    "package://nao_meshes/meshes/V40/LFinger11_0.10.stl": "0161b8a4a2aa864aceb317cfe7e4b1c91b7681b5b5c5cb366dc118800e42807d",
+    "package://nao_meshes/meshes/V40/RFinger22.dae": "11561de08a6dac772cca4160fa3b5087eac8ec36dea7725ba54fa7bd2804ea5d",
+    "package://nao_meshes/meshes/V40/RFinger22_0.10.stl": "e59f9c7823b790541910b224f2a550ace9312828f98a4b86cc2417d714117201",
+    "package://nao_meshes/meshes/V40/LFinger22.dae": "36dae5cc37a1735d8a1054f93131758607a7ce8cb37fa909fdeeda906a0dceec",
+    "package://nao_meshes/meshes/V40/LFinger22_0.10.stl": "9e53a0987b9840bf22736758567df4c58f3807d87eeab3ff9990a742c69df862",
+    "package://nao_meshes/meshes/V40/RFinger21.dae": "ec311a8f280fd79655f75ffee935f75d629ed85bc7223ac9c7011f460b1f21ca",
+    "package://nao_meshes/meshes/V40/RFinger21_0.10.stl": "e11c47eb5aac8c916569d56c2678d922aea09629553d83e6c7c55368fe18a38d",
+    "package://nao_meshes/meshes/V40/LFinger12.dae": "b9d97e6d8fc8de86fba593859936c9279061c5ba460abc7edf438d993b7503be",
+    "package://nao_meshes/meshes/V40/LFinger12_0.10.stl": "e2e8846ab75a73f6ee196a6bea23b24d60a46f0c241f5c4a0cafcd86ec0e23fb",
+    "package://nao_meshes/meshes/V40/RFinger23.dae": "e6cb0b1b6ad198b8d4dfdf59d783c6ff4898d7c9437c133b5858b17bd01ae730",
+    "package://nao_meshes/meshes/V40/RFinger23_0.10.stl": "a21c4d341fbea401060632111925145c0b1ca4deb5ddc4c1ef3b967bc351b4ce",
+    "package://nao_meshes/meshes/V40/RFinger11.dae": "d66e17a98ada82fe6480c5214ae82d4256ac64f27d97282af79d2b0b8e5a65ba",
+    "package://nao_meshes/meshes/V40/RFinger11_0.10.stl": "46bbb4c3c72f39ca807fd08c55ae38e9df5f875f1664e7a4977d0786982779d8",
+    "package://nao_meshes/meshes/V40/LFinger23.dae": "355cd700a099fe4b164b530f0ab6e5446cee22842df7df79283592eb93b75f5e",
+    "package://nao_meshes/meshes/V40/LFinger23_0.10.stl": "07f280f62022b01fe88758cbea55f630e2b9cd8379561ebb446c26f039db2b4d",
+    "package://nao_meshes/meshes/V40/LThumb1.dae": "c5017833ef630ccf0fb965a4361caa50e9a01557b0f62c1937f8940605cfc61c",
+    "package://nao_meshes/meshes/V40/LThumb1_0.10.stl": "4433ae3243a5e747a5f99a0ef4a71f41d85b97e41f36f982fa9d1a5bcea25eb0",
+    "package://nao_meshes/meshes/V40/RThumb1.dae": "2d89596f7687080af2b490d5c9ec6956a9ac5bcf3eddef98212748df028866cd",
+    "package://nao_meshes/meshes/V40/RThumb1_0.10.stl": "3b520bf64eb73879bfbd49bdb41fdcafaad2db54022fa24928da43022355d79d",
+    "package://nao_meshes/meshes/V40/RThumb2.dae": "8838680b7916725cdd159c3b095588a9b3abc104671a56de302fa663d97d48a2",
+    "package://nao_meshes/meshes/V40/RThumb2_0.10.stl": "3911295f2826f53bf72ec27aea8d6bb183bf6fe478f797f48cde522c452f0e4b",
+    "package://nao_meshes/meshes/V40/LThumb2.dae": "ebabc32ec48d4e190d2b376d3d7b40ca763db2d06ad47d02c68630e2bc69da6b",
+    "package://nao_meshes/meshes/V40/LThumb2_0.10.stl": "0b25ef9f4d3169c2e4cd73268459be0942ad4ddaf6276f3329f208f7578cf144"
+  },
+  "resolved_meshes": {
+    "nao_meshes/meshes/V40/HeadYaw.dae": "f71e5a070ae151a15e6a1211f1e1c5571c654b80f521df5d7ffd498c9eaafe8c",
+    "import_meshes/HeadYaw_0_10_f74a9818ebd2.stl": "f74a9818ebd24383402f6846755033fa2b8158e21b3eab00a2a44d16af896bfa",
+    "nao_meshes/meshes/V40/HeadPitch.dae": "2a3094625b825014872b7994c372611bc70b984fc791b661d460ec184fc325e3",
+    "import_meshes/HeadPitch_0_10_974d6541ac8f.stl": "974d6541ac8fef764c044b9b75d7fb3fc96c5daf0b9086eaafff16e5343e9d1a",
+    "nao_meshes/meshes/V40/LHipYawPitch.dae": "96860a923bc0c03f283156597f663e1c57bb75c02f0998de2346d42c90c20041",
+    "import_meshes/LHipYawPitch_0_10_346d86677c4b.stl": "346d86677c4bbf2ad606c0a2a484766e822a9159d7c2e4dd9f5e9924ffe47481",
+    "nao_meshes/meshes/V40/LHipRoll.dae": "430ca2ad4a9f97a4a681ec91abd17aca91416432a165ce5494ef215d4e5a2508",
+    "import_meshes/LHipRoll_0_10_22cdc0e39e70.stl": "22cdc0e39e704d6bd92db303e6792073f851e252ac1eb3e20e1e66d8df94f9ea",
+    "nao_meshes/meshes/V40/LHipPitch.dae": "52f2fe7df447b67dadf308f4fa294ec39f482f3919a1f3edfa9a77dac4b92fd5",
+    "import_meshes/LHipPitch_0_10_efc273475e77.stl": "efc273475e77376f2bb6c594f20ed1f2347f033f766bd531f649f13a616f3401",
+    "nao_meshes/meshes/V40/LKneePitch.dae": "c4eaeeac6187460113f5c253c8bda61f4cc7e3835af99408c3e130e9073351bf",
+    "import_meshes/LKneePitch_0_10_4da917539927.stl": "4da9175399279a32051016a17789d8c724f324db808385fdfe1e1810e469bb98",
+    "nao_meshes/meshes/V40/LAnklePitch.dae": "b0edddc22b2e057210cbc7d535bc8e5046642e70f764ea8d086916e6154b757d",
+    "import_meshes/LAnklePitch_0_10_65d6af4663f3.stl": "65d6af4663f3ef958a31f338b973d160dba1d44c8111da41805c087bbd2e02c2",
+    "nao_meshes/meshes/V40/LAnkleRoll.dae": "023b8de16d3a3527d744b75f7b561c5e2289bb2523f9da395ec8a510b6a02870",
+    "import_meshes/LAnkleRoll_0_10_a015933e9dac.stl": "a015933e9dacfbc7d423f60f4686321ce4d9482f2e557d9e51f5418a92ca7f04",
+    "nao_meshes/meshes/V40/RHipYawPitch.dae": "b4ad5b6e0f3bacc91ef7f42c4589ea60feb59a373e7c5903cb630cdb85daa071",
+    "import_meshes/RHipYawPitch_0_10_ed464beadba9.stl": "ed464beadba96f04745c8d70dcdf7116ba282d5f91f87880d980592ad9261361",
+    "nao_meshes/meshes/V40/RHipRoll.dae": "70d9d366654653b772f7e13c91be02bb74dedfadb1bfdf1f78f4ea94c7fd43a3",
+    "import_meshes/RHipRoll_0_10_19a476cdcde2.stl": "19a476cdcde2bed20fb35c6f73289015c53a1326c48c5550b0f73f39ac9cacca",
+    "nao_meshes/meshes/V40/RHipPitch.dae": "ab887ab7b8e997fd5cd9e1ebedde5f1b12d64313f3c9a8b04643ea3f80b952f0",
+    "import_meshes/RHipPitch_0_10_d4fe3cef22e7.stl": "d4fe3cef22e785b7b890dd823614dacb06cd6f314f48a117b1ce5dd4b562a5e0",
+    "nao_meshes/meshes/V40/RKneePitch.dae": "5e96805e6dff010c3476098a7a7eceb3deff636228cc22b27264e2f7af247eb4",
+    "import_meshes/RKneePitch_0_10_ac5126a52262.stl": "ac5126a52262f5d284873ab388d270316cfd8393e3278216a23d33988e44485f",
+    "nao_meshes/meshes/V40/RAnklePitch.dae": "7ee64fa5c47af91abd5847642df2855fdebebd1ccd242bf4cf867d0ef32f2f2d",
+    "import_meshes/RAnklePitch_0_10_5e8c075ff811.stl": "5e8c075ff8119789f4c1cd68e8204a7ab7ab085a53f1781edf6527240c4bdf9e",
+    "nao_meshes/meshes/V40/RAnkleRoll.dae": "16da1bc088b5d64349c2f41d52d15d23c03c42e44b8d543fc4812fe533f31dfc",
+    "import_meshes/RAnkleRoll_0_10_0675d4e65e1c.stl": "0675d4e65e1c6ac1ace65aaf1aef774928148bb3c38ecd453b30a89656403e6c",
+    "nao_meshes/meshes/V40/Torso.dae": "2f13cc75900f7fa4c6fe14b76a89f051f21e08e738b8dad3d9d4732383e06f3f",
+    "import_meshes/Torso_0_10_80a65d1afb79.stl": "80a65d1afb7996e7382d78932fbe41a25f4decc89b10d79aaf72801cd8de27e2",
+    "nao_meshes/meshes/V40/LShoulderPitch.dae": "448dcb76bc96417c6db475db031724ee5c3a0e2e34ca3c0f741e40aee8f33101",
+    "import_meshes/LShoulderPitch_0_10_e3f22cc1ffa6.stl": "e3f22cc1ffa626e9c2cdcebc6174f766363753d0f7e085e0f9c4ab8c41bbe62b",
+    "nao_meshes/meshes/V40/LShoulderRoll.dae": "e99b886ccb7897cc20f397f99195a4b9bc691c8ba914ce7623f3b26a7c0502c9",
+    "import_meshes/LShoulderRoll_0_10_9191d3c063d3.stl": "9191d3c063d3b82d1527a4db64daee7eb0554b48933ecf3c8f7b637ce1227c9b",
+    "nao_meshes/meshes/V40/LElbowRoll.dae": "5ddc3c7dac20655aa6c14515ab2e345ef5bf56195afc5c2e7d92a52650356100",
+    "import_meshes/LElbowRoll_0_10_a4b6526d2ab4.stl": "a4b6526d2ab4f586f1b680a782416403df434a62b47422977585eafeb9300262",
+    "nao_meshes/meshes/V40/LWristYaw.dae": "300b5a7be4cfa6a4901f7c02b37e9ffd3476b48695b36168a3ff68bbc80bc7a1",
+    "import_meshes/LWristYaw_0_10_bf1c82432969.stl": "bf1c8243296929de259f1b185f1c7d071595762ff1f4598a04890f15aaa48143",
+    "nao_meshes/meshes/V40/RShoulderPitch.dae": "1a5cf3f758ba131a5210c4feb0fef2157c58cfebd14965a5671d8ea628adbdaf",
+    "import_meshes/RShoulderPitch_0_10_e1bd4c971b14.stl": "e1bd4c971b14e877cfa5f1f0c9ebe336ddd06c534b4b1e1e6c18bd43f16da3fb",
+    "nao_meshes/meshes/V40/RShoulderRoll.dae": "1d8d5f82efafee887bea1626b56cdc1bc43ceeb76a90865e8dbfd4fc7c8b0eba",
+    "import_meshes/RShoulderRoll_0_10_e8accf7de437.stl": "e8accf7de4374c7172a3f85e06f30a1515de17eda7160511681f89ddf9f4994a",
+    "nao_meshes/meshes/V40/RElbowRoll.dae": "9f93e4c2fa59340caabba4250a2933381f025a290d38ab6367eb34112958c16a",
+    "import_meshes/RElbowRoll_0_10_8fa13a4cb3c1.stl": "8fa13a4cb3c1145eed21738d7b190547d353ec3d47bb93db44d77f4d22339157",
+    "nao_meshes/meshes/V40/RWristYaw.dae": "300b5a7be4cfa6a4901f7c02b37e9ffd3476b48695b36168a3ff68bbc80bc7a1",
+    "import_meshes/RWristYaw_0_10_441c9bf62b56.stl": "441c9bf62b56d8cafdbc891f8ff5e543d880292348d30e00199ee66fe7668966",
+    "nao_meshes/meshes/V40/RFinger13.dae": "35841a8b727f47fc3079c5c2ca7b5776db001d7b0b28ad64f2a4ce7806666a8d",
+    "import_meshes/RFinger13_0_10_25a5e1e7d60c.stl": "25a5e1e7d60cccc68ae57457b3a1fdc66e35177de0482bbc8ef18059f63460cc",
+    "nao_meshes/meshes/V40/RFinger12.dae": "267ae2ee0e7de1bba6110e34676cc29b9e5e471a7f8603a3b257444c4dd36a93",
+    "import_meshes/RFinger12_0_10_8bde651d29db.stl": "8bde651d29db7c2ddd468ad0d472288f57aff1fb92a9dc1fd62bd2862d0c0fce",
+    "nao_meshes/meshes/V40/LFinger21.dae": "feb44028adf2205f7126124efd9deb5c3717d4da07186d26aba64d7b8a92a6cc",
+    "import_meshes/LFinger21_0_10_8dfa1b09db9c.stl": "8dfa1b09db9c7afbadc7dfc6050a24c5accab9c535c8269e3a84167614df34fb",
+    "nao_meshes/meshes/V40/LFinger13.dae": "6b9c6ca2357ae3fb5b7b4aa368e2b9c7464141773d1f366a13adf6496d16bae6",
+    "import_meshes/LFinger13_0_10_e9cf5a0d1c78.stl": "e9cf5a0d1c78cd9f41ae617aa9e12db48984d30a829027d226becb5c31348eb0",
+    "nao_meshes/meshes/V40/LFinger11.dae": "e3c08ff71fb4e234bd793c0ffb6e65adafb709f64e7e268cd48635f47089254a",
+    "import_meshes/LFinger11_0_10_0161b8a4a2aa.stl": "0161b8a4a2aa864aceb317cfe7e4b1c91b7681b5b5c5cb366dc118800e42807d",
+    "nao_meshes/meshes/V40/RFinger22.dae": "11561de08a6dac772cca4160fa3b5087eac8ec36dea7725ba54fa7bd2804ea5d",
+    "import_meshes/RFinger22_0_10_e59f9c7823b7.stl": "e59f9c7823b790541910b224f2a550ace9312828f98a4b86cc2417d714117201",
+    "nao_meshes/meshes/V40/LFinger22.dae": "36dae5cc37a1735d8a1054f93131758607a7ce8cb37fa909fdeeda906a0dceec",
+    "import_meshes/LFinger22_0_10_9e53a0987b98.stl": "9e53a0987b9840bf22736758567df4c58f3807d87eeab3ff9990a742c69df862",
+    "nao_meshes/meshes/V40/RFinger21.dae": "ec311a8f280fd79655f75ffee935f75d629ed85bc7223ac9c7011f460b1f21ca",
+    "import_meshes/RFinger21_0_10_e11c47eb5aac.stl": "e11c47eb5aac8c916569d56c2678d922aea09629553d83e6c7c55368fe18a38d",
+    "nao_meshes/meshes/V40/LFinger12.dae": "b9d97e6d8fc8de86fba593859936c9279061c5ba460abc7edf438d993b7503be",
+    "import_meshes/LFinger12_0_10_e2e8846ab75a.stl": "e2e8846ab75a73f6ee196a6bea23b24d60a46f0c241f5c4a0cafcd86ec0e23fb",
+    "nao_meshes/meshes/V40/RFinger23.dae": "e6cb0b1b6ad198b8d4dfdf59d783c6ff4898d7c9437c133b5858b17bd01ae730",
+    "import_meshes/RFinger23_0_10_a21c4d341fbe.stl": "a21c4d341fbea401060632111925145c0b1ca4deb5ddc4c1ef3b967bc351b4ce",
+    "nao_meshes/meshes/V40/RFinger11.dae": "d66e17a98ada82fe6480c5214ae82d4256ac64f27d97282af79d2b0b8e5a65ba",
+    "import_meshes/RFinger11_0_10_46bbb4c3c72f.stl": "46bbb4c3c72f39ca807fd08c55ae38e9df5f875f1664e7a4977d0786982779d8",
+    "nao_meshes/meshes/V40/LFinger23.dae": "355cd700a099fe4b164b530f0ab6e5446cee22842df7df79283592eb93b75f5e",
+    "import_meshes/LFinger23_0_10_07f280f62022.stl": "07f280f62022b01fe88758cbea55f630e2b9cd8379561ebb446c26f039db2b4d",
+    "nao_meshes/meshes/V40/LThumb1.dae": "c5017833ef630ccf0fb965a4361caa50e9a01557b0f62c1937f8940605cfc61c",
+    "import_meshes/LThumb1_0_10_4433ae3243a5.stl": "4433ae3243a5e747a5f99a0ef4a71f41d85b97e41f36f982fa9d1a5bcea25eb0",
+    "nao_meshes/meshes/V40/RThumb1.dae": "2d89596f7687080af2b490d5c9ec6956a9ac5bcf3eddef98212748df028866cd",
+    "import_meshes/RThumb1_0_10_3b520bf64eb7.stl": "3b520bf64eb73879bfbd49bdb41fdcafaad2db54022fa24928da43022355d79d",
+    "nao_meshes/meshes/V40/RThumb2.dae": "8838680b7916725cdd159c3b095588a9b3abc104671a56de302fa663d97d48a2",
+    "import_meshes/RThumb2_0_10_3911295f2826.stl": "3911295f2826f53bf72ec27aea8d6bb183bf6fe478f797f48cde522c452f0e4b",
+    "nao_meshes/meshes/V40/LThumb2.dae": "ebabc32ec48d4e190d2b376d3d7b40ca763db2d06ad47d02c68630e2bc69da6b",
+    "import_meshes/LThumb2_0_10_0b25ef9f4d31.stl": "0b25ef9f4d3169c2e4cd73268459be0942ad4ddaf6276f3329f208f7578cf144"
+  },
+  "hip_coupling": "physical_mimic_1_to_1",
+  "mesh_aliases": {
+    "package://nao_meshes/meshes/V40/HeadYaw_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/HeadYaw_0.10.stl",
+      "prepared": "import_meshes/HeadYaw_0_10_f74a9818ebd2.stl",
+      "sha256": "f74a9818ebd24383402f6846755033fa2b8158e21b3eab00a2a44d16af896bfa"
+    },
+    "package://nao_meshes/meshes/V40/HeadPitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/HeadPitch_0.10.stl",
+      "prepared": "import_meshes/HeadPitch_0_10_974d6541ac8f.stl",
+      "sha256": "974d6541ac8fef764c044b9b75d7fb3fc96c5daf0b9086eaafff16e5343e9d1a"
+    },
+    "package://nao_meshes/meshes/V40/LHipYawPitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LHipYawPitch_0.10.stl",
+      "prepared": "import_meshes/LHipYawPitch_0_10_346d86677c4b.stl",
+      "sha256": "346d86677c4bbf2ad606c0a2a484766e822a9159d7c2e4dd9f5e9924ffe47481"
+    },
+    "package://nao_meshes/meshes/V40/LHipRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LHipRoll_0.10.stl",
+      "prepared": "import_meshes/LHipRoll_0_10_22cdc0e39e70.stl",
+      "sha256": "22cdc0e39e704d6bd92db303e6792073f851e252ac1eb3e20e1e66d8df94f9ea"
+    },
+    "package://nao_meshes/meshes/V40/LHipPitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LHipPitch_0.10.stl",
+      "prepared": "import_meshes/LHipPitch_0_10_efc273475e77.stl",
+      "sha256": "efc273475e77376f2bb6c594f20ed1f2347f033f766bd531f649f13a616f3401"
+    },
+    "package://nao_meshes/meshes/V40/LKneePitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LKneePitch_0.10.stl",
+      "prepared": "import_meshes/LKneePitch_0_10_4da917539927.stl",
+      "sha256": "4da9175399279a32051016a17789d8c724f324db808385fdfe1e1810e469bb98"
+    },
+    "package://nao_meshes/meshes/V40/LAnklePitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LAnklePitch_0.10.stl",
+      "prepared": "import_meshes/LAnklePitch_0_10_65d6af4663f3.stl",
+      "sha256": "65d6af4663f3ef958a31f338b973d160dba1d44c8111da41805c087bbd2e02c2"
+    },
+    "package://nao_meshes/meshes/V40/LAnkleRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LAnkleRoll_0.10.stl",
+      "prepared": "import_meshes/LAnkleRoll_0_10_a015933e9dac.stl",
+      "sha256": "a015933e9dacfbc7d423f60f4686321ce4d9482f2e557d9e51f5418a92ca7f04"
+    },
+    "package://nao_meshes/meshes/V40/RHipYawPitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RHipYawPitch_0.10.stl",
+      "prepared": "import_meshes/RHipYawPitch_0_10_ed464beadba9.stl",
+      "sha256": "ed464beadba96f04745c8d70dcdf7116ba282d5f91f87880d980592ad9261361"
+    },
+    "package://nao_meshes/meshes/V40/RHipRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RHipRoll_0.10.stl",
+      "prepared": "import_meshes/RHipRoll_0_10_19a476cdcde2.stl",
+      "sha256": "19a476cdcde2bed20fb35c6f73289015c53a1326c48c5550b0f73f39ac9cacca"
+    },
+    "package://nao_meshes/meshes/V40/RHipPitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RHipPitch_0.10.stl",
+      "prepared": "import_meshes/RHipPitch_0_10_d4fe3cef22e7.stl",
+      "sha256": "d4fe3cef22e785b7b890dd823614dacb06cd6f314f48a117b1ce5dd4b562a5e0"
+    },
+    "package://nao_meshes/meshes/V40/RKneePitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RKneePitch_0.10.stl",
+      "prepared": "import_meshes/RKneePitch_0_10_ac5126a52262.stl",
+      "sha256": "ac5126a52262f5d284873ab388d270316cfd8393e3278216a23d33988e44485f"
+    },
+    "package://nao_meshes/meshes/V40/RAnklePitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RAnklePitch_0.10.stl",
+      "prepared": "import_meshes/RAnklePitch_0_10_5e8c075ff811.stl",
+      "sha256": "5e8c075ff8119789f4c1cd68e8204a7ab7ab085a53f1781edf6527240c4bdf9e"
+    },
+    "package://nao_meshes/meshes/V40/RAnkleRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RAnkleRoll_0.10.stl",
+      "prepared": "import_meshes/RAnkleRoll_0_10_0675d4e65e1c.stl",
+      "sha256": "0675d4e65e1c6ac1ace65aaf1aef774928148bb3c38ecd453b30a89656403e6c"
+    },
+    "package://nao_meshes/meshes/V40/Torso_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/Torso_0.10.stl",
+      "prepared": "import_meshes/Torso_0_10_80a65d1afb79.stl",
+      "sha256": "80a65d1afb7996e7382d78932fbe41a25f4decc89b10d79aaf72801cd8de27e2"
+    },
+    "package://nao_meshes/meshes/V40/LShoulderPitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LShoulderPitch_0.10.stl",
+      "prepared": "import_meshes/LShoulderPitch_0_10_e3f22cc1ffa6.stl",
+      "sha256": "e3f22cc1ffa626e9c2cdcebc6174f766363753d0f7e085e0f9c4ab8c41bbe62b"
+    },
+    "package://nao_meshes/meshes/V40/LShoulderRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LShoulderRoll_0.10.stl",
+      "prepared": "import_meshes/LShoulderRoll_0_10_9191d3c063d3.stl",
+      "sha256": "9191d3c063d3b82d1527a4db64daee7eb0554b48933ecf3c8f7b637ce1227c9b"
+    },
+    "package://nao_meshes/meshes/V40/LElbowRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LElbowRoll_0.10.stl",
+      "prepared": "import_meshes/LElbowRoll_0_10_a4b6526d2ab4.stl",
+      "sha256": "a4b6526d2ab4f586f1b680a782416403df434a62b47422977585eafeb9300262"
+    },
+    "package://nao_meshes/meshes/V40/LWristYaw_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LWristYaw_0.10.stl",
+      "prepared": "import_meshes/LWristYaw_0_10_bf1c82432969.stl",
+      "sha256": "bf1c8243296929de259f1b185f1c7d071595762ff1f4598a04890f15aaa48143"
+    },
+    "package://nao_meshes/meshes/V40/RShoulderPitch_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RShoulderPitch_0.10.stl",
+      "prepared": "import_meshes/RShoulderPitch_0_10_e1bd4c971b14.stl",
+      "sha256": "e1bd4c971b14e877cfa5f1f0c9ebe336ddd06c534b4b1e1e6c18bd43f16da3fb"
+    },
+    "package://nao_meshes/meshes/V40/RShoulderRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RShoulderRoll_0.10.stl",
+      "prepared": "import_meshes/RShoulderRoll_0_10_e8accf7de437.stl",
+      "sha256": "e8accf7de4374c7172a3f85e06f30a1515de17eda7160511681f89ddf9f4994a"
+    },
+    "package://nao_meshes/meshes/V40/RElbowRoll_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RElbowRoll_0.10.stl",
+      "prepared": "import_meshes/RElbowRoll_0_10_8fa13a4cb3c1.stl",
+      "sha256": "8fa13a4cb3c1145eed21738d7b190547d353ec3d47bb93db44d77f4d22339157"
+    },
+    "package://nao_meshes/meshes/V40/RWristYaw_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RWristYaw_0.10.stl",
+      "prepared": "import_meshes/RWristYaw_0_10_441c9bf62b56.stl",
+      "sha256": "441c9bf62b56d8cafdbc891f8ff5e543d880292348d30e00199ee66fe7668966"
+    },
+    "package://nao_meshes/meshes/V40/RFinger13_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RFinger13_0.10.stl",
+      "prepared": "import_meshes/RFinger13_0_10_25a5e1e7d60c.stl",
+      "sha256": "25a5e1e7d60cccc68ae57457b3a1fdc66e35177de0482bbc8ef18059f63460cc"
+    },
+    "package://nao_meshes/meshes/V40/RFinger12_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RFinger12_0.10.stl",
+      "prepared": "import_meshes/RFinger12_0_10_8bde651d29db.stl",
+      "sha256": "8bde651d29db7c2ddd468ad0d472288f57aff1fb92a9dc1fd62bd2862d0c0fce"
+    },
+    "package://nao_meshes/meshes/V40/LFinger21_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LFinger21_0.10.stl",
+      "prepared": "import_meshes/LFinger21_0_10_8dfa1b09db9c.stl",
+      "sha256": "8dfa1b09db9c7afbadc7dfc6050a24c5accab9c535c8269e3a84167614df34fb"
+    },
+    "package://nao_meshes/meshes/V40/LFinger13_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LFinger13_0.10.stl",
+      "prepared": "import_meshes/LFinger13_0_10_e9cf5a0d1c78.stl",
+      "sha256": "e9cf5a0d1c78cd9f41ae617aa9e12db48984d30a829027d226becb5c31348eb0"
+    },
+    "package://nao_meshes/meshes/V40/LFinger11_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LFinger11_0.10.stl",
+      "prepared": "import_meshes/LFinger11_0_10_0161b8a4a2aa.stl",
+      "sha256": "0161b8a4a2aa864aceb317cfe7e4b1c91b7681b5b5c5cb366dc118800e42807d"
+    },
+    "package://nao_meshes/meshes/V40/RFinger22_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RFinger22_0.10.stl",
+      "prepared": "import_meshes/RFinger22_0_10_e59f9c7823b7.stl",
+      "sha256": "e59f9c7823b790541910b224f2a550ace9312828f98a4b86cc2417d714117201"
+    },
+    "package://nao_meshes/meshes/V40/LFinger22_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LFinger22_0.10.stl",
+      "prepared": "import_meshes/LFinger22_0_10_9e53a0987b98.stl",
+      "sha256": "9e53a0987b9840bf22736758567df4c58f3807d87eeab3ff9990a742c69df862"
+    },
+    "package://nao_meshes/meshes/V40/RFinger21_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RFinger21_0.10.stl",
+      "prepared": "import_meshes/RFinger21_0_10_e11c47eb5aac.stl",
+      "sha256": "e11c47eb5aac8c916569d56c2678d922aea09629553d83e6c7c55368fe18a38d"
+    },
+    "package://nao_meshes/meshes/V40/LFinger12_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LFinger12_0.10.stl",
+      "prepared": "import_meshes/LFinger12_0_10_e2e8846ab75a.stl",
+      "sha256": "e2e8846ab75a73f6ee196a6bea23b24d60a46f0c241f5c4a0cafcd86ec0e23fb"
+    },
+    "package://nao_meshes/meshes/V40/RFinger23_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RFinger23_0.10.stl",
+      "prepared": "import_meshes/RFinger23_0_10_a21c4d341fbe.stl",
+      "sha256": "a21c4d341fbea401060632111925145c0b1ca4deb5ddc4c1ef3b967bc351b4ce"
+    },
+    "package://nao_meshes/meshes/V40/RFinger11_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RFinger11_0.10.stl",
+      "prepared": "import_meshes/RFinger11_0_10_46bbb4c3c72f.stl",
+      "sha256": "46bbb4c3c72f39ca807fd08c55ae38e9df5f875f1664e7a4977d0786982779d8"
+    },
+    "package://nao_meshes/meshes/V40/LFinger23_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LFinger23_0.10.stl",
+      "prepared": "import_meshes/LFinger23_0_10_07f280f62022.stl",
+      "sha256": "07f280f62022b01fe88758cbea55f630e2b9cd8379561ebb446c26f039db2b4d"
+    },
+    "package://nao_meshes/meshes/V40/LThumb1_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LThumb1_0.10.stl",
+      "prepared": "import_meshes/LThumb1_0_10_4433ae3243a5.stl",
+      "sha256": "4433ae3243a5e747a5f99a0ef4a71f41d85b97e41f36f982fa9d1a5bcea25eb0"
+    },
+    "package://nao_meshes/meshes/V40/RThumb1_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RThumb1_0.10.stl",
+      "prepared": "import_meshes/RThumb1_0_10_3b520bf64eb7.stl",
+      "sha256": "3b520bf64eb73879bfbd49bdb41fdcafaad2db54022fa24928da43022355d79d"
+    },
+    "package://nao_meshes/meshes/V40/RThumb2_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/RThumb2_0.10.stl",
+      "prepared": "import_meshes/RThumb2_0_10_3911295f2826.stl",
+      "sha256": "3911295f2826f53bf72ec27aea8d6bb183bf6fe478f797f48cde522c452f0e4b"
+    },
+    "package://nao_meshes/meshes/V40/LThumb2_0.10.stl": {
+      "source": "nao_meshes/meshes/V40/LThumb2_0.10.stl",
+      "prepared": "import_meshes/LThumb2_0_10_0b25ef9f4d31.stl",
+      "sha256": "0b25ef9f4d3169c2e4cd73268459be0942ad4ddaf6276f3329f208f7578cf144"
+    }
+  }
+}

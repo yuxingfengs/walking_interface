@@ -1,0 +1,41 @@
+{
+  "backend": "isaac_lab_physx",
+  "num_envs": 1,
+  "headless": false,
+  "asset": "assets/nao.urdf",
+  "urdf_source": "assets/source_nao.urdf",
+  "nao_meshes_path": "assets/nao_meshes",
+  "isaac_python": "runtime/python/Scripts/python.exe",
+  "isaac_sim_path": "F:/issac/isaac-sim-standalone-5.0.0-windows-x86_64",
+  "isaac_lab_path": "runtime/IsaacLab",
+  "device": "cuda:0",
+  "physics_dt": 0.02,
+  "decimation": 2,
+  "spawn_height": 0.306172,
+  "leg_stiffness": 16.0,
+  "leg_damping": 0.6,
+  "other_stiffness": 5.0,
+  "other_damping": 0.22,
+  "upper_joint_positions": {
+    "LShoulderPitch": 1.1,
+    "RShoulderPitch": 1.1,
+    "LElbowRoll": -0.04,
+    "RElbowRoll": 0.04
+  },
+  "feet": [
+    "l_ankle",
+    "r_ankle"
+  ],
+  "friction": 7.0,
+  "hip_tolerance_rad": 0.03,
+  "standing": {
+    "self_collisions": false,
+    "solver_position_iterations": 48,
+    "solver_velocity_iterations": 8,
+    "leg_stiffness": 80.0,
+    "leg_damping": 2.0,
+    "hold_seconds": 30.0
+  },
+  "check_steps": 200,
+  "check_resets": 2
+}

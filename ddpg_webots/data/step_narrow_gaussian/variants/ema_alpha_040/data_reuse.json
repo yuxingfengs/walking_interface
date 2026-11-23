@@ -1,0 +1,26 @@
+{
+  "collection_required": false,
+  "bc_retrain_required": false,
+  "critic_pretrain_required": true,
+  "expert_transitions": 20165,
+  "rollout_transitions": 20000,
+  "changed_expert_rewards": 2331,
+  "old_alpha_reconstruction_max_error": 0.0,
+  "initial_actor_action_max_difference": 0.0,
+  "raw_physical_fields_unchanged": true,
+  "derived_state_columns": [
+    51
+  ],
+  "raw_physical_sha256": "ada73f8d51ddc27e84b920e20eb3a6d0c0d848287c1dc31bff74081ae29a59aa",
+  "original_actor_sha256": "e8dc18a78545b922a722916ce2e292547adbe4a96ecda0cdc80d6bae031b1354",
+  "source_expert_sha256": "0f8cba6b2b0391b6a4cb6258fed101ab62476e591a09a15261e952dbd6cfec80",
+  "derived_expert_sha256": "b8f54f3cb2e34bc53d1e4e1fb980e87c354dc11673a03ddcf0e6754670c6c83a",
+  "source_rollout_sha256": "831fc4a9c7877e03b54f322adcfe115c42a08fa0cdd27d98c433477c73af58ff",
+  "derived_rollout_sha256": "8b00d9ef80f00ef109050116328d0cca714b01f32d5a76f330a11b8aa336ab48",
+  "source_rollout_actor_sha256": "e864af8a0067cfe01d4c43d6c376d77be858549dd14f0981e53bed9825a8056e",
+  "fall_residual_preserved": true,
+  "alpha": 0.4,
+  "tau_s": 0.0783046075588487,
+  "width": 0.08,
+  "peak": 2.0
+}

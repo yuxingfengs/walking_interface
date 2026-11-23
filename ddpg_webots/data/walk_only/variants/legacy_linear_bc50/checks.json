@@ -1,0 +1,12 @@
+{
+  "actor_lr": 5e-07,
+  "tau": 0.001,
+  "actor_inputs": 50,
+  "critic_inputs": 61,
+  "online_optimizer_updates": 0,
+  "replay_count": 0,
+  "new_actor_loaded": true,
+  "old_critic_blocked": true,
+  "bc_optimizer_updates": 13200,
+  "physical_evaluation": false
+}

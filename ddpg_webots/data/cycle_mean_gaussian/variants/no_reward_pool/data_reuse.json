@@ -1,0 +1,36 @@
+{
+  "status": "offline_verified",
+  "collection_required": false,
+  "bc_retrain_required": false,
+  "critic_pretrain_required": false,
+  "reward_unchanged": true,
+  "expert_count": 16773,
+  "pretrained_critic_updates": 15000,
+  "runtime_updates": 0,
+  "replay_class": "OutcomeReplay",
+  "quota_examples": {
+    "0": {
+      "online_success": 205,
+      "expert_success": 51,
+      "failure": 0,
+      "high_reward": 0
+    },
+    "77": {
+      "online_success": 143,
+      "expert_success": 36,
+      "failure": 77,
+      "high_reward": 0
+    }
+  },
+  "source_assets": {
+    "actor": "F:\\project\\walking2_interface\\ddpg\\cycle_mean_gaussian\\assets\\train_reward_analyse\\experiments\\041\\pretrain\\yaw_ema_only_020\\actor.pth",
+    "actor_sha256": "e8dc18a78545b922a722916ce2e292547adbe4a96ecda0cdc80d6bae031b1354",
+    "dataset": "F:\\project\\walking2_interface\\expert\\cycle_mean_gaussian\\expert.pth",
+    "dataset_sha256": "1a5abc1f93a6598c90c8c52104b233e93ca1eca25dbf42bf6fd91e2c4827cba2",
+    "critic": "F:\\project\\walking2_interface\\ddpg\\cycle_mean_gaussian\\assets\\wide_step_gaussian\\experiments\\028\\runs\\critic_pretrain_20261118T055018_1c6266\\critic.pth",
+    "critic_sha256": "961453443719696e4a991af14508e14fef99dd4f9ba133bfb20e8e020ae7c4bd",
+    "exclude_stand": true
+  },
+  "no_checkpoint_resume": true,
+  "best_cycle_saving": true
+}

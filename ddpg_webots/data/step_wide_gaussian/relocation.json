@@ -1,0 +1,19 @@
+{
+  "source_run": "F:\\project\\walking2_interface\\wide_step_gaussian\\experiments\\024\\runs\\train_20261118T032820_6a15b3",
+  "live_asset_relocations": {
+    "F:\\project\\walking2_interface\\train_reward_analyse\\experiments\\041\\pretrain\\yaw_ema_only_020\\actor.pth": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\train_reward_analyse\\experiments\\041\\pretrain\\yaw_ema_only_020\\actor.pth",
+    "F:/project/walking2_interface/train_reward_analyse/worlds/direction_circle_10m.wbt": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\train_reward_analyse\\worlds\\direction_circle_10m.wbt",
+    "F:\\project\\walking2_interface\\wide_step_gaussian\\experiments\\024\\pretrain\\expert.pth": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\wide_step_gaussian\\experiments\\024\\pretrain\\expert.pth",
+    "F:\\project\\walking2_interface\\wide_step_gaussian\\experiments\\024\\runs\\critic_pretrain_20261118T032548_becaba\\critic.pth": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\wide_step_gaussian\\experiments\\024\\runs\\critic_pretrain_20261118T032548_becaba\\critic.pth",
+    "F:\\project\\walking2_interface\\trun_stand_walk\\expert_baseline\\data\\collection_turn_stand_v1.json": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\trun_stand_walk\\expert_baseline\\data\\collection_turn_stand_v1.json",
+    "F:\\project\\walking2_interface\\trun_stand_walk\\expert_baseline\\packages\\shared_state51_turn_stand_sweep_v1\\bc\\actor.pth": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\trun_stand_walk\\expert_baseline\\packages\\shared_state51_turn_stand_sweep_v1\\bc\\actor.pth",
+    "F:\\project\\walking2_interface\\wide_step_gaussian\\experiments\\024\\pretrain\\rollout.pth": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\wide_step_gaussian\\experiments\\024\\pretrain\\rollout.pth",
+    "F:\\project\\walking2_interface\\trun_stand_walk\\experiments\\outcome_replay_v34\\pretrain\\state50_v1\\migration_report.json": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\trun_stand_walk\\experiments\\outcome_replay_v34\\pretrain\\state50_v1\\migration_report.json",
+    "F:\\project\\walking2_interface\\trun_stand_walk\\experiments\\outcome_replay_v34\\configs\\online.json": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\trun_stand_walk\\experiments\\outcome_replay_v34\\configs\\online.json",
+    "F:\\project\\walking2_interface\\train_reward_analyse\\assets\\v34_initial\\bc_rollout.pth": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\train_reward_analyse\\assets\\v34_initial\\bc_rollout.pth",
+    "F:\\project\\walking2_interface\\train_reward_analyse\\experiments\\016\\pretrain\\actor_body_gyro_v1\\actor.pth": "F:\\project\\walking2_interface\\ddpg\\002\\assets\\train_reward_analyse\\experiments\\016\\pretrain\\actor_body_gyro_v1\\actor.pth"
+  },
+  "historical_run_unmodified": true,
+  "future_budget": 20000,
+  "source_budget": 20000
+}

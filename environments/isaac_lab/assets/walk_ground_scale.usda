@@ -1,0 +1,44 @@
+#usda 1.0
+(
+    defaultPrim = "Scale"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Scale"
+{
+    def Mesh "Surface" (prepend apiSchemas = ["MaterialBindingAPI"])
+    {
+        point3f[] points = [(-2,-2,0.001), (2,-2,0.001), (2,2,0.001), (-2,2,0.001)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0,1,2,3]
+        uniform token subdivisionScheme = "none"
+        texCoord2f[] primvars:st = [(0,0), (1,0), (1,1), (0,1)] (interpolation = "vertex")
+        rel material:binding = </Scale/Ink>
+    }
+    def Material "Ink"
+    {
+        token outputs:surface.connect = </Scale/Ink/Surface.outputs:surface>
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </Scale/Ink/Texture.outputs:rgb>
+            float inputs:roughness = 1
+            token outputs:surface
+        }
+        def Shader "Texture"
+        {
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @walk_ground_scale.png@
+            token inputs:sourceColorSpace = "sRGB"
+            float2 inputs:st.connect = </Scale/Ink/UV.outputs:result>
+            float3 outputs:rgb
+        }
+        def Shader "UV"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            string inputs:varname = "st"
+            float2 outputs:result
+        }
+    }
+}

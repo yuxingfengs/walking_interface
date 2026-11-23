@@ -1,0 +1,542 @@
+{
+  "initialization": {
+    "use_bc": true,
+    "source_network_inputs": "compact_zero_vy_coupled_v1",
+    "actor_path": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\experiments\\walk_only\\runs\\train_20261121T070749Z_bf8dbc\\source\\actor.pth",
+    "sha256": "f37fcb3588d9188b7878b78e70101e581b1c602e1d62006572cc568959fe002f"
+  },
+  "environment": {
+    "reset_mode": "isaac_state",
+    "yaw_source": "isaac_truth",
+    "yaw_rate_scale": 1.0,
+    "heading_kp": 1.0,
+    "heading_max_rate": 0.11,
+    "floor_z": 0.0,
+    "base_height_target": 0.3,
+    "fall_height": 0.2,
+    "fall_tilt_rad": 1.0,
+    "episode_seconds": 240.0,
+    "settle_steps": 64,
+    "action_scale": 0.4,
+    "gait_frequency_hz": 0.6366197723675814,
+    "velocity_filter": 0.2,
+    "joint_velocity_scale": 0.1,
+    "motor_velocity_scale": 0.8,
+    "joint_margin": 0.001,
+    "command_ranges": [
+      [
+        -0.1,
+        0.15
+      ],
+      [
+        -0.1,
+        0.1
+      ],
+      [
+        -0.4,
+        0.4
+      ]
+    ],
+    "command_resampling_seconds": [
+      8.0,
+      12.0
+    ],
+    "stand_probability": 0.0,
+    "command_slew_per_second": [
+      0.15,
+      0.15,
+      0.5
+    ],
+    "command_timeout_seconds": 2.0,
+    "navigation_mode": "turn_then_forward",
+    "reward_mode": "staged_navigation",
+    "phase_runs_at_zero_command": true,
+    "disable_time_limit": false,
+    "heading_blend_center_deg": 15.0,
+    "heading_blend_width_deg": 5.0,
+    "expert_yaw_rate_scale": 0.6,
+    "turn_forward_tolerance_deg": 3.0,
+    "turn_to_walk_tolerance_deg": 3.0,
+    "walk_to_turn_tolerance_deg": 3.0,
+    "observation_command_vx": "velocity",
+    "latch_walk_until_reset": false,
+    "heading_command_mode": "fixed_turn_zero_walk"
+  },
+  "reward": {
+    "tracking_sigma_linear": 0.01,
+    "tracking_sigma_yaw": 0.09,
+    "tracking_x": 1.0,
+    "tracking_y": 1.0,
+    "tracking_yaw": 0.0,
+    "survival": 0.0,
+    "orientation": 0.0,
+    "height": 0.0,
+    "action_rate": 0.0,
+    "joint_velocity": 0.0,
+    "fall_penalty": 5.0,
+    "tracking_sigma_x": 0.0009,
+    "tracking_sigma_y": 0.000225,
+    "turn_translation_penalty": 0.0,
+    "turn_linear_velocity_penalty": 2.0,
+    "turn_heading_progress": 0.0,
+    "turn_heading_error": 0.1,
+    "turn_yaw_rate_error": 5.0,
+    "turn_disable_positive_base_terms": true,
+    "walk_forward_progress": 0.0,
+    "walk_heading_progress": 0.0,
+    "walk_heading_error": 0.0,
+    "walk_cross_track": 0.0,
+    "stand_linear_velocity_penalty": 3.0,
+    "task_reward_bound": 0.02,
+    "walk_speed_reference": 0.08732579768656645,
+    "turn_translation_error_scale": 0.2953225971507422,
+    "turn_yaw_error_scale": 0.11,
+    "stand_translation_error_scale": 0.2853323461721036,
+    "stand_yaw_error_scale": 0.313865580789314,
+    "turn_stand_unclipped": true,
+    "biped_tracking": {
+      "revision": "velocity_widths_variants_v1",
+      "yaw_weight": 0.5,
+      "velocity_weight": 0.5,
+      "stability_coefficient": 0.1,
+      "stability_weight": 1.0,
+      "orientation_coefficient": 2.5,
+      "velocity_source": "instantaneous",
+      "tracking_widths": [
+        0.03,
+        0.05,
+        0.05
+      ],
+      "walk_linear_peak": 1.25,
+      "walk_reward_revision": "body_xy_gaussian_v1",
+      "turn_reward_revision": "symmetric_yaw_tilt_and_angular_stability_v1",
+      "turn_xy_penalty_scale": 0.2,
+      "turn_yaw_gaussian_weight": 2.0,
+      "turn_orientation_coefficient": 2.5,
+      "turn_stability_coefficient": 0.1,
+      "yaw_ema_use_body_gyro": true,
+      "turn_yaw_gaussian_width_rad_s": 0.08,
+      "turn_yaw_lowpass_tau_s": 0.3796488632411961,
+      "turn_yaw_use_raw_gyro": false,
+      "turn_heading_window_seconds": 0.0,
+      "turn_heading_scale_rad": 0.1,
+      "turn_heading_weight": 0.0,
+      "turn_yaw_underspeed_width_rad_s": 0.08,
+      "walk_tracking_widths_m_s": [
+        0.036,
+        0.036
+      ]
+    }
+  },
+  "turn_stand_walk": {
+    "angle_tolerance_deg": 1.0,
+    "stand_steps": 100,
+    "walk_projection_weight": 3.0,
+    "walk_latched": true,
+    "reward_revision": "velocity_turn_body_forward_v30",
+    "stand_yaw_stability": "signed_mean_one_gait_period",
+    "stand_speed_window_samples": 40,
+    "stand_angle_tolerance_deg": 3.0
+  },
+  "support_observation": {
+    "filter_alpha": 0.3,
+    "epsilon": 1e-06,
+    "version": "normal_load_difference_v1"
+  },
+  "contact_expert": {
+    "enabled": true,
+    "contact_force_n": 2.0,
+    "load_fraction": 0.6,
+    "confirmation_steps": 2,
+    "max_switch_delay_s": 0.16,
+    "pitch_gyro_gain": 0.04,
+    "roll_gyro_gain": 0.04,
+    "max_pitch_correction": 0.06,
+    "max_roll_correction": 0.04,
+    "filter_alpha": 0.3
+  },
+  "physical_gait": {
+    "imu_full_axes": true,
+    "frequency_hz": 0.6366197723675814,
+    "command_blend_seconds": 0.4,
+    "walk_speed_reference": 0.08732579768656645,
+    "yaw_rate_reference": 0.165,
+    "max_yaw_command": 0.11,
+    "turn_differential": 0.1,
+    "hip_yaw_amplitude": 0.12,
+    "walk_forward": 0.2,
+    "hold_knee_lift": 0.16,
+    "support_modulation_strength": 0.35,
+    "support_modulation_tau_s": 0.12,
+    "load_filter_alpha": 0.3,
+    "support_fraction": 0.6,
+    "support_confirmation_steps": 2,
+    "contact_force_n": 3.0,
+    "airborne_timeout_s": 0.12,
+    "gyro_filter_alpha": 0.2,
+    "pitch_gyro_gain": 0.02,
+    "roll_gyro_gain": 0.02,
+    "max_balance_rad": 0.02,
+    "max_joint_step_rad": 0.12,
+    "max_tilt_rad": 0.45,
+    "action_noise_std": 0.01
+  },
+  "network_inputs": "compact_planar_command_coupled_v1",
+  "actor_observation": "shared_state_with_yaw_ema_only_v1",
+  "stationary_reward": {
+    "window_samples": 2,
+    "angle_tolerance_deg": 3.0,
+    "speed_tolerance_m_s": 0.005,
+    "yaw_tolerance_rad_s": 0.02,
+    "hold_bonus": 0.02,
+    "progress_per_degree": 0.012,
+    "progress_limit": 0.006,
+    "translation_penalty_mode": "linear",
+    "gate_positive_progress_by_speed": false,
+    "speed_measure": "per_step_planar_displacement"
+  },
+  "fixed_cycle_commands": {
+    "enabled": true,
+    "walk_headings": "dyadic_circle",
+    "cycles_per_command": 10,
+    "order": [
+      "turn",
+      "walk"
+    ]
+  },
+  "velocity_tracking": {
+    "mode": "instantaneous",
+    "reset_on_task_change": true
+  },
+  "seed": 1,
+  "algorithm": "sac",
+  "sac": {
+    "hidden": [
+      256,
+      256
+    ],
+    "actor_lr": 3e-06,
+    "critic_lr": 0.0003,
+    "alpha_lr": 0.0003,
+    "initial_alpha": 0.2,
+    "target_entropy": -11.0,
+    "gamma": 0.995,
+    "tau": 0.005,
+    "learning_starts": 1000,
+    "log_std_min": -5.0,
+    "log_std_max": 2.0
+  },
+  "critic_observation": "actor",
+  "training": {
+    "total_env_steps": 50000,
+    "online_turn_rate_rad_s": 0.11,
+    "online_fixed_turn_sign": null,
+    "online_turn_only": false,
+    "batch_size": 256,
+    "replay_size": 100000,
+    "checkpoint_every": 5000,
+    "phase_fall_backfill": true,
+    "walk_commands": {
+      "commands_m_s": [
+        [
+          0.04,
+          0
+        ],
+        [
+          0.04,
+          0.03
+        ],
+        [
+          0,
+          0.03
+        ],
+        [
+          -0.03,
+          0.03
+        ],
+        [
+          -0.03,
+          0
+        ],
+        [
+          -0.03,
+          -0.03
+        ],
+        [
+          0,
+          -0.03
+        ],
+        [
+          0.04,
+          -0.03
+        ],
+        [
+          0.06,
+          0
+        ],
+        [
+          0.06,
+          -0.04
+        ],
+        [
+          0,
+          -0.04
+        ],
+        [
+          -0.04,
+          -0.04
+        ],
+        [
+          -0.04,
+          0
+        ],
+        [
+          -0.04,
+          0.04
+        ],
+        [
+          0,
+          0.04
+        ],
+        [
+          0.06,
+          0.04
+        ]
+      ],
+      "hold_steps": 100
+    }
+  },
+  "experiment": "isaac_walk_only",
+  "experiment_name": "walk_only",
+  "experiment_scoped_assets": false,
+  "reward_module_path": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\experiments\\walk_only\\runs\\train_20261121T070749Z_bf8dbc\\source\\reward.py",
+  "reward_source_sha256": "c9edc4609136aacd9aded2dd971538ea50d7c5e660a14fb4df6d754c3ae1afe0",
+  "project_layout": {
+    "project_root": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab",
+    "experiment_folder": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\experiments\\walk_only",
+    "config_path": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\config.json",
+    "config_sha256": "765ec450b99f53f461329cbe1e297edb8b5582abcbde0639ce86e74fd2158f0c",
+    "runs_root": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\experiments\\walk_only\\runs",
+    "reports_root": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\experiments\\walk_only\\reports"
+  },
+  "diagnostics": {
+    "units": "SI_radians",
+    "coordinate_frame": "NAO torso; world Z up",
+    "velocity_truth": "root-link position difference rotated into current root-link frame",
+    "angular_velocity_truth": "wrapped world heading difference over control interval",
+    "gyro_timing": "post-action PhysX body angular velocity; ideal sensor",
+    "support_force_truth": "world-Z ankle net contact force",
+    "control_period_s": 0.04
+  },
+  "source_webots": {
+    "executable": "C:/Program Files/Webots/msys64/mingw64/bin/webots.exe",
+    "python": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\runtime\\python\\Scripts\\python.exe",
+    "world_template": "F:\\project\\walking2_interface\\sac_turn\\worlds\\direction_circle_10m.wbt",
+    "basic_time_step_ms": 20,
+    "control_time_step_ms": 40,
+    "initial_translation": [
+      0.0,
+      0.0,
+      0.696172
+    ],
+    "initial_rotation": [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "port": 1246
+  },
+  "backend": "isaac_lab_physx",
+  "isaac": {
+    "backend": "isaac_lab_physx",
+    "num_envs": 1,
+    "headless": true,
+    "asset": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\assets\\nao.urdf",
+    "urdf_source": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\assets\\source_nao.urdf",
+    "nao_meshes_path": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\assets\\nao_meshes",
+    "isaac_python": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\runtime\\python\\Scripts\\python.exe",
+    "isaac_sim_path": "F:/issac/isaac-sim-standalone-5.0.0-windows-x86_64",
+    "isaac_lab_path": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\runtime\\IsaacLab",
+    "device": "cuda:0",
+    "physics_dt": 0.02,
+    "decimation": 2,
+    "spawn_height": 0.3267790518060756,
+    "leg_stiffness": 80.0,
+    "leg_damping": 2.0,
+    "other_stiffness": 5.0,
+    "other_damping": 0.22,
+    "upper_joint_positions": {
+      "LShoulderPitch": 1.1,
+      "RShoulderPitch": 1.1,
+      "LElbowRoll": -0.04,
+      "RElbowRoll": 0.04
+    },
+    "feet": [
+      "l_ankle",
+      "r_ankle"
+    ],
+    "friction": 7.0,
+    "hip_tolerance_rad": 0.03,
+    "standing": {
+      "self_collisions": false,
+      "solver_position_iterations": 48,
+      "solver_velocity_iterations": 8,
+      "leg_stiffness": 80.0,
+      "leg_damping": 2.0,
+      "hold_seconds": 30.0
+    },
+    "check_steps": 200,
+    "check_resets": 2,
+    "experiment_variant": "walk_only",
+    "experiment_id": "omni",
+    "self_collisions": false,
+    "solver_position_iterations": 48,
+    "solver_velocity_iterations": 8,
+    "standing_joint_positions": {
+      "HeadYaw": 0.0,
+      "HeadPitch": 0.0,
+      "LHipYawPitch": 0.0,
+      "LHipRoll": 0.0,
+      "LHipPitch": -0.25,
+      "LKneePitch": 0.5,
+      "LAnklePitch": -0.25,
+      "LAnkleRoll": 0.0,
+      "RHipYawPitch": 0.0,
+      "RHipRoll": 0.0,
+      "RHipPitch": -0.25,
+      "RKneePitch": 0.5,
+      "RAnklePitch": -0.25,
+      "RAnkleRoll": 0.0,
+      "LShoulderPitch": 1.1,
+      "LShoulderRoll": 0.0,
+      "LElbowYaw": 0.0,
+      "LElbowRoll": -0.034907,
+      "LWristYaw": 0.0,
+      "RShoulderPitch": 1.1,
+      "RShoulderRoll": 0.0,
+      "RElbowYaw": 0.0,
+      "RElbowRoll": 0.034907,
+      "RWristYaw": 0.0,
+      "LHand": 0.0,
+      "RHand": 0.0,
+      "RFinger13": 0.0,
+      "RFinger12": 0.0,
+      "LFinger21": 0.0,
+      "LFinger13": 0.0,
+      "LFinger11": 0.0,
+      "RFinger22": 0.0,
+      "LFinger22": 0.0,
+      "RFinger21": 0.0,
+      "LFinger12": 0.0,
+      "RFinger23": 0.0,
+      "RFinger11": 0.0,
+      "LFinger23": 0.0,
+      "LThumb1": 0.0,
+      "RThumb1": 0.0,
+      "RThumb2": 0.0,
+      "LThumb2": 0.0
+    },
+    "standing_pose_source": "ddpg/step_wide_gaussian/variants/gradual_reversal/runs/train_20261120T024038_d7c199",
+    "standing_ground": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\assets\\standing_ground.usda",
+    "asset_sha256": "e641681248611c9c665e5d62c2fd0e6a244cf88cdc20719edd9d55c8ef48382d"
+  },
+  "budget_source": {
+    "path": "F:\\project\\walking2_interface\\sac_turn\\isaac_lab\\experiments\\walk_only\\config.json",
+    "sha256": "353f14471a612f35a76637b85e098f224081108b1decdec2fd459126a2be5b6e",
+    "field": "total_env_steps",
+    "source_webots_budget": 50000,
+    "effective_budget": 50000
+  },
+  "source_hashes": {
+    "actor.pth": "f37fcb3588d9188b7878b78e70101e581b1c602e1d62006572cc568959fe002f",
+    "asset_contract.py": "b7644dbcec4221223f463f7953706b513d8236d2f6da7dbb1da1726558a822f7",
+    "asset_manifest.json": "48cc13cc52490c7bba6f2ad7545e273fba9f407be32ce05137795ad0c06e9a6a",
+    "bc_manifest.json": "756aa0ae9231668addfb77b72f914c6c2d02bfe2f2b03cb64806678377bce9c5",
+    "config.json": "765ec450b99f53f461329cbe1e297edb8b5582abcbde0639ce86e74fd2158f0c",
+    "configuration.py": "9e13e5cf00e876be85fd2fc480b01b0a8ff05aff8d9cd8b61ca74ff51d5603cb",
+    "ddpg_standing_pose.json": "30b6acccfb6e06ec33c4b162363d2378f74345774e19c26880a7f50dedb50f4b",
+    "environment.py": "b8ec9a761d1dd3c27c7ec9236ce3dd88d3e601583d9bcf3c6bc87e816d6afa76",
+    "experiment_config.json": "64e38d7e2d458939a4cec4a76a4f1e2a972b3889fbecbe2c0eab8b84e06b2fe0",
+    "experiment_training_config.json": "61244c664b9a57a629b0a86ed6fe18e6cc090670f9dd2420bd955653084c2aee",
+    "joint_initialization.py": "500f7ea3273f38d55247b243d8f82ed94d903fe0a85a3623dff83f1186237bfc",
+    "main.py": "4100cf4151842164425ca43cd7d53f1816875649b826f115164e90b69a08543b",
+    "omni_config.json": "c910787bb2a7f919fa6f5ac67170a9df8ba4dbb384a73f6356b41b3c0c6dbb16",
+    "project_config.json": "1688f883c1054cbff566335833d12c469f7498dca356781de454bafea381b824",
+    "reward.py": "c9edc4609136aacd9aded2dd971538ea50d7c5e660a14fb4df6d754c3ae1afe0",
+    "runtime_requirements.txt": "7c198b5ec7899b2a170a2e6071f00a7605f82641cc244f0431f6b100ff55121c",
+    "runtime_versions.py": "aef904f720c65a0cbc8a9a9fb1a704328205e6ee0b426289fa64290635d93941",
+    "standing_check.py": "dd0111635dd976d9d9e12787f6ab77b88d2fb159b61f54216c3e0e9862dfd42b",
+    "walk_config.json": "353f14471a612f35a76637b85e098f224081108b1decdec2fd459126a2be5b6e",
+    "basewalk/action_value.py": "fc53d84d6f46b3449a6963dcf8886ccae557f3a3d38ab60fbae9133fa9928d3f",
+    "basewalk/actors.py": "dfcf1103e1195055411e336b010d22220c4e078d30a6e269084df15735312770",
+    "basewalk/angle_bc.py": "58d4767bb60872e29a3bb0ecf200480bd46db31449666b07f7cd3eb65a6f082f",
+    "basewalk/artifacts.py": "275c43da65064f5ad76a6ae70e319c1a67c82e671a6e341bd0a618d5cc151b13",
+    "basewalk/asset_status.py": "eeb59b7b8d84cc5bc976c5aba794734e513bb2002a7103b2a52098eae2b3ed5b",
+    "basewalk/bc.py": "e5bb77b9e21a7babd78d45335170cf21118d6bacfb8b0eff14cb650c6c9ba6df",
+    "basewalk/bc_rollout.py": "521ff7391c1ff83e62d6bf1acad7bbaf48479d1c935252392172b3376b520955",
+    "basewalk/compact_logs.py": "bbe442179e80cfdc8a73ef37c0976d7b1ff084f0ad95b4882caede10c740564d",
+    "basewalk/concat_actor.py": "e3fda45caa41f898207a63a7c6168748e1ffc4aa6fc6c693fcf5e9e3aa03a9f9",
+    "basewalk/configuration.py": "bb262e06352e524e1f698dc0a5fbd8b719851ca3d797836fed737966a2eabea8",
+    "basewalk/contact_expert.py": "29f9a65040057fbbdc0eb0cb0fc43f41e911ed9520c9b508b43b24ddd4595764",
+    "basewalk/core.py": "5b06ed2eba55754a683bcd83bfd62c23e19a4a24a7fec74ed7c8b8e4d2671791",
+    "basewalk/cycle_tracking.py": "d430526adec6039efd7bdab6ff1b66c8fad35622a6100898708835e0b952be37",
+    "basewalk/direction_status.py": "7a818946e0dabec75948bd616e63c7a6118579657cb247864e7374fe7ce7264d",
+    "basewalk/environment.py": "e3ddfb10a372c4801072a991d05988ed3e2bbfcd7a3bfff82f678c0f8f052b38",
+    "basewalk/events.py": "4e4d4b3f357fbbaaafc11c8cc444bea564d947c759fe265a2d474662ccad1913",
+    "basewalk/exit_plotter.py": "33f288afbbb320d177d7e4c711f9b86f24acc859fe65d12b14a8fae55e8b3d09",
+    "basewalk/experiment_layout.py": "7e6218ea5adfdd0fbefcb03b59ec113989e1c53dd3a2c5c81dd4055027cf892b",
+    "basewalk/expert_balance.py": "da9753c973952d347f92e3bf39df1c7a6449a5e0199b7e166a2ae5bcd678cbad",
+    "basewalk/expert_initialization.py": "9e4a231dab2a503a29b5404267390f62ea4f1014117e8a9cfdfdd485e5bc7453",
+    "basewalk/expert_pipeline.py": "9194c1cd342d78c3a99718aece5295cbbcf070072ea1973923db5745666cf90f",
+    "basewalk/expert_rollout.py": "164398f0ab960ab09e0da762279ac52c039c6248a2be7127d01c1ad014fc8a26",
+    "basewalk/failure_retry.py": "045f4760c6ff4a81a119e3ac9acd77b76b0e85745c0bfbd1ee29e82f40da1aee",
+    "basewalk/film_actor.py": "99165fd5884644dabf649a3d760d8e68c9e3b59b03a60025631ade079c4a43e9",
+    "basewalk/fixed_cycle.py": "84c66f76129916f51f6802514a034085cfed02e2fffb7db2d456d8ebb393ae18",
+    "basewalk/fixed_replay.py": "c2b543f78a3bf0a98c79b015d4e921cb8d2a1760ebe33dac9992bfd41ed2eeab",
+    "basewalk/footstep_ik.py": "9f508d25457238d36886a570d2c5b02b7a97de07edecc17e2ca2948671edefd1",
+    "basewalk/foot_feedback.py": "e32c3f9029ae16ea7df97e4437443b558e4662395d8e729a314de79a42d02c40",
+    "basewalk/heading_control.py": "5db97d7111dc5229a9f7e42b09a584d7ae6cc4a41615949078e77fc0bf0e3640",
+    "basewalk/heading_estimator.py": "bf72c3a0602781ee7b4f5cb5a9d2d8dc6e46a52d8d0c5e048ea27d6a3717cd3f",
+    "basewalk/high_score_replay.py": "6fa45256891e624866d84c2c875429c000de9f4a6647b0a8965f7b4e8b8a690d",
+    "basewalk/landing_projection.py": "8ad6b90b345660413f1441896735506fab34e802d605a21619dda3fb8e5465f8",
+    "basewalk/learning.py": "1a847ec8e7692114c5d84ef9e9dcf75b2d958502f80c5e4713ca7589e7f16be1",
+    "basewalk/monitor.py": "9aa21a945227f35e2c3142f16785e841e10a3f875677e0486692504e5ec8cb3b",
+    "basewalk/network_inputs.py": "49f7d013977fa16d3c9eea4a3eb0f1280ffea72ad18b9c220e438eb9ef411c92",
+    "basewalk/omni_resume.py": "70ba77eada261dad94bdc37f522b091efa1767e4f140f0dffcb6b7a061bf643c",
+    "basewalk/omni_stages.py": "2f24f0ffd51c54909d0ffdb9bd34d20373314def0eda8090b97633a905cb2e3b",
+    "basewalk/outcome_replay.py": "7f64e50e2f377946d19812705aed5af6e54e53934ce5d3966bd9ca58e4dd33d6",
+    "basewalk/phase_fall.py": "93218fc91d27818bd654b56deb6bc9a42aa59de366e2e45885b42df74def6f98",
+    "basewalk/physical_gait.py": "4c1ad7e6196a2fe560005ea3761d1f5f3548f17b029233b165a20650c37b319d",
+    "basewalk/physical_validation.py": "ddbc4e6d7022661219208486f4b040bcb1da21ad83b8a1cdad7ea76e47d3d88d",
+    "basewalk/report_diagnostics.py": "d63e776c9aae61606468564a1972bc73f1b15aea0315b766f881b07a0794675c",
+    "basewalk/reward_dispatch.py": "5c84744a9d1b5f84870ca4490760af66154773680e1d571e0bd0bc477b52672d",
+    "basewalk/reward_history.py": "e038375660e54684aac3b1742d08362ff0723a501d9a7e4d558b893a349ec484",
+    "basewalk/reward_plots.py": "bc77dc57b1bfb414a500aa56309c1dc4f0750aeb0a0da91ea5013164387de391",
+    "basewalk/reward_velocity.py": "ac3831413b4f995a34b5878e16ff5316ce8e8b3ecf6863f21f9ca493a8004f6b",
+    "basewalk/runner.py": "97438dcc42fc866e28273829586e26b23d18427f318756d071f4fcc60c2c8dd4",
+    "basewalk/sac.py": "61d1a572224094d0833fee1a840afe733b2f7f78217a51acb56e47ff8cad7148",
+    "basewalk/sine_expert.py": "dec5bd7719f8c9dee283c33636db25277ba869da362ea09549405c820c226c1f",
+    "basewalk/sine_support.py": "c7015175333af2ee8e1362448bd90da2e9e3ffe52e22148b505efd426d28b5ee",
+    "basewalk/staged_navigation.py": "0dc406db33a4ebc345493422aa1fbbe232e2ce4b15d3a0911c1760e56ff219ad",
+    "basewalk/stance_foot_yaw.py": "30b44ef541dd115991ec65fd4faf1030581fb54797cee40032f05f4a3c7a4022",
+    "basewalk/stationary_reward.py": "8f7558c48d6950d8f23849de971e83eba0bf102a5fae3cdfa31a7f73bfd95d1e",
+    "basewalk/support_dataset.py": "16d80e43252cb7454ab7888d0b64ffb813faa5e39a332eea8ab939ae5cff60d4",
+    "basewalk/support_observation.py": "5c4b869924fac2eaff47f48c2432c1679e3c289a2e4bbff249eaa567267f80dd",
+    "basewalk/teacher.py": "651a56d65543a51d3209caa08b76b72f95ba165d937536528b5a018fba1c870a",
+    "basewalk/three_class_online.py": "f4a3dd53285b932c9807c07bfa15247231f65b257116b91deca4b5526309fdd2",
+    "basewalk/training_design.py": "834ba818d5d05d32e567550afb8c2ecc2d16a8284ef394a9c33be62e8c3647ec",
+    "basewalk/transition_logging.py": "ee4edc639914db1bf2b5969ed52f47f9c79c1389b828803ae860623fb9ff8ce7",
+    "basewalk/turn_boundary.py": "c0c720779a5a3e4ad8fad779565df06417c0512b22a4ff7ad35c2d65b6c0b070",
+    "basewalk/turn_heading_window.py": "3770c83cd36754ae879c7a919acb06b31e35f5bf5ccb47c49ee5089861125fc7",
+    "basewalk/turn_stand_walk.py": "a3f44992b6aa1c978f5afa1ae8a769634906211a56993b6658b390c651d373ac",
+    "basewalk/walk_distance.py": "45c1f07057c09748663055c7dfe22f22360d09eee32a8f8c9e54fb5fbfe83359",
+    "basewalk/world_reload.py": "25453dd28e64f869389229248762549033d030fc604747e7db129354570f3322",
+    "basewalk/__init__.py": "ec60473bc682924dbcb179d457dd35b5047bed84f9cf231bf4c5226c5c6a4cff",
+    "scripts/training.py": "528ae739011b07db1894251b91dfa7cef85e7ee849ea1558dce1da7aef3ab5d4",
+    "scripts/turn_report.py": "24a331b7e33d549928403a4a8d98cb9e45654bd3e4bff91c539de145361bfc56",
+    "scripts/turn_view.html": "ea7b723bd94fbe7c18f58eefcc241934c3fdaef43a73d93bd8929b1885d399fc",
+    "scripts/walk_turn_report.py": "5585ac3d11ee3580484f896c236fb2057c30e66da15c79ab8c921146fd9933fa",
+    "scripts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

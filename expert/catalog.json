@@ -1,0 +1,64 @@
+{
+  "cycle_mean_gaussian": {
+    "path": "cycle_mean_gaussian/expert.pth",
+    "sha256": "1a5abc1f93a6598c90c8c52104b233e93ca1eca25dbf42bf6fd91e2c4827cba2",
+    "transitions": 20165,
+    "physical_sha256": "ab3c872a081cac5cd13859959554cd95e6084e0a9b6b7f8d26906c44cbcd3614",
+    "source_path": "F:\\project\\walking2_interface\\ddpg\\cycle_mean_gaussian\\assets\\wide_step_gaussian\\experiments\\028\\cycle_revision\\pretrain\\expert.pth",
+    "reward_labels": "Keep the original experiment-specific Reward labels; do not substitute another variant."
+  },
+  "step_wide_gaussian": {
+    "path": "step_wide_gaussian/expert.pth",
+    "sha256": "6974f12e457a7ab59679a0478121b68a2590cb28ac4880d7495eb86526660f34",
+    "transitions": 20165,
+    "physical_sha256": "ab3c872a081cac5cd13859959554cd95e6084e0a9b6b7f8d26906c44cbcd3614",
+    "source_path": "F:\\project\\walking2_interface\\ddpg\\step_wide_gaussian\\assets\\wide_step_gaussian\\experiments\\024\\pretrain\\expert.pth",
+    "reward_labels": "Keep the original experiment-specific Reward labels; do not substitute another variant."
+  },
+  "sac_turn": {
+    "path": "sac_turn/expert.pth",
+    "sha256": "92280a3e11a385d3ddaa1813a9d8f14637622e77a8500e4645ba493d24a3867e",
+    "transitions": 20165,
+    "physical_sha256": "ab3c872a081cac5cd13859959554cd95e6084e0a9b6b7f8d26906c44cbcd3614",
+    "source_path": "F:\\project\\walking2_interface\\sac_turn\\experiments\\001\\data\\expert.pth",
+    "reward_labels": "Keep the original experiment-specific Reward labels; do not substitute another variant."
+  },
+  "step_narrow_gaussian": {
+    "path": "step_narrow_gaussian/expert.pth",
+    "sha256": "0f8cba6b2b0391b6a4cb6258fed101ab62476e591a09a15261e952dbd6cfec80",
+    "transitions": 20165,
+    "physical_sha256": "ab3c872a081cac5cd13859959554cd95e6084e0a9b6b7f8d26906c44cbcd3614",
+    "source_path": "F:\\project\\walking2_interface\\expert\\step_wide_gaussian\\expert.pth",
+    "reward_labels": "Per-step body gyro Z EMA alpha0.10; Gaussian peak2 width0.08; no cycle backfill"
+  },
+  "step_narrow_gaussian_ema_040": {
+    "path": "step_narrow_gaussian/ema_alpha_040/expert.pth",
+    "sha256": "b8f54f3cb2e34bc53d1e4e1fb980e87c354dc11673a03ddcf0e6754670c6c83a",
+    "transitions": 20165,
+    "source_path": "F:\\project\\walking2_interface\\expert\\step_narrow_gaussian\\expert.pth",
+    "source_sha256": "0f8cba6b2b0391b6a4cb6258fed101ab62476e591a09a15261e952dbd6cfec80",
+    "derived_state_columns": [
+      51
+    ],
+    "raw_physical_fields_unchanged": true,
+    "reward_labels": "Per-step narrow Gaussian peak2 width0.08 with shared yaw EMA alpha0.40"
+  },
+  "step_wide_gaussian_gradual_reversal": {
+    "path": "step_wide_gaussian/gradual_reversal/expert.pth",
+    "sha256": "82eede1d3d4b564eea3112ea0fd003e8279f108015fd6a3d610841fd5cac71a3",
+    "transitions": 20165,
+    "source_path": "step_wide_gaussian/expert.pth",
+    "source_sha256": "6974f12e457a7ab59679a0478121b68a2590cb28ac4880d7495eb86526660f34",
+    "raw_physical_fields_unchanged": true,
+    "reward_labels": "Original raw gyro Z wide Gaussian scores unchanged; scorer extended to allow zero Turn in gradual reversal"
+  },
+  "step_wide_gaussian_turn_and_walk": {
+    "path": "step_wide_gaussian/turn_and_walk/expert.pth",
+    "sha256": "586cd028f160e4d5d17297138053b65372f2274a88c973111db31770ab4c8205",
+    "transitions": 20165,
+    "source_path": "step_wide_gaussian/gradual_reversal/expert.pth",
+    "source_sha256": "82eede1d3d4b564eea3112ea0fd003e8279f108015fd6a3d610841fd5cac71a3",
+    "raw_physical_fields_unchanged": true,
+    "reward_labels": "Unified raw gyro Z/vx/vy Gaussian; no nonzero vy source commands fabricated"
+  }
+}

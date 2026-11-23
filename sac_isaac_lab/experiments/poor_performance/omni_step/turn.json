@@ -1,0 +1,4 @@
+{
+  "turn_speed_steps": 100,
+  "turn_increment_rad_s": 0.01
+}

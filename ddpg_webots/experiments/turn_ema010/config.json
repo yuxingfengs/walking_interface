@@ -1,0 +1,538 @@
+{
+  "experiment_id": "003",
+  "name": "Step narrow gyro EMA Gaussian",
+  "reward_file": "reward.py",
+  "runs_root": "../../data/step_narrow_gaussian/runs",
+  "reports_root": "../../data/step_narrow_gaussian/reports",
+  "current_run": null,
+  "status": "critic_pretrained_ready",
+  "origin": {
+    "project": "ddpg",
+    "experiment": "step_wide_gaussian"
+  },
+  "fixed_baseline": "pre_s1_20260724_v1",
+  "report": {
+    "view": "turn",
+    "window_steps": 80,
+    "stride": 40,
+    "command_tolerance": 0.0001,
+    "cycle_group_size": 2
+  },
+  "training_config": {
+    "experiment_scoped_assets": false,
+    "previous_experiment": "004",
+    "stationary_reward": {
+      "window_samples": 2,
+      "angle_tolerance_deg": 3.0,
+      "speed_tolerance_m_s": 0.005,
+      "yaw_tolerance_rad_s": 0.02,
+      "hold_bonus": 0.02,
+      "progress_per_degree": 0.012,
+      "progress_limit": 0.006,
+      "translation_penalty_mode": "linear",
+      "gate_positive_progress_by_speed": false,
+      "speed_measure": "per_step_planar_displacement"
+    },
+    "training": {
+      "phase_fall_backfill": true,
+      "online_count_fall_as_attempt": true,
+      "joint_update_every_gait_attempts": null,
+      "online_angles_deg": [
+        -90,
+        -80,
+        -70,
+        -60,
+        -50,
+        -40,
+        -30,
+        -20,
+        -10,
+        0,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "turn_reset_distance_m": 0.8,
+      "turn_fall_walk_reset_threshold": 0,
+      "online_fixed_cycle_limit": 20,
+      "online_turn_only": true,
+      "online_turn_rate_rad_s": 0.11,
+      "joint_update_every_turn_attempts": 2,
+      "actor_update_every_turn_attempts": 4,
+      "online_fixed_turn_sign": 1.0,
+      "save_best_reward_cycle": true,
+      "total_env_steps": 20000
+    },
+    "direction_training": {
+      "stage": "A",
+      "mode": "ordered_anchor_episode",
+      "angles_deg": [
+        -90,
+        -80,
+        -70,
+        -60,
+        -50,
+        -40,
+        -30,
+        -20,
+        -10,
+        0,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "speed_m_s": 0.08732579768656645,
+      "warmup_episode_seconds": 240.0,
+      "sampling_order": "ordered",
+      "goal_distance_m": 2.0,
+      "promote_success_to_bc": false,
+      "cross_track_tolerance_m": 0.25,
+      "heading_tolerance_deg": 3.0,
+      "velocity_tolerance_m_s": 0.008,
+      "retry_same_angle": false,
+      "navigation_mode": "turn_then_forward",
+      "turn_success_hold_steps": 100,
+      "turn_max_translation_m": 0.3,
+      "goal_as_terminal": true,
+      "goal_measure": "walk_path_cycle_end"
+    },
+    "initialization": {
+      "use_bc": true,
+      "bc_checkpoint": "../../data/step_narrow_gaussian/pretrain/actor.pth",
+      "reset_to_bc_on_failure": false,
+      "bc_sha256": "e8dc18a78545b922a722916ce2e292547adbe4a96ecda0cdc80d6bae031b1354",
+      "consecutive_falls": 20,
+      "clear_replay_on_bc_reset": false,
+      "stall_timeout_steps": 0,
+      "explicit_bc_artifact": true,
+      "validation_status": "50d_bc_independent_evaluation_pending"
+    },
+    "reward": {
+      "tracking_sigma_linear": 0.01,
+      "tracking_sigma_yaw": 0.09,
+      "tracking_x": 1.0,
+      "tracking_y": 1.0,
+      "tracking_yaw": 0.0,
+      "survival": 0.0,
+      "orientation": 0.0,
+      "height": 0.0,
+      "action_rate": 0.0,
+      "joint_velocity": 0.0,
+      "fall_penalty": 5.0,
+      "tracking_sigma_x": 0.0009,
+      "tracking_sigma_y": 0.000225,
+      "turn_translation_penalty": 0.0,
+      "turn_linear_velocity_penalty": 2.0,
+      "turn_heading_progress": 0.0,
+      "turn_heading_error": 0.1,
+      "turn_yaw_rate_error": 5.0,
+      "turn_disable_positive_base_terms": true,
+      "walk_forward_progress": 0.0,
+      "walk_heading_progress": 0.0,
+      "walk_heading_error": 0.0,
+      "walk_cross_track": 0.0,
+      "stand_linear_velocity_penalty": 3.0,
+      "task_reward_bound": 0.02,
+      "walk_speed_reference": 0.08732579768656645,
+      "turn_translation_error_scale": 0.2953225971507422,
+      "turn_yaw_error_scale": 0.11,
+      "stand_translation_error_scale": 0.2853323461721036,
+      "stand_yaw_error_scale": 0.313865580789314,
+      "turn_stand_unclipped": true,
+      "biped_tracking": {
+        "revision": "velocity_widths_variants_v1",
+        "yaw_weight": 0.5,
+        "velocity_weight": 0.5,
+        "stability_coefficient": 0.1,
+        "stability_weight": 1.0,
+        "orientation_coefficient": 2.5,
+        "velocity_source": "instantaneous",
+        "tracking_widths": [
+          0.03,
+          0.05,
+          0.05
+        ],
+        "walk_linear_peak": 1.25,
+        "walk_reward_revision": "zero_baseline_linear_v1",
+        "turn_reward_revision": "fixed_width_gaussian_v1",
+        "turn_xy_penalty_scale": 0,
+        "turn_yaw_gaussian_weight": 2.0,
+        "turn_orientation_coefficient": 0,
+        "turn_stability_coefficient": 0,
+        "yaw_ema_use_body_gyro": true,
+        "turn_yaw_gaussian_width_rad_s": 0.08,
+        "turn_yaw_lowpass_tau_s": 0.3796488632411961,
+        "turn_yaw_use_raw_gyro": false,
+        "turn_heading_window_seconds": 0.0,
+        "turn_heading_scale_rad": 0.1,
+        "turn_heading_weight": 0.0
+      }
+    },
+    "velocity_tracking": {
+      "mode": "instantaneous",
+      "reset_on_task_change": true
+    },
+    "environment": {
+      "reset_mode": "world_reload",
+      "yaw_source": "supervisor_truth",
+      "yaw_rate_scale": 1.0,
+      "heading_kp": 1.0,
+      "heading_max_rate": 0.11,
+      "floor_z": 0.4,
+      "base_height_target": 0.3,
+      "fall_height": 0.2,
+      "fall_tilt_rad": 1.0,
+      "episode_seconds": 240.0,
+      "settle_steps": 64,
+      "action_scale": 0.4,
+      "gait_frequency_hz": 0.6366197723675814,
+      "velocity_filter": 0.2,
+      "joint_velocity_scale": 0.1,
+      "motor_velocity_scale": 0.8,
+      "joint_margin": 0.001,
+      "command_ranges": [
+        [
+          -0.1,
+          0.15
+        ],
+        [
+          -0.1,
+          0.1
+        ],
+        [
+          -0.4,
+          0.4
+        ]
+      ],
+      "command_resampling_seconds": [
+        8.0,
+        12.0
+      ],
+      "stand_probability": 0.0,
+      "command_slew_per_second": [
+        0.15,
+        0.15,
+        0.5
+      ],
+      "command_timeout_seconds": 2.0,
+      "navigation_mode": "turn_then_forward",
+      "reward_mode": "staged_navigation",
+      "phase_runs_at_zero_command": true,
+      "disable_time_limit": false,
+      "heading_blend_center_deg": 15.0,
+      "heading_blend_width_deg": 5.0,
+      "expert_yaw_rate_scale": 0.6,
+      "turn_forward_tolerance_deg": 3.0,
+      "turn_to_walk_tolerance_deg": 3.0,
+      "walk_to_turn_tolerance_deg": 3.0,
+      "observation_command_vx": "velocity",
+      "latch_walk_until_reset": false,
+      "heading_command_mode": "fixed_turn_zero_walk"
+    },
+    "algorithm": "ddpg",
+    "actor_type": "concat_mlp",
+    "webots": {
+      "executable": "C:/Program Files/Webots/msys64/mingw64/bin/webots.exe",
+      "python": "python",
+      "world_template": "../../data/runtime/worlds/direction_circle_10m.wbt",
+      "basic_time_step_ms": 20,
+      "control_time_step_ms": 40,
+      "initial_translation": [
+        0.0,
+        0.0,
+        0.696172
+      ],
+      "initial_rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "port": 1241
+    },
+    "evaluation": {
+      "episodes_per_command": 3,
+      "duration_seconds": 30.0,
+      "linear_tolerance": 0.05,
+      "yaw_tolerance": 0.15,
+      "minimum_tracking_fraction": 0.8,
+      "ignore_initial_seconds": 2.0,
+      "straight_goal_distance": 5.0,
+      "straight_timeout_seconds": 240.0
+    },
+    "monitoring": {
+      "direction_pause_seconds": 3.0,
+      "refresh_seconds": 15.0,
+      "stale_seconds": 180.0,
+      "loss_spike_factor": 10.0,
+      "live_report_enabled": false,
+      "generate_cycle_report": true
+    },
+    "notifications": {
+      "desktop": false
+    },
+    "previous_trained_experiment": "replay_retained_half_noise_actor_decay",
+    "fixed_baseline": "pre_s1_20260724_v1",
+    "previous_evaluation_run": null,
+    "initialization_policy_experiment": "forward_gait_bc_v1",
+    "previous_training_run": "F:\\project\\walking2_interface\\trun_stand_walk\\experiments\\outcome_replay_v34\\runs\\train_20261002T084008_b200ae",
+    "training_budget_note": "Biped Reward v3: velocity coefficient32/weight0.5; periodic20000 and protected experts unchanged; previous configuration and run retained; no training launched by edit.",
+    "critic_observation": "actor",
+    "extension_baseline": "turn_hold_v12_30000",
+    "failure_retry": {
+      "enabled": true
+    },
+    "staged_navigation": {
+      "forward_progress_weight": 3.0,
+      "speed_error_weight": 0.0,
+      "lateral_speed_weight": 2.0,
+      "reward_revision": "per_step_speed_stand_no_heading_v30"
+    },
+    "velocity_objective": {
+      "weight_xy": 1.0,
+      "weight_yaw": 5.0,
+      "sigma_xy": 0.0025,
+      "yaw_mode": "linear_absolute",
+      "temporal_mode": "per_step",
+      "walk_forward_only_weight": 3.0,
+      "reward_revision": "baselineV2_turn_stand_target_projection_v25"
+    },
+    "physical_bc_noise": {
+      "collection_action_std": 0.01,
+      "observation_std": 0.01
+    },
+    "physical_bc_directory": "classified_experts",
+    "cycle_tracking_reward": false,
+    "expert_library": {
+      "successes_per_task": 2,
+      "max_attempts": 3,
+      "raw_directory": "expert_library/raw",
+      "categories": [
+        "turn_left",
+        "turn_right",
+        "walk",
+        "turn_walk"
+      ],
+      "critic_categories": [
+        "turn_walk"
+      ]
+    },
+    "physical_expert_control": {
+      "yaw_rate_reference": 0.3,
+      "minimum_turn_rate_fraction": 0.5,
+      "maximum_turn_translation_m": 0.3
+    },
+    "contact_expert": {
+      "enabled": true,
+      "contact_force_n": 2.0,
+      "load_fraction": 0.6,
+      "confirmation_steps": 2,
+      "max_switch_delay_s": 0.16,
+      "pitch_gyro_gain": 0.04,
+      "roll_gyro_gain": 0.04,
+      "max_pitch_correction": 0.06,
+      "max_roll_correction": 0.04,
+      "filter_alpha": 0.3
+    },
+    "three_class_pipeline": {
+      "angles_deg": [
+        90,
+        -90
+      ],
+      "tolerance_deg": 3.0,
+      "max_seconds": 20.0,
+      "successes_per_angle": 2,
+      "max_attempts_per_angle": 3,
+      "collection_noise_std": 0.01,
+      "bc_updates": 20000,
+      "bc_lr": 0.0001,
+      "critic_updates": 1800,
+      "task": "turn_stand_walk_three_class",
+      "cutoff": "truncation_bootstrap_continuing_command",
+      "teacher": "V27_sine_support_full_axis_IMU",
+      "actor_evaluation_phase": "fixed_oscillator",
+      "categories": [
+        "turn",
+        "stand",
+        "turn_stand_walk"
+      ],
+      "ratios": [
+        0.4,
+        0.3,
+        0.3
+      ],
+      "source_turn": null,
+      "source_walk": null,
+      "offline_groups": [
+        "turn",
+        "stand",
+        "walk",
+        "mixed"
+      ],
+      "offline_ratios": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "three_class_online": {
+      "actor": "../../data/step_narrow_gaussian/pretrain/actor.pth",
+      "actor_sha256": "e8dc18a78545b922a722916ce2e292547adbe4a96ecda0cdc80d6bae031b1354",
+      "dataset": "../../../expert/step_narrow_gaussian/expert.pth",
+      "dataset_sha256": "0f8cba6b2b0391b6a4cb6258fed101ab62476e591a09a15261e952dbd6cfec80",
+      "critic": "../../data/step_narrow_gaussian/runs/critic_pretrain_20261119T054115_b12fd5/critic.pth",
+      "critic_sha256": "6e75086f196d7692d6bd9d8656191344e9a466ecac1023f17dfad20a78d97800",
+      "exclude_stand": true
+    },
+    "turn_stand_walk": {
+      "angle_tolerance_deg": 1.0,
+      "stand_steps": 100,
+      "walk_projection_weight": 3.0,
+      "walk_latched": true,
+      "reward_revision": "velocity_turn_body_forward_v30",
+      "stand_yaw_stability": "signed_mean_one_gait_period",
+      "stand_speed_window_samples": 40,
+      "stand_angle_tolerance_deg": 3.0
+    },
+    "expert_collection_stability": {
+      "speed_tolerance_m_s": 0.01,
+      "yaw_tolerance_rad_s": 0.04
+    },
+    "physical_gait": {
+      "imu_full_axes": true,
+      "frequency_hz": 0.6366197723675814,
+      "command_blend_seconds": 0.4,
+      "walk_speed_reference": 0.08732579768656645,
+      "yaw_rate_reference": 0.165,
+      "max_yaw_command": 0.11,
+      "turn_differential": 0.1,
+      "hip_yaw_amplitude": 0.12,
+      "walk_forward": 0.2,
+      "hold_knee_lift": 0.16,
+      "support_modulation_strength": 0.35,
+      "support_modulation_tau_s": 0.12,
+      "load_filter_alpha": 0.3,
+      "support_fraction": 0.6,
+      "support_confirmation_steps": 2,
+      "contact_force_n": 3.0,
+      "airborne_timeout_s": 0.12,
+      "gyro_filter_alpha": 0.2,
+      "pitch_gyro_gain": 0.02,
+      "roll_gyro_gain": 0.02,
+      "max_balance_rad": 0.02,
+      "max_joint_step_rad": 0.12,
+      "max_tilt_rad": 0.45,
+      "action_noise_std": 0.01
+    },
+    "support_observation": {
+      "filter_alpha": 0.3,
+      "epsilon": 1e-06,
+      "version": "normal_load_difference_v1"
+    },
+    "expert_source": {
+      "baseline_id": "physical_expert_baseline_v1",
+      "manifest": "F:\\project\\walking2_interface\\ddpg_webots\\data\\step_wide_gaussian\\assets\\trun_stand_walk\\expert_baseline\\data\\collection_turn_stand_v1.json",
+      "manifest_sha256": "5dd87749b1b47402ed316d9d78eec40cef233e8cce1a6a76a21f4e674a6fb4fc"
+    },
+    "pretrain_directory": "pretrain_velocity_turn_body_walk",
+    "shared_expert_package": "shared_state51_v30_velocity_turn_body_walk",
+    "shared_preparation_module": "preparation_turn_stand",
+    "bc_actor_reuse": {
+      "package": "F:/project/walking2_interface/train_reward_analyse/assets/v34_initial",
+      "actor_sha256": "3ece9e7d6e5813920153afeb983167b3115fb7827084667fe8f906b96d4eae9a",
+      "provenance": {
+        "path": "F:\\project\\walking2_interface\\ddpg_webots\\data\\step_wide_gaussian\\assets\\trun_stand_walk\\expert_baseline\\packages\\shared_state51_turn_stand_sweep_v1\\bc\\actor.pth",
+        "sha256": "f6294b9aaf637f823a07b4bd696f1b8c6729fabdcbedb1adf4a3693f15e8b3d0"
+      },
+      "method": "fixed_command_weight_folding_state50_v1"
+    },
+    "expert_source_categories": [
+      "turn",
+      "stand",
+      "turn_stand_walk"
+    ],
+    "bc_rollout": {
+      "steps": 20000,
+      "noise_std": 0.002,
+      "critic_updates": 15000,
+      "collection_mode": false,
+      "source": {
+        "path": "../../data/step_narrow_gaussian/pretrain/rollout.pth",
+        "sha256": "831fc4a9c7877e03b54f322adcfe115c42a08fa0cdd27d98c433477c73af58ff"
+      }
+    },
+    "fixed_cycle_commands": {
+      "enabled": true,
+      "cycles_per_command": 10,
+      "order": [
+        "turn",
+        "walk"
+      ]
+    },
+    "outcome_replay": {
+      "success_fraction": 0.7,
+      "failure_fraction": 0.3,
+      "capacity_fractions": [
+        0.7,
+        0.3
+      ],
+      "seed_complete_expert_cycles": true,
+      "expert_success_fraction": 0.2,
+      "protected_success_experts": true,
+      "expert_turn_only": false
+    },
+    "reward_previous_revision": "velocity_stability_filtered_v1",
+    "replay_revision": "fixed_success_experts_v1",
+    "state_revision": "state50_no_walk_flag_v34_v1",
+    "state_migration_report": "F:\\project\\walking2_interface\\ddpg_webots\\data\\step_wide_gaussian\\assets\\trun_stand_walk\\experiments\\outcome_replay_v34\\pretrain\\state50_v1\\migration_report.json",
+    "migration": {
+      "source_experiment": "outcome_replay_v34",
+      "source_config": "F:\\project\\walking2_interface\\ddpg_webots\\data\\step_wide_gaussian\\assets\\trun_stand_walk\\experiments\\outcome_replay_v34\\configs\\online.json",
+      "source_config_sha256": "f3a51212125d5a3278e02b93aa29cfdc5602296fbcbb06a399bf77007efdadb2",
+      "predecessor_run": "train_20261014T113311_be8a08",
+      "asset_relocations": {
+        "F:\\project\\walking2_interface\\ddpg\\step_narrow_gaussian\\pretrain\\rollout.pth": "../../data/step_narrow_gaussian/pretrain/rollout.pth"
+      },
+      "source_critic_sha256": "823c0d4dd96cfdd005bdcc2662169cd235ca79987bd791e30f436b8d5e5525af",
+      "imported_reward_source_sha256": "ee7f8e3455f26f8b0e2f40133849f2d5c883f9657b73383d21a9d833d0755a2e",
+      "equivalent_actor_source": {
+        "path": "../../data/step_narrow_gaussian/pretrain/equivalent_actor.pth",
+        "sha256": "e864af8a0067cfe01d4c43d6c376d77be858549dd14f0981e53bed9825a8056e"
+      }
+    },
+    "network_inputs": "compact_zero_vy_coupled_v1",
+    "log_layout": "compact_transition_v3",
+    "actor_observation": "shared_state_with_yaw_ema_only_v1",
+    "reward_source_sha256": "3932bd945c225544d297bbe3b84c73c1b8d9c200e3cf278a44f369a9770ee30e",
+    "reward_velocity_source_sha256": "80083fe3c32309e8f339a0f0a704badd96f4f0911b294558c07945fcc9a920f4",
+    "diagnostics": {
+      "schema": "report_log_v1",
+      "units": "SI_radians",
+      "velocity_truth": "Supervisor position difference rotated into current body frame",
+      "angular_velocity_truth": "SO(3) world rotation difference, expressed in current body frame",
+      "gyro_timing": "global angular velocity is control-period mean; sensor is post-action sample",
+      "imu_mount_roll_rad": 1.5708,
+      "coordinate_frame": "NAO torso axes; world gravity=(0,0,-1)",
+      "forward_lateral_reference": "fixed reset task heading_reference",
+      "control_period_s": 0.04,
+      "joint_truth": "Supervisor JointParameters.position; independent causal difference for velocity",
+      "joint_units": "raw radians and radians/s; State offsets/scales are removed for comparison",
+      "foot_truth": "contact points and sensor-body height; includes any contacting object, not force",
+      "support_force_truth": "unavailable_without_physics_engine_force_provider"
+    }
+  },
+  "experiments_root": "."
+}

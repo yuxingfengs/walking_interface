@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAC–Isaac Velocity Tracking</title>
+<style>
+*{box-sizing:border-box}body{margin:0 auto;padding:26px clamp(16px,4vw,56px) 60px;max-width:1220px;color:#172d3a;font:15px/1.6 system-ui,sans-serif;background:#f7f9fa}
+h1,h2,h3{line-height:1.25}h1{margin-bottom:4px}h2{margin:36px 0 8px}h3{font-size:16px;margin:0}p{margin:5px 0 12px}section{margin:12px 0;background:white;border:1px solid #d8e1e4;padding:16px;border-radius:8px}
+.controls{display:flex;gap:16px;flex-wrap:wrap;align-items:center}select,input{padding:5px;color:inherit;font:inherit;border:1px solid #92a5af;border-radius:4px}input{width:8em}canvas{width:100%;height:205px;display:block}.keys{display:flex;gap:16px;flex-wrap:wrap;font-size:13px}.hint{min-height:1.6em;color:#435d69;font-size:13px}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}td,th{text-align:left;padding:4px 10px;border-bottom:1px solid #e0e7e9}code{overflow-wrap:anywhere}
+</style>
+<h1>Commanded and Actual Velocity</h1><p id="run"></p>
+<h2>Response to Each Command</h2>
+<p>For each robot, actual velocity is averaged over each uninterrupted command within an episode. The horizontal axis shows global environment steps. Hover over a segment to see its step range and mean velocity.</p>
+<div class="controls"><label>Robot <select id="robot"></select></label><label>First step <input id="lo" type="number" min="1" value="1"></label><label>Last step <input id="hi" type="number" min="1"></label></div>
+<div id="commands"></div>
+<h2>Velocity Error Reduction from Early to Late Training</h2>
+<p id="change-range"></p>
+<table id="change-table"><thead><tr><th>Error metric</th><th>Early mean</th><th>Late mean</th><th>Reduction</th></tr></thead><tbody></tbody></table>
+<h2>Tracking Error per 1,000 Steps</h2>
+<p>Each window pools global steps across robots. Axis errors are mean absolute errors. Planar error is the mean magnitude of the per-step velocity difference. The final window uses the available samples.</p>
+<div id="metrics"></div>
+<h2>Command Coverage</h2><p>Targets are listed as vx and vy (m/s), then wz (rad/s). Random forward speeds and continuously varying yaw rates are grouped into intervals.</p>
+<label>Step range <select id="coverage"></select></label><table><thead><tr><th>Task and target velocity</th><th>Sample count</th><th>Share</th></tr></thead><tbody id="counts"></tbody></table>
+<script type="application/json" id="data">__PAYLOAD__</script>
+<script>
+'use strict';
+const data=JSON.parse(document.querySelector('#data').textContent);
+const el=id=>document.getElementById(id);
+const fmt=n=>n.toLocaleString('en-US');
+const colors=['#007279','#c54d18','#6249a3'];
+el('run').textContent=data.experiment+' · '+data.run+' · '+fmt(data.total)+' environment steps';
+for(const id of Object.keys(data.robots)) el('robot').add(new Option(id,id));
+el('hi').value=el('hi').max=el('lo').max=data.total;
+
+function nearest(points,x) {
+  let a=0,b=points.length-1;
+  while(a<b){const m=Math.floor((a+b)/2);if(points[m].end<x)a=m+1;else b=m;}
+  if(a && x<points[a].start && x-points[a-1].end<points[a].start-x)return points[a-1];
+  return points[a];
+}
+function chart(parent,title,labels,points,minStep,maxStep,detail,holds=false){
+  const box=document.createElement('section'), heading=document.createElement('h3');
+  heading.textContent=title;box.append(heading);
+  const keys=document.createElement('div');keys.className='keys';box.append(keys);
+  labels.forEach((label,i)=>{const span=document.createElement('span');span.style.color=colors[i];span.textContent='━ '+label;keys.append(span);});
+  const c=document.createElement('canvas'), hint=document.createElement('div');
+  hint.className='hint';c.setAttribute('aria-label',title);box.append(c,hint);parent.append(box);
+  if(!points.length){hint.textContent='No samples in the selected range.';return;}
+  const w=Math.max(280,c.clientWidth),h=205, l=62,r=w-18,t=12,b=h-35;
+  const scale=window.devicePixelRatio||1;
+  c.width=Math.round(w*scale);c.height=Math.round(h*scale);
+  const ctx=c.getContext('2d');ctx.scale(scale,scale);ctx.font='12px system-ui';
+  let low=0, high=0;
+  for(const point of points)for(const v of point.values){low=Math.min(v,low);high=Math.max(v,high);}
+  if(low===high){high+=1;}
+  const x=v=>l+(r-l)*(v-minStep)/Math.max(1,maxStep-minStep);
+  const y=v=>b-(b-t)*(v-low)/(high-low);
+  ctx.fillStyle='#435d69';
+  for(let i=0;i<=4;i++){
+    const v=low+(high-low)*i/4;
+    ctx.strokeStyle='#e1e8eb';ctx.beginPath();ctx.moveTo(l,y(v));ctx.lineTo(r,y(v));ctx.stroke();
+    ctx.textAlign='right';ctx.fillText(Number(v.toPrecision(3)).toString(),l-6,y(v)+4);
+  }
+  for(let i=0;i<=4;i++){
+    const v=Math.round(minStep+(maxStep-minStep)*i/4);
+    ctx.textAlign=i===4?'right':(i===0?'left':'center');ctx.fillText(fmt(v),x(v),b+19);
+  }
+  ctx.save();ctx.beginPath();ctx.rect(l-2,t-2,r-l+4,b-t+4);ctx.clip();
+  labels.forEach((_,i)=>{
+    ctx.strokeStyle=ctx.fillStyle=colors[i];ctx.lineWidth=1.6;ctx.beginPath();
+    let prev;
+    for(const p of points){
+      const py=y(p.values[i]),end=x(p.end);
+      if(holds){
+        const start=x(p.start);
+        if(!prev||p.episode!==prev.episode)ctx.moveTo(start,py);
+        else ctx.lineTo(start,py);
+        ctx.lineTo(end,py);
+        if(p.start===p.end)ctx.fillRect(end-1,py-1,2,2);
+      }else{
+        if(prev)ctx.lineTo(end,py);else ctx.moveTo(end,py);
+        ctx.fillRect(end-1.5,py-1.5,3,3);
+      }
+      prev=p;
+    }
+    ctx.stroke();
+  });
+  ctx.restore();
+  c.onpointermove=e=>{
+    const step=minStep+((e.clientX-c.getBoundingClientRect().left-l)/(r-l))*(maxStep-minStep);
+    const p=nearest(points,step);
+    hint.textContent=detail(p)+' · '+labels.map((k,i)=>k+' '+Number(p.values[i].toFixed(5))).join(' · ');
+  };
+}
+function drawCommands(){
+  const low=Math.max(1,Number(el('lo').value)||1),high=Math.min(data.total,Number(el('hi').value)||data.total);
+  const parent=el('commands');parent.replaceChildren();
+  const records=data.robots[el('robot').value].filter(p=>p[1]>=low&&p[0]<=high);
+  const axes=data.turn?['vx','vy','wz']:['vx','vy'];
+  axes.forEach((axis,i)=>{
+    const points=records.map(p=>({start:p[0],end:p[1],n:p[2],episode:p[3],task:p[4],values:[p[5+i],p[8+i]]}));
+    chart(parent,axis+(i===2?' (rad/s)':' (m/s)'),['Command','Mean actual velocity'],points,low,high,
+          p=>fmt(p.start)+'–'+fmt(p.end)+' steps · '+p.n+' samples · episode '+p.episode+' · '+p.task,true);
+  });
+}
+function drawMetrics(){
+  const parent=el('metrics');parent.replaceChildren();
+  function plot(title,fields,labels){
+    const points=data.windows.map(w=>({start:w.start,end:w.end,n:w.n,values:fields.map(k=>w[k])}));
+    chart(parent,title,labels,points,1,data.total,p=>fmt(p.start)+'–'+fmt(p.end)+' steps · '+p.n+' samples');
+  }
+  plot('Planar velocity tracking error (m/s)',['vx','vy','xy'],['vx MAE','vy MAE','Planar velocity error']);
+  if(data.turn)plot('Yaw rate tracking error (rad/s)',['wz'],['Yaw rate MAE']);
+  plot('Falls per window',['falls'],['Falls']);
+  plot('Mean reward per step',['reward'],['Mean reward']);
+}
+const coverage=el('coverage');coverage.add(new Option('Full run','all'));
+data.windows.forEach((w,i)=>coverage.add(new Option(fmt(w.start)+'–'+fmt(w.end),i)));
+function drawCoverage(){
+  const windows=coverage.value==='all'?data.windows:[data.windows[Number(coverage.value)]];
+  const counts=new Map();let n=0;
+  for(const w of windows){n+=w.n;for(const [k,v] of Object.entries(w.coverage))counts.set(k,(counts.get(k)||0)+v);}
+  const tbody=el('counts');tbody.replaceChildren();
+  for(const [key,v] of [...counts].sort((a,b)=>b[1]-a[1])){
+    const tr=tbody.insertRow();for(const val of [key,fmt(v),(v/n*100).toFixed(1)+'%'])tr.insertCell().textContent=val;
+  }
+}
+for(const id of ['robot','lo','hi'])el(id).onchange=drawCommands;
+coverage.onchange=drawCoverage;
+function drawChange(){
+  const {early_steps,late_steps,metrics}=data.change;
+  const table=el('change-table');
+  if(!Object.keys(metrics).length){
+    table.hidden=true;
+    el('change-range').textContent='Recorded '+fmt(data.total)+' steps. The comparison requires '+fmt(early_steps+late_steps)+' steps for two non-overlapping windows.';
+    return;
+  }
+  el('change-range').textContent='Early window: steps 1–'+fmt(early_steps)+'. Late window: steps '+fmt(data.total-late_steps+1)+'–'+fmt(data.total)+'. Reduction (%) = 100 × (early mean − late mean) / early mean. Negative values indicate increased error.';
+  const labels={vx:'vx MAE (m/s)',vy:'vy MAE (m/s)',xy:'Planar velocity error (m/s)',wz:'wz MAE (rad/s)'};
+  for(const [axis,m] of Object.entries(metrics)){
+    const row=table.tBodies[0].insertRow();
+    const pct=m.reduction_pct===null?'Undefined (early mean is zero)':m.reduction_pct.toFixed(2)+'%';
+    for(const value of [labels[axis],m.early.toFixed(4),m.late.toFixed(4),pct])row.insertCell().textContent=value;
+  }
+}
+drawChange();drawCommands();drawMetrics();drawCoverage();
+let resizeTimer;
+window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{drawCommands();drawMetrics();},100);});
+</script></html>

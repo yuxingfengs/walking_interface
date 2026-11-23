@@ -1,0 +1,31 @@
+{
+  "tests": {
+    "node": {
+      "control_steps": 220,
+      "synthetic_falls": [
+        95,
+        155
+      ],
+      "synthetic_time_limit": 160,
+      "reloads": 0,
+      "legacy_sampler_not_called": true,
+      "updates": 0,
+      "command_clock_verified": true
+    },
+    "world_reload": {
+      "control_steps": 220,
+      "synthetic_falls": [
+        95,
+        155
+      ],
+      "synthetic_time_limit": 160,
+      "reloads": 3,
+      "legacy_sampler_not_called": true,
+      "updates": 0,
+      "command_clock_verified": true
+    }
+  },
+  "physics_simulation": false,
+  "optimizer_updates": 0,
+  "synthetic_adapter_only": true
+}

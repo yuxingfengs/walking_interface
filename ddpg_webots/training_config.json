@@ -1,0 +1,35 @@
+{
+  "seed": 1,
+  "actor_hidden": [
+    256,
+    128,
+    128
+  ],
+  "critic_hidden": [
+    256,
+    256,
+    128
+  ],
+  "correction_hidden": [
+    128,
+    64
+  ],
+  "correction_scale": 0.1,
+  "training": {
+    "actor_lr": 5e-07,
+    "critic_lr": 1e-06,
+    "gamma": 0.995,
+    "tau": 0.001,
+    "batch_size": 256,
+    "replay_size": 100000,
+    "exploration_std": 0.002,
+    "learning_starts": 256,
+    "update_every": 5,
+    "actor_update_every": 50,
+    "checkpoint_every": 5000,
+    "critic_warmup_env_steps": 0,
+    "critic_warmup_update_every": 10,
+    "critic_warmup_updates": 0,
+    "actor_bc_regularization": 0.0
+  }
+}

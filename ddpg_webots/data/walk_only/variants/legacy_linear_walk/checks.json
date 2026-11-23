@@ -1,0 +1,18 @@
+{
+  "reward_cases": 24,
+  "critic_update_steps": [
+    79,
+    135,
+    200
+  ],
+  "actor_update_flags": [
+    false,
+    true,
+    false
+  ],
+  "attempts": 6,
+  "fall_attempts": 2,
+  "optimizer_updates": 0,
+  "physics_simulation": false,
+  "online_start_blocked_until_pretrained": true
+}

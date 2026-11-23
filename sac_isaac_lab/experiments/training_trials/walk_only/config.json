@@ -1,0 +1,22 @@
+{
+  "total_env_steps": 50000,
+  "hold_steps": 100,
+  "physics_steps_per_action": 8,
+  "webots_leg_servo": {
+    "position_gain_per_s": 10.0,
+    "physx_velocity_damping": 7.0,
+    "limits_by_joint": {
+      "HipYawPitch": [4.16174, 14.8],
+      "HipRoll": [4.16174, 14.8],
+      "HipPitch": [6.40239, 9.8],
+      "KneePitch": [6.40239, 9.8],
+      "AnklePitch": [6.40239, 9.8],
+      "AnkleRoll": [4.16174, 14.8]
+    }
+  },
+  "bc_manifest": "bc/webots_forward/manifest.json",
+  "tracking_scale_m_s": 0.08,
+  "commands_m_s": [
+    [0.0873257964849472, 0]
+  ]
+}
