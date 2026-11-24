@@ -1,31 +1,14 @@
 """Independent walk trajectories sharing one PhysX articulation view and one SAC learner."""
 import csv
 import numpy as np
-import torch
 from basewalk.phase_fall import PhaseFallBuffer
 from basewalk.runner import LOG_FIELDS, training_row
 from basewalk.sac import SAC
 from batched_environment import PhysicsTrace, ResetDiagnostics, WalkBatch
 
 
-def load_initial_checkpoint(agent, cfg, folder=None):
-    if cfg['training'].get('initial_sac_checkpoint'):
-        from basewalk.omni_resume import restore_agent
-        from basewalk.sac import CONTRACT
-        from basewalk.runner import write_json
-        path = cfg['training']['initial_sac_checkpoint']
-        saved = torch.load(path, map_location='cpu', weights_only=True)
-        if saved['contract'] != CONTRACT or saved['config']['experiment'] != 'isaac_walk_lateral':
-            raise ValueError('Expected a walk_lateral SAC checkpoint')
-        restore_agent(agent, saved)
-        if folder is not None:
-            write_json(folder/'warm_start.json', dict(checkpoint=path, source_steps=saved['env_steps'],
-                   source_updates=agent.updates, replay_count=agent.replay.count))
-
-
 def check_batch(env, cfg, steps, folder):
     agent = SAC(cfg)
-    load_initial_checkpoint(agent, cfg)
     samples = falls = 0
     max_hip = 0.
     paths = []
@@ -48,7 +31,7 @@ def check_batch(env, cfg, steps, folder):
                 falls += int(fell)
                 if fell or trunc:
                     ends.append(i)
-            if ends and cfg['training'].get('initial_sac_checkpoint'):
+            if ends and cfg['isaac'].get('experiment_variant') == 'walk_lateral_random_vx':
                 break
             batch.reset(ends)
         paths.append(counts)
@@ -72,8 +55,6 @@ class OrderedRows:
 
 def run_batch(env, cfg, folder, *, resume=None):
     agent = resume['agent'] if resume else SAC(cfg)
-    if not resume:
-        load_initial_checkpoint(agent, cfg, folder)
     state = resume['state'] if resume else {}
     step = state.get('next_step', 1) - 1
     falls = state.get('falls', 0)

@@ -1,5 +1,6 @@
 """Offline checks for the Isaac runtime and NAO assets."""
 from pathlib import Path
+from argparse import Namespace
 import sys
 import tempfile
 import unittest
@@ -10,6 +11,40 @@ from asset_contract import LEG_JOINTS, validate_urdf
 
 
 class IsaacSetupTests(unittest.TestCase):
+    def test_standard_kit_modes_use_the_installed_lab_extensions(self):
+        import os
+        import tomllib
+        from unittest.mock import patch
+        from runtime_versions import project_experience
+
+        with tempfile.TemporaryDirectory() as location, patch.dict(os.environ, {
+                'HEADLESS': '0', 'LIVESTREAM': '0', 'ENABLE_CAMERAS': '0', 'XR': '0'}):
+            lab = Path(location)
+            apps = lab/'apps'
+            apps.mkdir()
+            addons = ('isaaclab_mimic', 'isaaclab_tasks', 'isaaclab_rl')
+            for headless in (True, False):
+                mode = 'headless' if headless else 'gui'
+                vendor = apps/('isaaclab.python.headless.kit' if headless else 'isaaclab.python.kit')
+                template = ('[dependencies]\n"omni.kit.telemetry" = {}\n'
+                            f'"{mode}" = {{}}\n"isaaclab_assets" = {{order = 1000}}\n'
+                            + ''.join(f'"{name}" = {{order = 1000}}\n' for name in addons))
+                vendor.write_text(template)
+                args = Namespace(headless=headless, experience='')
+                for installed in ((), addons[:1], addons):
+                    with self.subTest(mode=mode, installed=installed):
+                        for name in installed:
+                            manifest = lab/'source'/name/'config/extension.toml'
+                            manifest.parent.mkdir(parents=True, exist_ok=True)
+                            manifest.touch()
+                        path = project_experience(args, {'isaac_lab_path': lab}, lab)
+                        deps = tomllib.loads(Path(path).read_text())['dependencies']
+                        self.assertEqual(set(deps), {mode, 'isaaclab_assets', *installed})
+                        self.assertEqual(vendor.read_text(), template)
+                for name in addons:
+                    (lab/'source'/name/'config/extension.toml').unlink()
+            self.assertEqual(project_experience(Namespace(experience='custom.kit'), {}, lab), 'custom.kit')
+
     def test_stl_alias_preserves_geometry_and_rejects_modified_alias(self):
         from prepare_asset import import_mesh_path
         with tempfile.TemporaryDirectory() as location:

@@ -10,6 +10,19 @@ from configuration import CODE, SAC, SIM, launch_configuration, load_configurati
 
 
 class SingleRobotContractTests(unittest.TestCase):
+    def test_random_walk_start_uses_expert_actor_and_fresh_learner(self):
+        import torch
+        sys.path.insert(0, str(CODE/'training'))
+        from basewalk.sac import SAC as Agent
+        cfg = launch_configuration('walk_lateral_random_vx')
+        self.assertNotIn('initial_sac_checkpoint', cfg['training'])
+        agent = Agent(cfg, device='cpu')
+        expected = torch.load(cfg['initialization']['actor_path'], weights_only=True, map_location='cpu')
+        for key, value in agent.actor.state_dict().items():
+            self.assertTrue(torch.equal(value, expected[key]), key)
+        self.assertEqual((agent.updates, agent.replay.count), (0, 0))
+        self.assertFalse(agent.critic_optimizer.state)
+
     def test_local_launch_settings(self):
         opts = dict(current_experiment='walk_lateral_random_vx', num_envs={'walk_lateral_random_vx': 2},
                     sim_device='cpu', learner_device='cuda:0', headless=True)

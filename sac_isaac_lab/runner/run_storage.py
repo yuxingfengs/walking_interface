@@ -125,19 +125,33 @@ def model_name(checkpoint):
     return model.name
 
 
-def selected_checkpoint(model, configured):
-    """A legacy recovery_latest selector follows its imported model after migration."""
+def selected_checkpoint(model, configured, *, follow_latest=False):
+    """Resolve the live model's continuation after acquiring its writer lock."""
+    if configured is None:
+        return None
     record = model/'imported_checkpoint.json'
     current = model/'checkpoints/recovery_latest.pth'
-    if (configured and configured.name == current.name and configured != current
-            and current.is_file() and record.is_file()
-            and Path(json.loads(record.read_text())['source']) == configured):
-        import torch
-        def saved_step(path):
-            return torch.load(path, map_location='meta', weights_only=True)['env_steps']
-        if saved_step(current) >= saved_step(configured):
-            return current
-    return configured
+    imported = record.is_file() and Path(json.loads(record.read_text())['source']) == configured
+    if follow_latest and (model == configured.parent.parent or imported):
+        candidates = {configured}
+        candidates.update(p for p in current.parent.glob('step_*.pth') if p.stem[5:].isdigit())
+        candidates.update(p for p in (current, current.with_name('latest.pth')) if p.is_file())
+    elif imported and configured.name == current.name and current.is_file():
+        candidates = {configured, current}
+    else:
+        return configured
+    if len(candidates) == 1:
+        return configured
+
+    def priority(path):
+        if path.stem.startswith('step_'):
+            step = int(path.stem[5:])
+        else:
+            import torch
+            step = int(torch.load(path, map_location='meta', weights_only=True)['env_steps'])
+        return step, path.name == current.name, path.parent == current.parent, path == configured
+
+    return max(candidates, key=priority)
 
 
 def preserve_file(original, backup):

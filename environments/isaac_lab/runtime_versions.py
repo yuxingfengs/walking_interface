@@ -1,6 +1,7 @@
 """Resolve binary/pip runtime versions without starting an Isaac simulation."""
 import importlib.metadata
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -72,20 +73,34 @@ def require_versions(settings):
     return result
 
 
-def offline_headless_experience(settings, folder, *, standing=False):
-    apps = Path(settings['isaac_lab_path']).resolve() / 'apps'
-    template = (apps / 'isaaclab.python.headless.kit').read_text(encoding='utf-8')
+def project_experience(args, settings, folder):
+    """Prepare the project's ordinary GUI or headless app for this Lab installation."""
+    # Let Kit select its specialized rendering/XR experience or use an explicit one.
+    if args.experience or any(getattr(args, key, False) or os.getenv(env, '0') != '0'
+                              for key, env in (('enable_cameras', 'ENABLE_CAMERAS'), ('xr', 'XR'))):
+        return args.experience
+    livestream = getattr(args, 'livestream', -1)
+    if (livestream if livestream >= 0 else int(os.getenv('LIVESTREAM', '0'))):
+        return args.experience
+    lab = settings.get('isaac_lab_path') or os.getenv('ISAACLAB_PATH')
+    if not lab:
+        from isaaclab import __path__ as lab_package
+        lab = Path(next(iter(lab_package))).parents[2]
+    apps = Path(lab).resolve() / 'apps'
+    headless = args.headless or os.getenv('HEADLESS', '0') == '1'
+    template_name = 'isaaclab.python.headless.kit' if headless else 'isaaclab.python.kit'
+    template = (apps / template_name).read_text(encoding='utf-8')
     dependency = '"omni.kit.telemetry" = {}'
     if template.splitlines().count(dependency) != 1:
-        raise RuntimeError('Unexpected headless Kit dependencies; check the offline experience before starting.')
+        raise RuntimeError(f'Unexpected dependencies in {apps / template_name}; check the offline experience.')
     content = template.replace(dependency, '').replace('${app}', apps.as_posix())
     content = content.replace('registryEnabled = true', 'registryEnabled = false')
-    if standing:
-        # The NAO standing check uses the core articulation API directly.
-        for name in ('isaaclab_mimic', 'isaaclab_rl', 'isaaclab_tasks'):
-            if not (apps.parent/'source'/name/'config/extension.toml').is_file():
-                content = content.replace(f'"{name}" = {{order = 1000}}', '')
-    path = folder / 'omni_offline_headless.kit'
+    # The NAO trainers and checks use the core articulation API and their own
+    # tasks and learner. The minimal local Lab install omits these add-ons.
+    for name in ('isaaclab_mimic', 'isaaclab_rl', 'isaaclab_tasks'):
+        if not (apps.parent/'source'/name/'config/extension.toml').is_file():
+            content = content.replace(f'"{name}" = {{order = 1000}}', '')
+    path = folder / ('omni_offline_headless.kit' if headless else 'omni_offline_gui.kit')
     path.write_text(content, encoding='utf-8')
     return str(path)
 

@@ -86,6 +86,11 @@ def restore(checkpoint, cfg, folder, session=None):
     if 'initial_sac_checkpoint' in old['training']:
         old['training'] = dict(old['training'], initial_sac_checkpoint=relocated_path(
             old['training']['initial_sac_checkpoint'], project_root))
+        # A continued historical model keeps its original warm-start provenance.
+        # Restoring its weights does not require the predecessor file.
+        if (cfg['experiment'] == old['experiment'] == 'isaac_walk_lateral_random_vx'
+                and 'initial_sac_checkpoint' not in cfg['training']):
+            cfg = dict(cfg, training=dict(cfg['training'], initial_sac_checkpoint=old['training']['initial_sac_checkpoint']))
     # A longer run can continue the same task; compare all resolved task parameters.
     target = cfg['training']['total_env_steps']
     if target > old['training']['total_env_steps']:

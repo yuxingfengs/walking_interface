@@ -83,7 +83,7 @@ def launch_configuration(experiment=None, options=None):
     return cfg
 
 
-def load_configuration(settings_path=None, experiment=None, *, for_bc_fit=False, options=None):
+def simulator_settings(settings_path=None):
     settings_path = Path(settings_path or SIM / 'setup/simulator_config.json').resolve()
     settings = read_json(settings_path)
     for key in ('asset','urdf_source','nao_meshes_path','isaac_python','isaac_sim_path','isaac_lab_path'):
@@ -97,6 +97,12 @@ def load_configuration(settings_path=None, experiment=None, *, for_bc_fit=False,
                 settings[key] = str((SIM/relative).resolve())
             else:
                 settings[key] = str((HERE/relative).resolve())
+    return settings
+
+
+def load_configuration(settings_path=None, experiment=None, *, for_bc_fit=False, options=None):
+    settings_path = Path(settings_path or SIM / 'setup/simulator_config.json').resolve()
+    settings = simulator_settings(settings_path)
     if settings.get('backend') != 'isaac_lab_physx' or settings.get('num_envs') != 1:
         raise ValueError('This backend requires exactly one Isaac PhysX environment')
     for key in ('headless',):
@@ -178,8 +184,6 @@ def load_configuration(settings_path=None, experiment=None, *, for_bc_fit=False,
                         options = read_json(CODE/'config.json')
                     walk.update(commands_m_s=recipe['commands_m_s'], hold_steps=recipe['hold_steps'],
                                 vx_range_m_s=recipe['vx_range_m_s'], total_env_steps=budget)
-                    cfg['training']['initial_sac_checkpoint'] = recipe['initial_checkpoint'](
-                        experiment_directory('walk_lateral')/'runs')
                 else:
                     budget_path = output_root/'config.json'
                     walk.update(read_json(budget_path))

@@ -15,7 +15,7 @@ import uuid
 
 from configuration import CODE, HERE, SAC, SIM, checkpoint_path, experiment_directory, launch_configuration, load_configuration
 from asset_contract import inspect_asset
-from runtime_versions import require_versions, kit_arguments, dependency_status
+from runtime_versions import require_versions, kit_arguments, dependency_status, project_experience
 
 
 def sha(path):
@@ -223,11 +223,12 @@ def main():
     args.device = args.device or settings['device']
     if (args.resume or args.continue_configured_run) and args.mode != 'train':
         parser.error('Continue requires --mode train')
+    follow_latest = False
     if args.continue_configured_run:
         from run_storage import continue_checkpoint
         selector = json.loads((CODE/'config.json').read_text(encoding='utf-8-sig'))['continue_training']
         args.resume = continue_checkpoint(Path(config['project_layout']['runs_root']), selector)
-        print(f'Continue checkpoint: {args.resume}', flush=True)
+        follow_latest = selector['run'] == 'latest' and selector.get('checkpoint', 'latest.pth') == 'latest.pth'
     if args.resume:
         args.resume = checkpoint_path(args.resume, HERE)
     installed_versions = require_versions(settings)
@@ -255,7 +256,9 @@ def main():
         from run_storage import selected_checkpoint, training_output
         identity = dict(config, isaac=dict(settings, asset_sha256=sha(asset)))
         with training_output(Path(config['project_layout']['runs_root']), identity, args.resume) as (model, session):
-            args.resume = selected_checkpoint(model, args.resume)
+            args.resume = selected_checkpoint(model, args.resume, follow_latest=follow_latest)
+            if args.resume:
+                print(f'Continue checkpoint: {args.resume}', flush=True)
             execute(args, settings, asset, asset_check, installed_versions, model, session, config=config)
         return
     if args.mode == 'standing':
@@ -279,10 +282,7 @@ def execute(args, settings, asset, asset_check, installed_versions, folder, sess
     app = None
     try:
         (folder/'status.json').write_text(json.dumps(dict(status='starting_kit', mode=args.mode)))
-        if args.headless and (args.mode == 'standing' or (settings['experiment_id'] == 'omni' and (
-                args.mode == 'train' or settings.get('experiment_variant') in ('walk_lateral', 'walk_lateral_random_vx')))):
-            from runtime_versions import offline_headless_experience
-            args.experience = offline_headless_experience(settings, attempt, standing=args.mode == 'standing')
+        args.experience = project_experience(args, settings, attempt)
         launcher=AppLauncher(args)
         app=launcher.app
         cfg=snapshot(attempt,settings,asset,args.mode,config=config)

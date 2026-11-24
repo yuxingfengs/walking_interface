@@ -7,12 +7,13 @@ import sys
 import traceback
 
 sys.path.append(str(Path(__file__).resolve().parents[3]/'sac_isaac_lab/runner'))
-from configuration import HERE, SIM, load_configuration
-from runtime_versions import require_versions, kit_arguments, dependency_status, WARP_VERSION, warp_extension_path
+from configuration import HERE, SIM, simulator_settings
+from runtime_versions import (require_versions, kit_arguments, dependency_status, project_experience,
+                              WARP_VERSION, warp_extension_path)
 
 
 def main():
-    settings = load_configuration()['isaac']
+    settings = simulator_settings()
     report = dict(training_started=False, optimizer_updates=0, physics_steps=0,
                   status='running', phase='dependencies',
                   started_at=datetime.now(timezone.utc).isoformat())
@@ -35,8 +36,10 @@ def main():
         from isaaclab.app import AppLauncher
         parser = argparse.ArgumentParser(description=__doc__)
         AppLauncher.add_app_launcher_args(parser)
+        parser.set_defaults(device=settings['device'], headless=settings['headless'])
         args = parser.parse_args()
-        args.headless = settings['headless']
+        settings.update(headless=args.headless, device=args.device)
+        args.experience = project_experience(args, settings, folder)
         args.kit_args = (args.kit_args + ' ' + kit_arguments(settings, HERE)).strip()
         report['phase'] = 'starting_app'
         save_report()
@@ -46,18 +49,19 @@ def main():
         save_report()
         import h5py
         import warp as wp
-        import isaaclab_tasks
+        import isaaclab_assets
         if wp.__version__ != WARP_VERSION or not Path(wp.__file__).resolve().is_relative_to(warp_extension_path(HERE).resolve()):
             raise RuntimeError('Kit did not select the project Warp extension: ' + str(wp.__file__))
         wp.init()
-        warp_device = wp.get_device(settings['device'])
+        # The dependency check exercises CUDA even when PhysX runs on the CPU.
+        warp_device = wp.get_device('cuda:0' if args.device == 'cpu' else args.device)
         if not warp_device.is_cuda:
             raise RuntimeError('Warp CUDA device is unavailable')
         # Exercise native device allocation/copy without compiling an RL kernel.
         wp.zeros(1, dtype=wp.float32, device=warp_device).numpy()
         report.update(warp_version=wp.__version__, warp_module=wp.__file__,
-                      warp_cuda_validated=True, h5py_version=h5py.__version__,
-                      task_extension_imported=True)
+                      warp_cuda_validated=True, physics_device=settings['device'], h5py_version=h5py.__version__,
+                      asset_extension_module=isaaclab_assets.__file__)
         report['phase'] = 'import_simulation'
         save_report()
         import torch

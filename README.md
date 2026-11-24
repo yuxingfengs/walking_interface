@@ -18,14 +18,13 @@ Test-Path '.\sac_isaac_lab\Start Training.cmd'
 
 最后一行应返回 `True`。如果返回 `False`，说明当前检出的版本没有这套训练入口，请向维护者取得包含重构目录的分支、提交或项目包，再继续。
 
-**新开 run 时，训练入口自动查找并校验前置实验 `walk_lateral` 训练生成的 50,000 步 SAC Checkpoint，用它初始化模型。** 该文件随 Git LFS 提供。Walk BC 目录内还需有 `manifest.json` 和其指定的 Actor。
+**新开 run 时，训练入口用 Walk 专家示范训练的 BC Actor 初始化策略，从第 0 步开始 SAC 训练。** 运行 `git lfs pull` 后，确认下列目录内有 `manifest.json` 和其中指定的 Actor 文件。
 
 ```text
-sac_isaac_lab/experiments/training_trials/walk_lateral/runs/train_20261122T100335Z_b14a36/checkpoints/step_00050000.pth
 sac_isaac_lab/experiments/training_trials/walk_only/bc/webots_forward/
 ```
 
-50,000 步文件的 SHA-256 是 `fb069874b45978a661db73d091abc36521e0448b0d231491c02d09a1bfb76ae1`。使用 `Get-FileHash <文件路径>` 可核对。要接着别人的模型训练，还需取得要继续的原 run，包括训练日志、冻结配置、source 和完整恢复档。
+训练入口按 manifest 中的 SHA-256 校验 BC Actor。Continue 会恢复所选 run 的模型和训练进度。接着他人的 run 训练时，需要对应的 checkpoint 和原 run 的训练日志。
 
 ## 2. 在项目外安装 Isaac
 
@@ -56,7 +55,7 @@ $isaacPython = "$runtimeDir\python\Scripts\python.exe"
 |---|---|
 | `current_experiment` | 选择启动哪个实验。 |
 | `continue_training.run` | Continue 使用的 run。默认 `latest` 选择当前实验导出的最新模型所属的 run，也可填写 `train_<id>` 或 `config_<hash>/train_<id>`。 |
-| `continue_training.checkpoint` | 默认 `latest.pth` 使用该 run 导出的模型。可填写 `recovery_latest.pth` 恢复本地 Replay，或填写某个 `step_*.pth` 文件名。续训需有该 run 的 `training.csv`。 |
+| `continue_training.checkpoint` | 默认组合 `latest` + `latest.pth` 从导出的模型开始续训。如果该模型已在本地续训，则选择这条训练历史中步数最大的已保存 checkpoint，同一步数优先使用含 Replay Buffer 的 `recovery_latest.pth`。要指定历史步数，可填写 run 目录和 `step_*.pth` 文件名。续训需要对应的 `training.csv`。 |
 | `runtime_root`、`kit_state_root` | 前者定位项目外的 Isaac 运行环境，后者指定 Kit 用户状态的存放位置。 |
 | `sim_device`、`learner_device` | 分别指定运行物理仿真和更新 SAC 网络的设备。 |
 | `num_envs`、`headless` | 前者按实验设置并行机器人数，后者控制是否隐藏仿真窗口。 |

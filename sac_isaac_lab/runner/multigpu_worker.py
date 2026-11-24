@@ -1,5 +1,6 @@
 """One isolated headless Isaac Sim instance per allocated GPU."""
 import math
+from argparse import Namespace
 import sys
 import traceback
 from pathlib import Path
@@ -33,15 +34,16 @@ def worker(pipe, rank, cfg, folder, local_step):
     try:
         here = Path(cfg['project_layout']['project_root'])
         sys.path.insert(0, str(folder/'source'))
-        from runtime_versions import kit_arguments, offline_headless_experience
+        from runtime_versions import kit_arguments, project_experience
         from isaaclab.app import AppLauncher
         work = folder/f'gpu_{rank}'
         work.mkdir()
         settings = dict(cfg['isaac'], device=f'cuda:{rank}', headless=True)
         args = kit_arguments(settings, here, state_root=work/'kit', native_warp=sys.platform == 'linux')
-        launcher = AppLauncher(headless=True, device=settings['device'], multi_gpu=False,
-                               experience=offline_headless_experience(settings, work),
-                               kit_args=args + ' --/renderer/multiGpu/enabled=false')
+        launch = Namespace(headless=True, device=settings['device'], multi_gpu=False, experience='',
+                           kit_args=args + ' --/renderer/multiGpu/enabled=false')
+        launch.experience = project_experience(launch, settings, work)
+        launcher = AppLauncher(launch)
         app = launcher.app
         import isaaclab.sim as sim_utils
         import torch

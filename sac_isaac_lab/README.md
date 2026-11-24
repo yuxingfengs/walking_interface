@@ -1,5 +1,7 @@
 # SAC-Isaac Lab
 
+`walk_lateral_random_vx` 的 **Start Training** 用 Walk BC manifest 指定的专家 Actor 初始化，Critic、优化器和 Replay Buffer 从头开始。**Continue Training** 恢复所选 checkpoint 的模型、优化器和步数，含恢复状态的 checkpoint 还会恢复 Replay Buffer。
+
 ## 文件位置
 
 | 用途 | 位置 |
@@ -14,7 +16,7 @@
 
 从仓库根目录安装依赖时运行 `& '.\environments\isaac_lab\setup\Install Isaac Dependencies.cmd'`。日常训练仍使用本目录的 `Start Training.cmd`、`Continue Training.cmd` 和 `Check Training.cmd`。
 
-本模块的 `config.json` 选择实验（`current_experiment`）和 Continue 的来源（`continue_training.run`、`continue_training.checkpoint`）。默认值 `latest` 和 `latest.pth` 对应当前实验导出的最新模型。指定历史 run 时，填写相对于该实验 `runs/` 的目录名，例如 `train_20261123T024754Z_1f09e7`。入口为 `Start Training.cmd`、`Continue Training.cmd` 和 `Check Training.cmd`。
+本模块的 `config.json` 选择实验（`current_experiment`）和 Continue 的来源（`continue_training.run`、`continue_training.checkpoint`）。默认组合 `latest` + `latest.pth` 首次使用当前实验导出的最新模型，之后会沿用该模型在本地续训时保存的最新进度。控制台的 `Continue checkpoint` 显示本次实际选用的文件。指定历史 run 时，填写相对于该实验 `runs/` 的目录名，例如 `train_20261123T024754Z_1f09e7`。入口为 `Start Training.cmd`、`Continue Training.cmd` 和 `Check Training.cmd`。
 
 本机主实验是 [walk_lateral_random_vx](experiments/training_trials/walk_lateral_random_vx/)。[根 README](../README.md) 提供新开 run、续训以及最近已完成的英文报告入口。若需显式指定实验，可在仓库根目录使用以下 PowerShell 命令，分别进行离线检查、固定策略 PhysX 检查和正式训练。
 
@@ -34,7 +36,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\sac_isaac_lab\launch.ps1 -
 
 | 文件 | 生效字段 |
 |---|---|
-| [全方位行走训练文件](experiments/training_trials/walk_lateral_random_vx/training.py) | 指令保持步数、随机前后速度范围和横向速度序列。启动时自动定位前置实验生成的 50,000 步 SAC 模型。 |
+| [全方位行走训练文件](experiments/training_trials/walk_lateral_random_vx/training.py) | 指令保持步数、随机前后速度范围和横向速度序列。 |
 | [Walk 基础配置](experiments/training_trials/walk_only/config.json) | 速度跟踪尺度、每个 Action 的物理子步数、关节伺服和 BC manifest |
 | [Isaac 公共训练超参数](training_config.json) | `seed`、`sac` 下的学习率、网络、gamma、tau 和熵参数，以及 `training` 下的 Batch Size、Replay Buffer 容量和 checkpoint 间隔 |
 
